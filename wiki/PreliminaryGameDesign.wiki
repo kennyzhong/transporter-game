@@ -1,5 +1,5 @@
-#summary One-sentence summary of this page.
 #labels Preliminarydesign,gamedesign,gamebackground,gameplay
+Proyek akhir Program Magister Teknik Elektro opsi Teknologi Informasi bidang khusus Teknologi Digital Media dan Game STEI-ITB (MGT-ITB) Kelompok "Transporter" bidang "Advance Game"
 
 = Pendahuluan =
 
