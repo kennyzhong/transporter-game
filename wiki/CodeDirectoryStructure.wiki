@@ -2,7 +2,7 @@
 format struktur direktori untuk code
 
 = Code Directory Structure =
-
+{{{
 root
  +-- bin
      +-- release
@@ -30,6 +30,7 @@ root
  +-- tools
  +-- cfg
  +-- etc
+}}}
 
 bin : binary--berisi binary file dari project atau hasil compile project, file ada didalam   release/debug dalam subdir bin atau directory lainnya sesuai dengan compile version dari project
 
