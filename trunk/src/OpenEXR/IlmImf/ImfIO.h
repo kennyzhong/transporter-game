@@ -42,7 +42,7 @@
 //
 //-----------------------------------------------------------------------------
 
-#include <IlmImf/ImfInt64.h>
+#include <openEXR/IlmImf/ImfInt64.h>
 #include <string>
 
 namespace Imf {
