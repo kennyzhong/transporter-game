@@ -17,10 +17,10 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)bin\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)obj\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="2"
-			CharacterSet="1"
+			ConfigurationType="4"
+			CharacterSet="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -60,21 +60,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="zlib.lib"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
-				SubSystem="2"
-				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -86,21 +75,15 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)bin\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)obj\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="2"
-			CharacterSet="1"
+			ConfigurationType="4"
+			CharacterSet="0"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -120,9 +103,19 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="true"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)inc&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;ZZIP_EXPORTS"
+				StringPooling="true"
 				RuntimeLibrary="2"
+				StructMemberAlignment="5"
+				BufferSecurityCheck="false"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
@@ -138,23 +131,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="zlib.lib"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
-				SubSystem="2"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -164,12 +144,6 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"

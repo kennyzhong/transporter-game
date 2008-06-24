@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
-	Name="libOpenJPEG"
-	ProjectGUID="{379D3BC7-560D-43E3-83D3-EA298207DA55}"
-	RootNamespace="libOpenJPEG"
+	Version="9.00"
+	Name="zzip"
+	ProjectGUID="{B78E550D-180C-4D15-BCCF-41952741F6B3}"
+	RootNamespace="zzip"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -40,8 +41,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\libOpenJPEG&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;OPJ_STATIC;_CRT_SECURE_NO_DEPRECATE"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;ZZIP_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -61,7 +62,6 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalLibraryDirectories="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -109,8 +109,8 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				EnableFiberSafeOptimizations="true"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\libOpenJPEG&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;OPJ_STATIC;_CRT_SECURE_NO_DEPRECATE"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;ZZIP_EXPORTS"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				StructMemberAlignment="5"
@@ -120,7 +120,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="0"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -133,7 +133,6 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalLibraryDirectories="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -156,159 +155,83 @@
 	</References>
 	<Files>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\bio.c"
+			RelativePath="..\..\src\zzip\__debug.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\bio.h"
+			RelativePath="..\..\src\zzip\__dirent.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\cio.c"
+			RelativePath="..\..\src\zzip\__hints.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\cio.h"
+			RelativePath="..\..\src\zzip\__mmap.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\dwt.c"
+			RelativePath="..\..\src\zzip\_config.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\dwt.h"
+			RelativePath="..\..\src\zzip\_msvc.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\event.c"
+			RelativePath="..\..\src\zzip\conf.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\event.h"
+			RelativePath="..\..\src\zzip\dir.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\fix.h"
+			RelativePath="..\..\src\zzip\err.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\image.c"
+			RelativePath="..\..\src\zzip\file.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\image.h"
+			RelativePath="..\..\src\zzip\file.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\int.h"
+			RelativePath="..\..\src\zzip\format.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\j2k.c"
+			RelativePath="..\..\src\zzip\info.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\j2k.h"
+			RelativePath="..\..\src\zzip\lib.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\j2k_lib.c"
+			RelativePath="..\..\src\zzip\plugin.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\j2k_lib.h"
+			RelativePath="..\..\src\zzip\plugin.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\jp2.c"
+			RelativePath="..\..\src\zzip\stat.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\jp2.h"
+			RelativePath="..\..\src\zzip\stdint.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\jpt.c"
+			RelativePath="..\..\src\zzip\zip.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libOpenJPEG\jpt.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\mct.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\mct.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\mqc.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\mqc.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\openjpeg.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\openjpeg.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\opj_includes.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\pi.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\pi.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\raw.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\raw.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\t1.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\t1.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\t2.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\t2.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\tcd.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\tcd.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\tgt.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libOpenJPEG\tgt.h"
+			RelativePath="..\..\src\zzip\zzip.h"
 			>
 		</File>
 	</Files>
