@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
-	Name="libJPEG"
-	ProjectGUID="{50FF33B9-F9D2-468D-89CA-E59A532BC86A}"
-	RootNamespace="libJPEG"
+	Version="9.00"
+	Name="libMNG"
+	ProjectGUID="{59F508C8-B4AD-40E2-AF90-B9659D9DE68F}"
+	RootNamespace="libMNG"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -40,8 +41,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_DEPRECATE"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\libMNG&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;MNG_BUILD_SO;_CRT_SECURE_NO_DEPRECATE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -61,6 +62,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -108,8 +110,8 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				EnableFiberSafeOptimizations="true"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_LIB"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\libMNG&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;MNG_BUILD_SO;_CRT_SECURE_NO_DEPRECATE"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				StructMemberAlignment="5"
@@ -132,6 +134,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -154,243 +157,167 @@
 	</References>
 	<Files>
 		<File
-			RelativePath="..\..\src\libJPEG\jcapimin.c"
+			RelativePath="..\..\src\libMNG\libmng.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcapistd.c"
+			RelativePath="..\..\src\libMNG\libmng_callback_xs.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jccoefct.c"
+			RelativePath="..\..\src\libMNG\libmng_chunk_descr.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jccolor.c"
+			RelativePath="..\..\src\libMNG\libmng_chunk_descr.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcdctmgr.c"
+			RelativePath="..\..\src\libMNG\libmng_chunk_io.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jchuff.c"
+			RelativePath="..\..\src\libMNG\libmng_chunk_io.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jchuff.h"
+			RelativePath="..\..\src\libMNG\libmng_chunk_prc.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcinit.c"
+			RelativePath="..\..\src\libMNG\libmng_chunk_prc.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcmainct.c"
+			RelativePath="..\..\src\libMNG\libmng_chunk_xs.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcmarker.c"
+			RelativePath="..\..\src\libMNG\libmng_chunks.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcmaster.c"
+			RelativePath="..\..\src\libMNG\libmng_cms.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcomapi.c"
+			RelativePath="..\..\src\libMNG\libmng_cms.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jconfig.h"
+			RelativePath="..\..\src\libMNG\libmng_conf.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcparam.c"
+			RelativePath="..\..\src\libMNG\libmng_data.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcphuff.c"
+			RelativePath="..\..\src\libMNG\libmng_display.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcprepct.c"
+			RelativePath="..\..\src\libMNG\libmng_display.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jcsample.c"
+			RelativePath="..\..\src\libMNG\libmng_dither.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jctrans.c"
+			RelativePath="..\..\src\libMNG\libmng_dither.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdapimin.c"
+			RelativePath="..\..\src\libMNG\libmng_error.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdapistd.c"
+			RelativePath="..\..\src\libMNG\libmng_error.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdatadst.c"
+			RelativePath="..\..\src\libMNG\libmng_filter.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdatasrc.c"
+			RelativePath="..\..\src\libMNG\libmng_filter.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdcoefct.c"
+			RelativePath="..\..\src\libMNG\libmng_hlapi.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdcolor.c"
+			RelativePath="..\..\src\libMNG\libmng_jpeg.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdct.h"
+			RelativePath="..\..\src\libMNG\libmng_jpeg.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jddctmgr.c"
+			RelativePath="..\..\src\libMNG\libmng_memory.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdhuff.c"
+			RelativePath="..\..\src\libMNG\libmng_object_prc.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdhuff.h"
+			RelativePath="..\..\src\libMNG\libmng_object_prc.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdinput.c"
+			RelativePath="..\..\src\libMNG\libmng_objects.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdmainct.c"
+			RelativePath="..\..\src\libMNG\libmng_pixels.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdmarker.c"
+			RelativePath="..\..\src\libMNG\libmng_pixels.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdmaster.c"
+			RelativePath="..\..\src\libMNG\libmng_prop_xs.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdmerge.c"
+			RelativePath="..\..\src\libMNG\libmng_read.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdphuff.c"
+			RelativePath="..\..\src\libMNG\libmng_read.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdpostct.c"
+			RelativePath="..\..\src\libMNG\libmng_trace.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdsample.c"
+			RelativePath="..\..\src\libMNG\libmng_trace.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jdtrans.c"
+			RelativePath="..\..\src\libMNG\libmng_types.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jerror.c"
+			RelativePath="..\..\src\libMNG\libmng_write.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jerror.h"
+			RelativePath="..\..\src\libMNG\libmng_write.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jfdctflt.c"
+			RelativePath="..\..\src\libMNG\libmng_zlib.c"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\libJPEG\jfdctfst.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jfdctint.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jidctflt.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jidctfst.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jidctint.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jidctred.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jinclude.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jmemmgr.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jmemnobs.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jmemsys.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jmorecfg.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jpegint.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jpeglib.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jpegtran.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jquant1.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jquant2.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jutils.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\jversion.h"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\transupp.c"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\libJPEG\transupp.h"
+			RelativePath="..\..\src\libMNG\libmng_zlib.h"
 			>
 		</File>
 	</Files>
