@@ -62,7 +62,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Ogre.lib OPENGL32.lib GLU32.lib"
-				LinkIncremental="2"
+				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
