@@ -65,7 +65,9 @@
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				SubSystem="2"
+				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -141,9 +143,11 @@
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool
