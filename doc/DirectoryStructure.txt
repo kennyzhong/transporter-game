@@ -1,0 +1,61 @@
+/bin				binary files produced by projects
+	/debug				binary files in debug compile version
+	/release			binary files in release compile version
+	/deployed			deployed files (achieves)
+/cfg				configuration files (or master config files)
+/dep				dependency files
+/doc				documentation files
+/etc				etc files : file which doesn't fit into any dirs
+/inc				3rd party included files
+/lib				library files (produced by projects or 3rd party libs)
+	/debug				lib for specific debug version linking
+	/release			lib for specific release version linking
+/obj				intermediate files (.obj, ilk, res, htm, idb, pdb, dep,... any files you dont want to see)
+	/debug				intermediate files produced by debug version compilation
+	/release			intermediate files produced by release version compilation
+/prj				project files
+	/acv				acv simulator related project
+	/lib				project files that produce library file
+	/tools				project files that produce tools application
+/res				resource, shared data used by executables
+/src				source code, where our efforts lied in....
+	/lib				source codes to produce library files
+	/sim				simulation related codes
+		/entity				entity simulation related codes
+		/modules			simulation module related codes
+	/test			source codes for unit test
+	/tools			source codes to produce tools applications
+	/utility		utility codes
+	/base			very important file to survive through cl.exe
+	
+---------------------------------------------------------------------------------
+
+src/lib/DIS			Distributed Interactive Simulation Library
+	classes				main DIS classes
+	connections			DIS classes related to network connection
+	pdu					DIS PDU definitions and helper classes
+	structures			DIS Datatypes
+	utilities			DIS utility functions / classes
+	
+src/utility/math	mathematic library, including vector, matrix, angle, quaternion
+					and other mathematics utility and definitions
+	
+src/utility/geo		geo-coordinate library, including geocentric, geodetic, UTM,
+					database coordinate, and geocentric/local orientation system
+
+src/lib/net			network library including netcast and netstream library and
+					netcast script, evaluator and compiler systems
+					
+src/lib/shm			shared memory library, including main shm library and dynamicSHM
+					shm script parser, shm dispatcher, shm synchronizer, shm allocator
+					and shm pointer.
+					
+src/lib/she			shared event library, an interprocess function invocation system
+					including shared event map script parser
+					
+src/lib/aural		aural engine, a 3D positional audio system library based on 
+					openAL					
+
+	
+	
+	

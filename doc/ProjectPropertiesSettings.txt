@@ -1,0 +1,25 @@
+for all project type and compile type
+--------------------------------------------------------------------------------------------------    
+General\OutputDirectory                = $(SolutionDir)bin\$(ConfigurationName)
+       \IntermetdiateDirectory         = $(SolutionDir)obj\$(ProjectName)\$(ConfigurationName)
+Debugging\WorkingDirectory             = $(OutDir)
+C/C++\General\AdditionalIncludeDir     = "$(ProjectDir)";"$(SolutionDir)src";"$(SolutionDir)inc"
+Linker\General\AdditionalLibraryDir    = "$(SolutionDir)lib\$(ConfigurationName)";"$(SolutionDir)lib"
+Linker\Debugging\GenerateProgramDBFile = $(IntDir)\$(TargetName).pdb
+
+for all project type and release compile type
+-------------------------------------------------------------------------------------------------- 	
+Linker\Optimization\ProfileGuidedDB    = $(IntDir)\$(TargetName).pgd
+
+
+for DLL project only any compile type
+--------------------------------------------------------------------------------------------------
+Linker\Advanced\ImportLibrary          = $(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib 
+
+version information on executable
+--------------------------------------------------------------------------------------------------
+add revision.rev from cfg/ to your project dir and edit the contents
+add version.rc from cfg/ to your project and include to project
+on project properties, set \BuildEvents\Pre-BuildEvent\CommandLine = 
+$(SolutionDir)tools\SubWCRev.exe $(SolutionDir) $(ProjectDir)revision.rev $(ProjectDir)revision.h
+					   	
