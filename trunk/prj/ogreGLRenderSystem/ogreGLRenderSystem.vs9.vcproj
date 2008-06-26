@@ -18,9 +18,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)bin\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)obj\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="0"
 			>
 			<Tool
@@ -49,7 +49,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="4"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -61,23 +61,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="Ogre.lib OPENGL32.lib GLU32.lib"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
-				SubSystem="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -89,17 +76,14 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)bin\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)obj\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="0"
 			WholeProgramOptimization="1"
 			>
@@ -120,13 +104,25 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc&quot;"
+				Optimization="2"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="true"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\win32&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\atifs&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\nvparse&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;OGRE_GLPLUGIN_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
+				StringPooling="true"
 				RuntimeLibrary="2"
+				StructMemberAlignment="5"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
+				DebugInformationFormat="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -138,25 +134,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="Ogre.lib OPENGL32.lib GLU32.lib"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
-				SubSystem="2"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -166,9 +147,6 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -377,54 +355,6 @@
 				RelativePath="..\..\src\ogre\openGLRenderSystem\win32\OgreGLUtil.h"
 				>
 			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreSDLGLSupport.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreSDLPrerequisites.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreSDLWindow.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\win32\OgreWin32Context.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32Context.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32GLSupport.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32GLSupport.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32Prerequisites.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32RenderTexture.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32RenderTexture.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32Window.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32Window.h"
-				>
-			</File>
 			<Filter
 				Name="nvparse"
 				>
@@ -625,14 +555,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\ogre\openGLRenderSystem\GLSL\OgreGLSLPreprocessor.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\ogre\openGLRenderSystem\GLSL\OgreGLSLPreprocessor.h"
-					>
-				</File>
-				<File
 					RelativePath="..\..\src\ogre\openGLRenderSystem\GLSL\OgreGLSLProgram.cpp"
 					>
 				</File>
@@ -674,6 +596,62 @@
 				</File>
 				<File
 					RelativePath="..\..\src\ogre\openGLRenderSystem\atifs\ps_1_4.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="win32"
+				>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\win32\OgreWin32Context.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32Context.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32GLSupport.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32GLSupport.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32Prerequisites.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32RenderTexture.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32RenderTexture.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32Window.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreWin32Window.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="sdl"
+				>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreSDLGLSupport.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreSDLPrerequisites.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\openGLRenderSystem\OgreSDLWindow.h"
 					>
 				</File>
 			</Filter>

@@ -18,10 +18,11 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)obj\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="1"
+			CharacterSet="0"
+			EnableManagedIncrementalBuild="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -41,13 +42,14 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -61,11 +63,15 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				SubSystem="2"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
+				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -92,11 +98,12 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)obj\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="1"
+			CharacterSet="0"
 			WholeProgramOptimization="1"
+			EnableManagedIncrementalBuild="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -115,12 +122,24 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				Optimization="2"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="true"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
+				StringPooling="true"
 				RuntimeLibrary="2"
+				StructMemberAlignment="5"
+				BufferSecurityCheck="false"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="3"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -133,13 +152,18 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib"
 				LinkIncremental="1"
-				GenerateDebugInformation="true"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile="(IntDir)\$(TargetName).pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				OptimizeForWindows98="1"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
+				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -168,5 +192,203 @@
 	<References>
 	</References>
 	<Files>
+		<Filter
+			Name="src"
+			>
+			<File
+				RelativePath="..\..\src\transporter\transporter.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\transporter\transporter.h"
+				>
+			</File>
+			<Filter
+				Name="visual"
+				>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualSystem.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualSystem.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\win32Window.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\win32window.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\Window.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\window.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
+		<Filter
+			Name="extsrc"
+			>
+			<Filter
+				Name="base"
+				>
+				<File
+					RelativePath="..\..\src\base\datatypes.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\datatypes.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\object.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\object.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\ObjectFactory.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\ObjectFactory.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="utilities"
+				>
+				<File
+					RelativePath="..\..\src\utilities\Event.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\utilities\Event.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\utilities\genfunction.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\utilities\genfunction.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="math"
+				>
+				<File
+					RelativePath="..\..\inc\math\HMAngle.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMAngle.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMath.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMath.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMConstant.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMMatrix3.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMMatrix3.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMMatrix4.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMMatrix4.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMQuaternion.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMQuaternion.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMTrigonometry.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMTrigonometry.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMUtility.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMUtility.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector2.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector2.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector2_64.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector2_64.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector3.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector3.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector3_64.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector3_64.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector4.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector4.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
 	</Files>
+	<Globals>
+	</Globals>
 </VisualStudioProject>
