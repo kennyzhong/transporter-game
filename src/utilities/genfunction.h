@@ -44,5 +44,7 @@ extern void ByteSwap(IN OUT u8* bytes,u32 size);
 extern const str& strtrim(str& toTrim);
 extern bit VarDtTypeStrToMem(u8* mem,u32 size,u32 dttype,str value);
 extern bit isFileExist(str filename);
+extern f32 clampValue(f32 value, f32 min, f32 max);
+extern f32 circularValue(f32 value, f32 min, f32 max);
 
 #endif
