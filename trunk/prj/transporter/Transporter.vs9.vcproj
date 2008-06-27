@@ -63,7 +63,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib"
+				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib dinput8.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
@@ -152,7 +152,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib"
+				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib dinput8.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="false"
@@ -198,6 +198,24 @@
 			<File
 				RelativePath="..\..\src\transporter\transporter.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderThrough="transporter.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderThrough="transporter.h"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\transporter\transporter.h"
@@ -207,27 +225,85 @@
 				Name="visual"
 				>
 				<File
+					RelativePath="..\..\src\transporter\visual\visualScene.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualScene.h"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\transporter\visual\visualSystem.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\transporter\visual\visualSystem.h"
 					>
 				</File>
+			</Filter>
+			<Filter
+				Name="input"
+				>
 				<File
-					RelativePath="..\..\src\transporter\visual\win32Window.cpp"
+					RelativePath="..\..\src\transporter\input\inputSystem.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\transporter\visual\win32window.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\transporter\visual\Window.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\transporter\visual\window.h"
+					RelativePath="..\..\src\transporter\input\inputSystem.h"
 					>
 				</File>
 			</Filter>
@@ -238,6 +314,14 @@
 			<Filter
 				Name="base"
 				>
+				<File
+					RelativePath="..\..\src\base\CBaseObject.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\CBaseObject.h"
+					>
+				</File>
 				<File
 					RelativePath="..\..\src\base\datatypes.cpp"
 					>
@@ -384,6 +468,50 @@
 				</File>
 				<File
 					RelativePath="..\..\inc\math\HMVector4.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="inputEngine"
+				>
+				<File
+					RelativePath="..\..\src\input\CInputDevice.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\CInputEngine.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\CInputEvent.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\CInputEventObject.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\CInputKeyboard.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\CInputKeyboardState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\CInputManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\CInputMap.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\CInputMouse.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\CInputMouseState.h"
 					>
 				</File>
 			</Filter>

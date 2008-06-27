@@ -1,25 +1,7 @@
 #ifndef VISUALSYSTEM_H
 #define VISUALSYSTEM_H
 
-#include <windows.h>
-
-#include "base/datatypes.h"
-#include "math/HMath.h"
-#include "utilities/Event.h"
-#include "utilities/genfunction.h"
-#include "base/object.h"
-#include "base/ObjectFactory.h"
-
-#include "ogre/Ogre.h"
-#include "ogre/openGLRenderSystem/OgreGLRenderSystem.h"
-#include "ogre/ogreOctreeSceneMgr/OgreOctreeSceneManager.h"
-#include "ogre/openGLRenderSystem/OgreGLPlugin.h"
-#include "ogre/ogreOctreeSceneMgr/OgreOctreePlugin.h"
-#include "ogre/cgProgram/OgreCgPlugin.h"
-
-#include "transporter/visual/window.h"
-#include "transporter/visual/win32window.h"
-#include "transporter/visual/visualHDRCompositor.h"
+#include "transporter.h"
 
 class VisualSystem
 {
@@ -32,23 +14,26 @@ protected : Ogre::RenderWindow* renderWindow;
 			Ogre::GLPlugin* glPlugin;
 			Ogre::OctreePlugin* octreePlugin;
 			Ogre::CgPlugin* cgPlugin;
-			HDRCompositor* hdrCompositor;
+			VisualScene* scene;
+			Game* game;
 			HWND renderWindowHandle;
 			bit isVisualRunning;
-			bit isVisualInited;
-			void createSphere(const str& strName, const f32 r, const i32 nRings = 16, const i32 nSegments = 16);
-			void createScene();
-			void updateScene();
-			void init();
+			bit isVisualInited;	
 			void cleanUp();
-			static void evRenderWindowClosed(void* self,Window* wnd);
 			static DWORD WINAPI visualThreadProc(LPVOID param);
 
 public    : VisualSystem();
 			~VisualSystem();
-						
-			void run();
-			void stop();
+					
+			bit init(Game* game);
+			void run(VisualScene* scene);
+			void stop();		
 			bit isRunnning();
+			HWND getWindowHandle();
+
+			Ogre::RenderWindow* getRenderWindow();
+			Ogre::RenderSystem* getRenderSystem();
+			Ogre::Camera* getCamera();
+			Ogre::SceneManager* getSceneMgr();
 };
 #endif

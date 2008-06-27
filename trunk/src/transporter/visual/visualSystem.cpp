@@ -1,4 +1,4 @@
-#include "transporter/visual/visualSystem.h"
+#include "transporter.h"
 
 VisualSystem::VisualSystem()
 {
@@ -8,14 +8,21 @@ VisualSystem::VisualSystem()
 	renderCamera    = NULL;
 	renderViewport  = NULL;
 	sceneMgr		= NULL;
+	renderWindowHandle = NULL;
+	game = NULL;
 	isVisualInited  = false;
 	isVisualRunning = false;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void VisualSystem::init()
+bit VisualSystem::init(Game* game)
 {
+	if(isVisualInited)
+	{
+		return false;
+	}
+	this->game = game;
 	visualRoot = new Ogre::Root("visual-plugins.cfg",
 		                        "visual-config.cfg",
 								"visual-log.txt");
@@ -83,8 +90,9 @@ void VisualSystem::init()
 		visualRoot )
 	{
 		isVisualInited = true;
-		createScene();
+		return true;
 	}
+	return false;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -96,12 +104,15 @@ VisualSystem::~VisualSystem()
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void VisualSystem::run()
+void VisualSystem::run(VisualScene* scene)
 {
 	if(!isVisualInited)
 	{
-		init();
+		return;
 	}
+	
+	this->scene = scene;
+	scene->init(game);
 
 	isVisualRunning    = true;
 	u64 usedtick       = 0;
@@ -119,7 +130,7 @@ void VisualSystem::run()
 		QueryPerformanceCounter(&starttick);
 
 		Ogre::WindowEventUtilities::messagePump();
-		updateScene();
+		scene->update();
 		visualRoot->renderOneFrame();
 
 		currentFrame++;
@@ -164,48 +175,6 @@ bit VisualSystem::isRunnning()
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void VisualSystem::updateScene()
-{
-
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
-void VisualSystem::createScene()
-{
-	sceneMgr->setAmbientLight(Ogre::ColourValue(1.0,1.0,1.0));
-
-	Ogre::Light* spotLight = sceneMgr->createLight("SpotLight");
-	spotLight->setType(Ogre::Light::LT_SPOTLIGHT);
-	spotLight->setPosition(0,100,0);
-	spotLight->setDirection(Ogre::Vector3::NEGATIVE_UNIT_Y);
-	spotLight->setSpecularColour(0.9,0.9,1.0);	
-	spotLight->setCastShadows(true);
-
-	sceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
-	sceneMgr->setShadowColour( Ogre::ColourValue(0.5, 0.5, 0.5) );
-	sceneMgr->setSkyBox(true,"skybox",10000);
-
-	Ogre::Plane surfacePlane;
-	surfacePlane.normal = Ogre::Vector3::UNIT_Y;
-	surfacePlane.d = 0;
-	Ogre::MeshManager::getSingleton().createPlane("surface",
-		Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-		surfacePlane,
-		4096, 4096, 128, 128, true, 1, 128, 128, Ogre::Vector3::UNIT_Z);
-
-	Ogre::SceneNode* surfaceNode = sceneMgr->getRootSceneNode()->createChildSceneNode();
-	Ogre::Entity* surfaceEntity = sceneMgr->createEntity( "surface", "surface" );
-	surfaceEntity->setMaterialName("asphalt");
-	surfaceNode->attachObject(surfaceEntity);
-	surfaceNode->setPosition(0,0,0);
-
-	renderCamera->setPosition(0,20,-300);
-	renderCamera->lookAt(0,0,1);
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
 void VisualSystem::cleanUp()
 {
 	stop();
@@ -230,4 +199,29 @@ void VisualSystem::cleanUp()
 	}
 
 	isVisualInited = false;
+}
+
+HWND VisualSystem::getWindowHandle()
+{
+	return renderWindowHandle;
+}
+
+Ogre::RenderWindow* VisualSystem::getRenderWindow()
+{
+	return renderWindow;
+}
+
+Ogre::RenderSystem* VisualSystem::getRenderSystem()
+{
+	return renderSystem;
+}
+
+Ogre::Camera* VisualSystem::getCamera()
+{
+	return renderCamera;
+}
+
+Ogre::SceneManager* VisualSystem::getSceneMgr()
+{
+	return sceneMgr;
 }
