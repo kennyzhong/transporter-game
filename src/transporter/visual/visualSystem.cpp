@@ -112,7 +112,7 @@ void VisualSystem::run(VisualScene* scene)
 	}
 	
 	this->scene = scene;
-	scene->init(game);
+	//scene->init(game);
 
 	isVisualRunning    = true;
 	u64 usedtick       = 0;
@@ -155,8 +155,6 @@ void VisualSystem::run(VisualScene* scene)
 			frameleft = framePerSecond;
 		}
 	}
-
-	cleanUp();
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -181,7 +179,7 @@ void VisualSystem::cleanUp()
 
 	if(visualRoot)
 	{
-		delete visualRoot;
+		//delete visualRoot;
 		visualRoot = NULL;
 		renderWindow = NULL;
 		renderCamera = NULL;
@@ -200,6 +198,8 @@ void VisualSystem::cleanUp()
 
 	isVisualInited = false;
 }
+
+//————————————————————————————————————————————————————————————————————————————————————————
 
 HWND VisualSystem::getWindowHandle()
 {
@@ -225,3 +225,5 @@ Ogre::SceneManager* VisualSystem::getSceneMgr()
 {
 	return sceneMgr;
 }
+
+//————————————————————————————————————————————————————————————————————————————————————————
