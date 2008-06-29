@@ -8,7 +8,8 @@ protected : Game* game;
 public    : VisualScene();
 			~VisualScene();
 
-			void init(Game* game);
+			bit init(Game* game);
 			void update();
+			void cleanUp();
 };
 #endif

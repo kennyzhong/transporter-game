@@ -307,6 +307,58 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="game"
+				>
+				<File
+					RelativePath="..\..\src\transporter\game\carEntity.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\carEntity.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\carTyreEntity.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\carTyreEntity.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\game.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\game.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\gameEntity.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\gameEntity.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\gameScene.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\gameScene.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\surface.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\surface.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="extsrc"

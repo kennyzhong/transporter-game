@@ -24,18 +24,12 @@ class VisualSystem;
 #include "transporter/visual/visualSystem.h"
 #include "transporter/visual/visualScene.h"
 #include "transporter/input/inputSystem.h"
+#include "transporter/game/gameEntity.h"
+#include "transporter/game/surface.h"
+#include "transporter/game/carTyreEntity.h"
+#include "transporter/game/carEntity.h"
+#include "transporter/game/gameScene.h"
+#include "transporter/game/game.h"
 
-class Game
-{
-protected : HINSTANCE appInstance;
-public    : Game() {};
-			~Game();
-			void run();
-			bit init(HINSTANCE instance);
-			HINSTANCE getAppInstance();
-			VisualSystem visual;
-			InputSystem input;
-			VisualScene scene;
-};
 
 #endif
