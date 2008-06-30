@@ -2,6 +2,8 @@
 #define TRANSPORTER_H
 #include <windows.h>
 
+#define DIRECTINPUT_VERSION 0x0800
+
 #include "base/datatypes.h"
 #include "base/object.h"
 #include "base/ObjectFactory.h"
@@ -36,6 +38,7 @@ class VisualSystem;
 
 #include "transporter/visual/visualSystem.h"
 #include "transporter/visual/visualScene.h"
+#include "transporter/physics/physicsScene.h"
 #include "transporter/physics/physicsSystem.h"
 #include "transporter/input/inputSystem.h"
 #include "transporter/game/gameEntity.h"

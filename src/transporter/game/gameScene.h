@@ -7,12 +7,14 @@ class GameScene
 protected : Game* game;
 			Surface* surface;
 			CarEntity* car;
+			void createEntities();
 public    : GameScene();
 			~GameScene();
 			virtual bit init(Game* game);
 			virtual void update();
 			void cleanUp();
 
-			VisualScene visual;
+			VisualScene visualWorld;
+			PhysicsScene physicsWorld;
 };
 #endif

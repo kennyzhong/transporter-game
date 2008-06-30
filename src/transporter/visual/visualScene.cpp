@@ -18,12 +18,12 @@ bit VisualScene::init(Game* game)
 {	
 	this->game = game;
 
-	game->visual.getSceneMgr()->setAmbientLight(Ogre::ColourValue(1.0,1.0,1.0));
-	game->visual.getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
-	game->visual.getSceneMgr()->setShadowColour( Ogre::ColourValue(0.5, 0.5, 0.5) );
-	game->visual.getSceneMgr()->setSkyBox(true,"skybox",10000);
+	game->visualSystem.getSceneMgr()->setAmbientLight(Ogre::ColourValue(1.0,1.0,1.0));
+	game->visualSystem.getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
+	game->visualSystem.getSceneMgr()->setShadowColour( Ogre::ColourValue(0.5, 0.5, 0.5) );
+	game->visualSystem.getSceneMgr()->setSkyBox(true,"skybox",10000);
 
-	Ogre::Light* light = game->visual.getSceneMgr()->createLight("MainLight");
+	Ogre::Light* light = game->visualSystem.getSceneMgr()->createLight("MainLight");
 	light->setType(Ogre::Light::LT_SPOTLIGHT);
 	light->setPosition(500,500,200);
 	light->setDirection(-light->getPosition());
@@ -32,8 +32,8 @@ bit VisualScene::init(Game* game)
 	light->setPowerScale(1.0);
 	light->setCastShadows(true);	
 	
-	game->visual.getCamera()->setPosition(0,20,-100);
-	game->visual.getCamera()->lookAt(0,0,1);
+	game->visualSystem.getCamera()->setPosition(0,20,-100);
+	game->visualSystem.getCamera()->lookAt(0,0,1);
 
 	return true;
 }
@@ -53,13 +53,13 @@ void VisualScene::updateCamera()
 	static f32 rotx;
 	static f32 roty;
 
-	rotz += f32(game->input.getMouseMovement(2))/10.0f; 
+	rotz += f32(game->inputSystem.getMouseMovement(2))/10.0f; 
 	rotz  = clampValue(rotz,10.0f,100.0f);
 
-	if(game->input.getMouseBtnState(1)) 
+	if(game->inputSystem.getMouseBtnState(1)) 
 	{
-		rotx += (f32)game->input.getMouseMovement(0);
-		roty += (f32)game->input.getMouseMovement(1);
+		rotx += (f32)game->inputSystem.getMouseMovement(0);
+		roty += (f32)game->inputSystem.getMouseMovement(1);
 		
 		rotx = circularValue(rotx,0.0f,360.0f);
 		roty = clampValue(roty,5.0f,85.0f); 
@@ -70,9 +70,9 @@ void VisualScene::updateCamera()
 	pos.x = rotz*sin(hmath::deg(rotx).asRad())*sin(hmath::deg(roty).asRad());
 	pos.y = rotz*cos(hmath::deg(roty).asRad());
 
-	game->visual.getCamera()->setPosition(pos);
-	game->visual.getCamera()->lookAt(0,0,0);
-	game->input.resetMouseMovement();
+	game->visualSystem.getCamera()->setPosition(pos);
+	game->visualSystem.getCamera()->lookAt(0,0,0);
+	game->inputSystem.resetMouseMovement();
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————

@@ -2,8 +2,10 @@
 
 void Game::run()
 {
-	input.run();
-	visual.run(&scene.visual);
+	isRunning = true;
+	inputSystem.run();
+	physicsSystem.run(&gameScene.physicsWorld);
+	visualSystem.run(&gameScene.visualWorld);	
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -11,23 +13,27 @@ void Game::run()
 bit Game::init(HINSTANCE instance)
 {
 	this->appInstance = instance;
-	if(visual.init(this))
+	if(visualSystem.init(this))
 	{
-		input.init(this);
-		physics.init(this);
-		scene.init(this);
-		return true;
+		bit result = true;
+		result &= inputSystem.init(this);
+		result &= physicsSystem.init(this);
+		result &= gameScene.init(this);
+		return result;
 	}
 	return false;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-Game::~Game()
+Game::Game()
 {
-	scene.cleanUp();
-	input.stop();
-	visual.stop();
+	isRunning = false;
+}
+
+Game::~Game()
+{	
+	stop();
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -35,4 +41,19 @@ Game::~Game()
 HINSTANCE Game::getAppInstance()
 {
 	return appInstance;
+}
+
+//————————————————————————————————————————————————————————————————————————————————————————
+
+void Game::stop()
+{
+	if(isRunning)
+	{
+		inputSystem.stop();
+		physicsSystem.stop();
+		visualSystem.stop();
+
+		gameScene.cleanUp();
+		isRunning = false;
+	}
 }
