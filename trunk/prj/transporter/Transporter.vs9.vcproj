@@ -331,22 +331,6 @@
 					Name="entities"
 					>
 					<File
-						RelativePath="..\..\src\transporter\game\carEntity.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\transporter\game\carEntity.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\transporter\game\carTyreEntity.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\transporter\game\carTyreEntity.h"
-						>
-					</File>
-					<File
 						RelativePath="..\..\src\transporter\game\gameEntity.cpp"
 						>
 					</File>
@@ -362,6 +346,34 @@
 						RelativePath="..\..\src\transporter\game\surface.h"
 						>
 					</File>
+					<Filter
+						Name="car"
+						>
+						<File
+							RelativePath="..\..\src\transporter\game\carEntity.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carEntity.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carTyreEntity.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carTyreEntity.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\physics\physicsVehicleSetup.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\physics\physicsVehicleSetup.h"
+							>
+						</File>
+					</Filter>
 				</Filter>
 			</Filter>
 			<Filter
@@ -383,6 +395,26 @@
 					RelativePath="..\..\src\transporter\physics\physicsSystem.h"
 					>
 				</File>
+				<Filter
+					Name="shapes"
+					>
+					<File
+						RelativePath="..\..\src\transporter\physics\physicsFlatLand.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\physics\physicsFlatLand.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\physics\physicsLandscapeRepository.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\physics\physicsLandscapeRepository.h"
+						>
+					</File>
+				</Filter>
 			</Filter>
 		</Filter>
 		<Filter

@@ -14,5 +14,7 @@ public    : PhysicsScene();
 			hkpWorld* getWorld();
 			void update();
 			void cleanUp();
+			void lock();
+			void unlock();
 };
 #endif

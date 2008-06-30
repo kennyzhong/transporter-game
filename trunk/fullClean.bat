@@ -1,8 +1,10 @@
 del *.obj /s
 del *.tds /s
 del *.idb /s
+del *.pdb /s
 del *.pch /s
 del *.dep /s
+del *.manifest /s
 del *.cgl /s
 del *.bsc /s
 del *.sbr /s

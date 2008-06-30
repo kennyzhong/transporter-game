@@ -40,10 +40,13 @@ bit PhysicsScene::init( Game* game )
 	hkpWorldCinfo info;
 	info.m_collisionTolerance = 0.1f;
 	info.m_gravity.set(0.0f, -9.8f, 0.0f);
-	info.setBroadPhaseWorldSize(1000.0f) ;
+	info.setBroadPhaseWorldSize(2500.0f) ;
 	info.setupSolverInfo(hkpWorldCinfo::SOLVER_TYPE_4ITERS_MEDIUM);
 
 	physicsWorld = new hkpWorld(info);
+
+	hkpAgentRegisterUtil::registerAllAgents(physicsWorld->getCollisionDispatcher());
+
 	isSceneInited = true;
 
 	return true;
@@ -61,4 +64,24 @@ void PhysicsScene::update()
 void PhysicsScene::cleanUp()
 {
 	//TODO: clear all entities
+}
+
+//————————————————————————————————————————————————————————————————————————————————————————
+
+void PhysicsScene::lock()
+{
+	if(physicsWorld)
+	{
+		physicsWorld->lock();
+	}
+}
+
+//————————————————————————————————————————————————————————————————————————————————————————
+
+void PhysicsScene::unlock()
+{
+	if(physicsWorld)
+	{
+		physicsWorld->unlock();
+	}
 }

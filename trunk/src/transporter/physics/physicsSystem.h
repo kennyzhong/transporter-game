@@ -17,6 +17,7 @@ public    : PhysicsSystem();
 			bit init(Game* game);
 			void stop();
 			void run(PhysicsScene* scene);
+			PhysicsScene* getScene();
 
 			bit isRunnning();
 };

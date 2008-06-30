@@ -1,7 +1,7 @@
 #include "transporter.h"
 
-CarTyreEntity::CarTyreEntity( VisualSystem* visual )
-:GameEntity(visual)
+CarTyreEntity::CarTyreEntity( Game* game )
+:GameEntity(game)
 {
 
 }
@@ -17,7 +17,7 @@ CarTyreEntity::~CarTyreEntity()
 
 bit CarTyreEntity::init(str name)
 {
-	visualEntity = visualSystem->getSceneMgr()->createEntity(name,"tyre.mesh");
+	visualEntity = game->visualSystem.getSceneMgr()->createEntity(name,"tyre.mesh");
 	visualEntity->setMaterialName("tyreMaterial");
 	return true;
 }
