@@ -156,3 +156,8 @@ void PhysicsSystem::stop()
 		isPhysicsInited = false;
 	}
 }
+
+PhysicsScene* PhysicsSystem::getScene()
+{
+	return scene;
+}

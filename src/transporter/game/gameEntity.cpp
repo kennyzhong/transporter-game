@@ -1,9 +1,10 @@
 #include "transporter.h"
 
-GameEntity::GameEntity( VisualSystem* visual )
+GameEntity::GameEntity( Game* game )
 {
 	this->visualEntity = NULL;
-	this->visualSystem = visual;
+	this->physicsEntity = NULL;
+	this->game = game;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -11,13 +12,6 @@ GameEntity::GameEntity( VisualSystem* visual )
 Ogre::Entity* GameEntity::getVisualEntity()
 {
 	return this->visualEntity; 
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
-VisualSystem* GameEntity::getVisualSystem()
-{
-	return this->visualSystem;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -40,4 +34,19 @@ GameEntity::~GameEntity()
 		delete visualEntity;
 		visualEntity = NULL;
 	}
+	//TODO: delete physics entity
+}
+
+//————————————————————————————————————————————————————————————————————————————————————————
+
+hkpRigidBody* GameEntity::getPhysicsEntity()
+{
+	return this->physicsEntity;
+}
+
+//————————————————————————————————————————————————————————————————————————————————————————
+
+Game* GameEntity::getGame()
+{
+	return game;
 }

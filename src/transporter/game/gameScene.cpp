@@ -57,7 +57,7 @@ void GameScene::cleanUp()
 
 void GameScene::createEntities()
 {
-	surface = new Surface(&game->visualSystem);
+	surface = new Surface(game);
 	surface->init("surface");
 	car     = new CarEntity(surface);
 	car->init("car");

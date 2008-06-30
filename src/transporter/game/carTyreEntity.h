@@ -5,7 +5,7 @@
 class CarTyreEntity : public GameEntity
 {
 protected :
-public    : CarTyreEntity(VisualSystem* visual);
+public    : CarTyreEntity(Game* game);
 			virtual ~CarTyreEntity();
 			virtual bit init(str name);
 };

@@ -5,11 +5,13 @@
 class GameEntity 
 {
 protected : Ogre::Entity* visualEntity;			
-			VisualSystem* visualSystem;
-public    : GameEntity(VisualSystem* visual);
+			hkpRigidBody* physicsEntity;
+			Game* game;
+public    : GameEntity(Game* game);
 			virtual ~GameEntity();
 			Ogre::Entity* getVisualEntity();
-			VisualSystem* getVisualSystem();
+			hkpRigidBody* getPhysicsEntity();
+			Game* getGame();
 			virtual bit init(str name);
 };
 #endif

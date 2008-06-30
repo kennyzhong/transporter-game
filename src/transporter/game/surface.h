@@ -4,8 +4,8 @@
 
 class Surface : public GameEntity
 {
-protected : 
-public    : Surface(VisualSystem* visual);
+protected : PhysicsFlatLand* physicsSurfaceShape;
+public    : Surface(Game* game);
 			~Surface();
 			virtual bit init(str name);
 };
