@@ -12,6 +12,7 @@ public    : Game() {};
 			HINSTANCE getAppInstance();
 			VisualSystem visual;
 			InputSystem input;
+			PhysicsSystem physics;
 			GameScene scene;
 };
 
