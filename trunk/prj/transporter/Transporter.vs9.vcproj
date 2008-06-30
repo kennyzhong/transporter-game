@@ -42,8 +42,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;;&quot;$(SolutionDir)inc\physics&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVOK_PHYSICS_ENABLED;_CRT_SECURE_NO_DEPRECATE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -63,7 +63,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib dinput8.lib"
+				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib dinput8.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib hkaAnimation.lib hkaInternal.lib hkaRagdoll.lib hkgBridge.lib hkgCommon.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
@@ -79,6 +79,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
+				EmbedManifest="false"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -128,8 +129,8 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				EnableFiberSafeOptimizations="true"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;;&quot;$(SolutionDir)inc\physics&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVOK_PHYSICS_ENABLED;_CRT_SECURE_NO_DEPRECATE"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				StructMemberAlignment="5"
@@ -152,7 +153,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib dinput8.lib"
+				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib dinput8.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib hkaAnimation.lib hkaInternal.lib hkaRagdoll.lib hkgBridge.lib hkgCommon.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="false"
@@ -356,6 +357,26 @@
 				</File>
 				<File
 					RelativePath="..\..\src\transporter\game\surface.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="physics"
+				>
+				<File
+					RelativePath="..\..\src\transporter\physics\physicsScene.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\physics\physicsScene.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\physics\physicsSystem.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\physics\physicsSystem.h"
 					>
 				</File>
 			</Filter>

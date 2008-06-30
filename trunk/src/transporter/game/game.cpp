@@ -14,6 +14,7 @@ bit Game::init(HINSTANCE instance)
 	if(visual.init(this))
 	{
 		input.init(this);
+		physics.init(this);
 		scene.init(this);
 		return true;
 	}

@@ -16,6 +16,19 @@
 #include "ogre/ogreOctreeSceneMgr/OgreOctreePlugin.h"
 #include "ogre/cgProgram/OgreCgPlugin.h"
 #include "input/CInputEngine.h"
+#include "physics/Common/Base/hkBase.h"
+#include "physics/Common/Base/System/Error/hkDefaultError.h"
+#include "physics/Common/Base/System/hkBaseSystem.h"
+#include "physics/Common/Base/Memory/MemoryClasses/hkMemoryClassDefinitions.h"
+#include "physics/Common/Base/Memory/hkThreadMemory.h"
+#include "physics/Common/Base/Memory/Memory/Pool/hkPoolMemory.h"
+#include "physics/Common/Base/Math/hkMath.h"
+#include "physics/Physics/Dynamics/hkpDynamics.h"
+#include "physics/Physics/Dynamics/World/hkpWorld.h"
+#include "physics/Physics/Dynamics/World/hkpWorldCinfo.h"
+#include "physics/Physics/Collide/hkpCollide.h"
+#include "physics/Physics/Internal/hkpInternal.h"
+#include "physics/Physics/Vehicle/hkpVehicle.h"
 
 class Game;
 class VisualScene;
@@ -23,6 +36,7 @@ class VisualSystem;
 
 #include "transporter/visual/visualSystem.h"
 #include "transporter/visual/visualScene.h"
+#include "transporter/physics/physicsSystem.h"
 #include "transporter/input/inputSystem.h"
 #include "transporter/game/gameEntity.h"
 #include "transporter/game/surface.h"
