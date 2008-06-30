@@ -19,11 +19,11 @@ GameScene::~GameScene()
 bit GameScene::init( Game* game )
 {
 	this->game = game;
-	visual.init(game);
-	surface = new Surface(&game->visual);
-	surface->init("surface");
-	car     = new CarEntity(surface);
-	car->init("car");
+
+	visualWorld.init(game);
+	physicsWorld.init(game);
+
+	createEntities();
 	return true;
 }
 
@@ -31,7 +31,8 @@ bit GameScene::init( Game* game )
 
 void GameScene::update()
 {
-	visual.update();
+	physicsWorld.update();
+	visualWorld.update();
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -48,5 +49,16 @@ void GameScene::cleanUp()
 		delete surface;
 		surface = NULL;
 	}
-	visual.cleanUp();
+	physicsWorld.cleanUp();
+	visualWorld.cleanUp();
+}
+
+//————————————————————————————————————————————————————————————————————————————————————————
+
+void GameScene::createEntities()
+{
+	surface = new Surface(&game->visualSystem);
+	surface->init("surface");
+	car     = new CarEntity(surface);
+	car->init("car");
 }

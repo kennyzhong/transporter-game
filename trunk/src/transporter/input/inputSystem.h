@@ -23,7 +23,7 @@ protected : CInputEngine* engine;
 public    : InputSystem();
 			~InputSystem();
 
-			void init(Game* game);
+			bit init(Game* game);
 			void run(u32 threadFreq=30,u32 threadPriority = NORMAL_PRIORITY_CLASS);
 			void stop();	
 

@@ -5,13 +5,18 @@
 class PhysicsSystem
 {
 protected : void cleanUp();
-			hkpWorld* physicsWorld;
+			HANDLE physicsThread;
+			HANDLE physicsThreadSignal;
+			static DWORD WINAPI physicsThreadProc(LPVOID params);			
 			bit isPhysicsRunning;
 			bit isPhysicsInited;
+			PhysicsScene* scene;
 			Game* game;
 public    : PhysicsSystem();
 			~PhysicsSystem();
 			bit init(Game* game);
+			void stop();
+			void run(PhysicsScene* scene);
 
 			bit isRunnning();
 };

@@ -28,12 +28,12 @@ InputSystem::~InputSystem()
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void InputSystem::init( Game* game )
+bit InputSystem::init( Game* game )
 {
 	if(!isInited)
 	{
 		this->game = game;
-		window = game->visual.getWindowHandle();
+		window = game->visualSystem.getWindowHandle();
 		engine = new CInputEngine(game->getAppInstance(),window);
 		inputManager = engine->get_input_manager();
 
@@ -48,6 +48,7 @@ void InputSystem::init( Game* game )
 
 		isInited = true;
 	}
+	return true;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————

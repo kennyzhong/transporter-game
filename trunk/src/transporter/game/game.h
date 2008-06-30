@@ -5,15 +5,18 @@
 class Game
 {
 protected : HINSTANCE appInstance;
-public    : Game() {};
+			bit isRunning;
+public    : Game();
 			~Game();
 			void run();
+			void stop();
 			bit init(HINSTANCE instance);
 			HINSTANCE getAppInstance();
-			VisualSystem visual;
-			InputSystem input;
-			PhysicsSystem physics;
-			GameScene scene;
+
+			VisualSystem visualSystem;
+			InputSystem inputSystem;
+			PhysicsSystem physicsSystem;
+			GameScene gameScene;
 };
 
 #endif
