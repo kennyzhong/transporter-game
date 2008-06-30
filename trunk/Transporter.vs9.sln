@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogreCGProgram", "prj\ogreCG
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mtInput", "prj\mtInput\mtInput.vcproj", "{0CCC80A7-F4D1-4FC4-9756-56ABB88D05CD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogreDXRenderSystem", "prj\ogreDXRenderSystem\ogreDXRenderSystem.vcproj", "{1DBB884D-1F71-43DB-BD10-4CB503057652}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -109,6 +111,10 @@ Global
 		{0CCC80A7-F4D1-4FC4-9756-56ABB88D05CD}.Debug|Win32.Build.0 = Debug|Win32
 		{0CCC80A7-F4D1-4FC4-9756-56ABB88D05CD}.Release|Win32.ActiveCfg = Release|Win32
 		{0CCC80A7-F4D1-4FC4-9756-56ABB88D05CD}.Release|Win32.Build.0 = Release|Win32
+		{1DBB884D-1F71-43DB-BD10-4CB503057652}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1DBB884D-1F71-43DB-BD10-4CB503057652}.Debug|Win32.Build.0 = Debug|Win32
+		{1DBB884D-1F71-43DB-BD10-4CB503057652}.Release|Win32.ActiveCfg = Release|Win32
+		{1DBB884D-1F71-43DB-BD10-4CB503057652}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,5 +136,6 @@ Global
 		{F4F1B3F2-7982-458B-A113-98982D219B35} = {B1F2B8E2-6839-4F0B-AC42-D88ABBC3393A}
 		{F635EF0C-CDE9-4A90-AC09-5150488E0A98} = {B1F2B8E2-6839-4F0B-AC42-D88ABBC3393A}
 		{0CCC80A7-F4D1-4FC4-9756-56ABB88D05CD} = {B1F2B8E2-6839-4F0B-AC42-D88ABBC3393A}
+		{1DBB884D-1F71-43DB-BD10-4CB503057652} = {B1F2B8E2-6839-4F0B-AC42-D88ABBC3393A}
 	EndGlobalSection
 EndGlobal
