@@ -12,7 +12,7 @@ public    : PhysicsScene();
 
 			bit init(Game* game);
 			hkpWorld* getWorld();
-			void update();
+			void update(u32 timeStepMs);
 			void cleanUp();
 			void lock();
 			void unlock();

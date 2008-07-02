@@ -12,6 +12,7 @@ protected : Ogre::RenderWindow* renderWindow;
 			Ogre::SceneManager* sceneMgr;
 			Ogre::Root* visualRoot;
 			Ogre::GLPlugin* glPlugin;
+			Ogre::D3D9Plugin* dxPlugin;
 			Ogre::OctreePlugin* octreePlugin;
 			Ogre::CgPlugin* cgPlugin;
 			VisualScene* scene;
@@ -19,6 +20,7 @@ protected : Ogre::RenderWindow* renderWindow;
 			HWND renderWindowHandle;
 			bit isVisualRunning;
 			bit isVisualInited;	
+			u32 currentFrame;
 			void cleanUp();
 			static DWORD WINAPI visualThreadProc(LPVOID param);
 
@@ -29,6 +31,7 @@ public    : VisualSystem();
 			void run(VisualScene* scene);
 			void stop();		
 			bit isRunnning();
+			u32 getCurrentFrameNum();
 			HWND getWindowHandle();
 
 			Ogre::RenderWindow* getRenderWindow();

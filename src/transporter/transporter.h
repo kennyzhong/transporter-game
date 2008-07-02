@@ -16,7 +16,10 @@
 #include "ogre/ogreOctreeSceneMgr/OgreOctreeSceneManager.h"
 #include "ogre/openGLRenderSystem/OgreGLPlugin.h"
 #include "ogre/ogreOctreeSceneMgr/OgreOctreePlugin.h"
+#include "ogre/DXRenderSystem/OgreD3D9Plugin.h"
 #include "ogre/cgProgram/OgreCgPlugin.h"
+#include "ogre/OgreOverlay.h"
+#include "ogre/OgreTextAreaOverlayElement.h"
 #include "input/CInputEngine.h"
 #include "physics/Common/Base/hkBase.h"
 #include "physics/Common/Base/Types/Geometry/hkGeometry.h"
@@ -45,6 +48,12 @@ class Game;
 class VisualScene;
 class VisualSystem;
 
+#define EV_UPDATE_PHYSICS_FORCE   1
+#define EV_UPDATE_VISUAL_ENTITIES 2
+
+#include "transporter/game/debugRegistry.h"
+#include "transporter/utilities/updateListener.h"
+#include "transporter/utilities/updateListenerMgr.h"
 #include "transporter/visual/visualSystem.h"
 #include "transporter/visual/visualScene.h"
 #include "transporter/physics/physicsFlatLand.h"
@@ -54,6 +63,7 @@ class VisualSystem;
 #include "transporter/input/inputSystem.h"
 #include "transporter/game/gameEntity.h"
 #include "transporter/game/surface.h"
+#include "transporter/game/carSteering.h"
 #include "transporter/game/carTyreEntity.h"
 #include "transporter/game/carEntity.h"
 #include "transporter/game/gameScene.h"

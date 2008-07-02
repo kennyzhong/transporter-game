@@ -52,10 +52,11 @@ PhysicsFlatLand::~PhysicsFlatLand()
 
 hkReal PhysicsFlatLand::getHeight( int i, int j )
 {
-	hkReal h = (hkMath::cos(0.2f*((hkReal)j + i)) + 0.5f * hkMath::sin( 0.2f*2.0f * i)) * 1.0f;
+	//hkReal h = (hkMath::cos(0.2f*((hkReal)j + i)) + 0.5f * hkMath::sin( 0.2f*2.0f * i)) * 1.0f;
 
-	h = h * h * h * h *h * h - 6.0f;
-	return h;
+	//h = h * h * h * h *h * h - 6.0f;
+	//return h;
+	return 0.0f;
 }
 	
 

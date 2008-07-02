@@ -32,5 +32,7 @@ public    : InputSystem();
 			i32 getMouseScreenPos(u32 axis);
 			void resetMouseMovement(u32 axis);
 			void resetMouseMovement();
+			CInputMap* getActiveInputMap();
+
 };
 #endif

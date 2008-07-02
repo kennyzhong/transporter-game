@@ -11,7 +11,6 @@ protected : Game* game;
 public    : GameScene();
 			~GameScene();
 			virtual bit init(Game* game);
-			virtual void update();
 			void cleanUp();
 
 			VisualScene visualWorld;

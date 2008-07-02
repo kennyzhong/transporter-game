@@ -193,4 +193,11 @@ void InputSystem::resetMouseMovement()
 {
 	ZeroMemory(msDeltaMovement,sizeof(i32)*3);
 }
+
+//————————————————————————————————————————————————————————————————————————————————————————
+
+CInputMap* InputSystem::getActiveInputMap()
+{
+	return defaultInputMap;
+}
 //————————————————————————————————————————————————————————————————————————————————————————

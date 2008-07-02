@@ -8,6 +8,8 @@ VisualSystem::VisualSystem()
 	renderCamera    = NULL;
 	renderViewport  = NULL;
 	sceneMgr		= NULL;
+	glPlugin		= NULL;
+	dxPlugin		= NULL;
 	renderWindowHandle = NULL;
 	game = NULL;
 	isVisualInited  = false;
@@ -27,8 +29,10 @@ bit VisualSystem::init(Game* game)
 		                        "visual-config.cfg",
 								"visual-log.txt");
 
-	glPlugin = new Ogre::GLPlugin;
-	visualRoot->installPlugin(glPlugin);
+	//glPlugin = new Ogre::GLPlugin;
+	//visualRoot->installPlugin(glPlugin);
+	dxPlugin = new Ogre::D3D9Plugin;
+	visualRoot->installPlugin(dxPlugin);
 
 	octreePlugin = new Ogre::OctreePlugin;
 	visualRoot->installPlugin(octreePlugin);
@@ -36,14 +40,18 @@ bit VisualSystem::init(Game* game)
 	cgPlugin = new Ogre::CgPlugin;
 	visualRoot->installPlugin(cgPlugin);
 
-	renderSystem = visualRoot->getRenderSystemByName("OpenGL Rendering Subsystem");
+	//renderSystem = visualRoot->getRenderSystemByName("OpenGL Rendering Subsystem");
+	renderSystem = visualRoot->getRenderSystemByName("Direct3D9 Rendering Subsystem");
 	visualRoot->setRenderSystem(renderSystem);
 
 	renderSystem->setConfigOption("Full Screen", "No");
-	renderSystem->setConfigOption("Video Mode", "800 x 600 @ 32-bit");
+	//renderSystem->setConfigOption("Video Mode", "800 x 600 @ 32-bit");
 	renderSystem->setConfigOption("VSync", "No");
-	renderSystem->setConfigOption("RTT Preferred Mode","FBO");	
-	renderSystem->setConfigOption("FSAA","4");
+	renderSystem->setConfigOption("Video Mode", "800 x 600 @ 32-bit colour");
+	//renderSystem->setConfigOption("RTT Preferred Mode","FBO");	
+	//renderSystem->setConfigOption("FSAA","4");
+	renderSystem->setConfigOption("Anti aliasing","Level 6");
+	renderSystem->setConfigOption("Floating-point mode","Fastest");
 
 	Ogre::ConfigFile cf;
 	cf.load("visual-resources.cfg");
@@ -63,20 +71,21 @@ bit VisualSystem::init(Game* game)
 		}
 	}
 
-	renderWindow   = visualRoot->initialise(true);
+	renderWindow   = visualRoot->initialise(true,"The Transporter");
 	//Ogre::NameValuePairList misc;
 	//misc["externalWindowHandle"] = Ogre::StringConverter::toString((int)window->getHandle());
 	//renderWindow = visualRoot->createRenderWindow("Main RenderWindow", 800, 600, false, &misc);
-	renderWindow->getCustomAttribute("WINDOW", &renderWindowHandle);
+	renderWindow->getCustomAttribute("WINDOW", &renderWindowHandle);	
 
 	sceneMgr = visualRoot->createSceneManager(Ogre::ST_EXTERIOR_CLOSE);
 
 	renderCamera = sceneMgr->createCamera("mainCamera");
 	renderCamera->setNearClipDistance( 1 );
-	renderCamera->setFarClipDistance(99999);
+	renderCamera->setFarClipDistance(10000);
 
 	renderViewport = renderWindow->addViewport(renderCamera);
 	renderViewport->setBackgroundColour(Ogre::ColourValue(0,0,0));
+	renderViewport->setOverlaysEnabled(true);
 	renderCamera->setAspectRatio(f32(renderViewport->getActualWidth()) / 
 		                         f32(renderViewport->getActualHeight()));
 
@@ -115,8 +124,8 @@ void VisualSystem::run(VisualScene* scene)
 	//scene->init(game);
 
 	isVisualRunning    = true;
-	u64 usedtick       = 0;
-	u32 currentFrame   = 0;
+	currentFrame	   = 0;
+	u64 usedtick       = 0;	
 	u32 framePerSecond = 60;
 
 	LARGE_INTEGER starttick;
@@ -226,4 +235,10 @@ Ogre::SceneManager* VisualSystem::getSceneMgr()
 	return sceneMgr;
 }
 
+//————————————————————————————————————————————————————————————————————————————————————————
+
+u32 VisualSystem::getCurrentFrameNum()
+{
+	return currentFrame;
+}
 //————————————————————————————————————————————————————————————————————————————————————————

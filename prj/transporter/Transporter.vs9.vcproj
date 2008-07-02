@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;;&quot;$(SolutionDir)inc\physics&quot;"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;;&quot;$(SolutionDir)inc\dx9&quot;;&quot;$(SolutionDir)inc\physics&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVOK_PHYSICS_ENABLED;_CRT_SECURE_NO_DEPRECATE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -63,7 +63,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib dinput8.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib hkaAnimation.lib hkaInternal.lib hkaRagdoll.lib hkgBridge.lib hkgCommon.lib"
+				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreDXRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib d3d9.lib d3dx9.lib dxErr9.lib dinput8.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib hkaAnimation.lib hkaInternal.lib hkaRagdoll.lib hkgBridge.lib hkgCommon.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
@@ -129,7 +129,7 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				EnableFiberSafeOptimizations="true"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;;&quot;$(SolutionDir)inc\physics&quot;"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;;&quot;$(SolutionDir)inc\dx9&quot;;&quot;$(SolutionDir)inc\physics&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVOK_PHYSICS_ENABLED;_CRT_SECURE_NO_DEPRECATE"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -153,8 +153,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib dinput8.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib hkaAnimation.lib hkaInternal.lib hkaRagdoll.lib hkgBridge.lib hkgCommon.lib"
-				LinkIncremental="1"
+				AdditionalDependencies="ogre.lib ogreCGProgram.lib ogreGLRenderSystem.lib ogreDXRenderSystem.lib ogreOctreeSceneMgr.lib opengl32.lib glu32.lib cg.lib mtInput.lib dxguid.lib dxerr.lib d3d9.lib d3dx9.lib dxErr9.lib dinput8.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib hkaAnimation.lib hkaInternal.lib hkaRagdoll.lib hkgBridge.lib hkgCommon.lib"
+				LinkIncremental="0"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="(IntDir)\$(TargetName).pdb"
@@ -172,6 +172,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
+				EmbedManifest="false"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -358,6 +359,14 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\src\transporter\game\carSteering.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carSteering.h"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\transporter\game\carTyreEntity.cpp"
 							>
 						</File>
@@ -374,6 +383,34 @@
 							>
 						</File>
 					</Filter>
+				</Filter>
+				<Filter
+					Name="utilities"
+					>
+					<File
+						RelativePath="..\..\src\transporter\game\debugRegistry.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\debugRegistry.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\updateListener.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\updateListener.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\updateListenerMgr.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\updateListenerMgr.h"
+						>
+					</File>
 				</Filter>
 			</Filter>
 			<Filter
