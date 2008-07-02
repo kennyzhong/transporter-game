@@ -2,7 +2,7 @@
 #define GAMEENTITY_H
 #include "transporter.h"
 
-class GameEntity 
+class GameEntity : public UpdateListener
 {
 protected : Ogre::Entity* visualEntity;			
 			hkpRigidBody* physicsEntity;

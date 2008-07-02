@@ -86,9 +86,10 @@ DWORD WINAPI PhysicsSystem::physicsThreadProc( LPVOID params )
 		if(result == WAIT_OBJECT_0 && This->isPhysicsRunning && This->scene)
 		{
 			QueryPerformanceCounter(&starttick);
-
-			timeElapsed = (u32)clampValue((f32)timeElapsed,10.0f,100.0f);
-			This->scene->getWorld()->stepDeltaTime((f32)timeElapsed/1000.0f);
+						
+			This->lastTimeElapsedMs = (u32)clampValue((f32)timeElapsed,10.0f,100.0f);
+			This->scene->update(This->lastTimeElapsedMs);
+			This->scene->getWorld()->stepDeltaTime((f32)This->lastTimeElapsedMs/1000.0f);
 			currentFrame++;
 			u64 lasttick = tick.QuadPart;
 			u32 frameleft = framePerSecond - currentFrame;
@@ -157,7 +158,16 @@ void PhysicsSystem::stop()
 	}
 }
 
+//————————————————————————————————————————————————————————————————————————————————————————
+
 PhysicsScene* PhysicsSystem::getScene()
 {
 	return scene;
+}
+
+//————————————————————————————————————————————————————————————————————————————————————————
+
+u32 PhysicsSystem::getLastTimeElapsed()
+{
+	return lastTimeElapsedMs;
 }

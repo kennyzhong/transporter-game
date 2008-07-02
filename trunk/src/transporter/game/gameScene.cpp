@@ -29,14 +29,6 @@ bit GameScene::init( Game* game )
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void GameScene::update()
-{
-	physicsWorld.update();
-	visualWorld.update();
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
 void GameScene::cleanUp()
 {
 	if(car)
@@ -59,6 +51,7 @@ void GameScene::createEntities()
 {
 	surface = new Surface(game);
 	surface->init("surface");
+
 	car     = new CarEntity(surface);
 	car->init("car");
 }

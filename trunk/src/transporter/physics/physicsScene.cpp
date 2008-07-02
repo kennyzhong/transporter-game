@@ -54,9 +54,9 @@ bit PhysicsScene::init( Game* game )
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void PhysicsScene::update()
+void PhysicsScene::update(u32 timeStepMs)
 {
-	//TODO: update all entities force
+	UpdateListenerMgr::getInstance()->update(EV_UPDATE_PHYSICS_FORCE,timeStepMs);
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
