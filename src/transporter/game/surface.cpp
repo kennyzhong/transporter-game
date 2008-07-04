@@ -26,12 +26,13 @@ bit Surface::init(str name)
 		Ogre::MeshManager::getSingleton().createPlane(name+"Mesh",
 			Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 			surfacePlane,
-			1024, 1024, 64, 64, true, 1, 32, 32, Ogre::Vector3::UNIT_Z);
+			2000, 2000, 200, 200, true, 1, 400, 400, Ogre::Vector3::UNIT_Z);
 
 		Ogre::SceneNode* surfaceNode = game->visualSystem.getSceneMgr()->getRootSceneNode()->createChildSceneNode();
 		visualEntity  = game->visualSystem.getSceneMgr()->createEntity( name, name+"Mesh" );
 		visualEntity->setMaterialName("asphalt");	
 		visualEntity->setCastShadows(false);
+		//visualEntity->setVisible(false);
 		surfaceNode->attachObject(visualEntity);
 		surfaceNode->setPosition(0.0f,0.0f,0.0f);		
 	}

@@ -15,6 +15,7 @@ protected : Ogre::RenderWindow* renderWindow;
 			Ogre::D3D9Plugin* dxPlugin;
 			Ogre::OctreePlugin* octreePlugin;
 			Ogre::CgPlugin* cgPlugin;
+			HDRCompositor* hdrCompositor;
 			VisualScene* scene;
 			Game* game;
 			HWND renderWindowHandle;

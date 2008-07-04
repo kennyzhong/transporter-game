@@ -51,9 +51,15 @@ class VisualSystem;
 #define EV_UPDATE_PHYSICS_FORCE   1
 #define EV_UPDATE_VISUAL_ENTITIES 2
 
+#define AXLE_FRONT_LEFT  0
+#define AXLE_FRONT_RIGHT 1
+#define AXLE_REAR_LEFT   2
+#define AXLE_REAR_RIGHT  3
+
 #include "transporter/game/debugRegistry.h"
 #include "transporter/utilities/updateListener.h"
 #include "transporter/utilities/updateListenerMgr.h"
+#include "transporter/visual/visualHDRCompositor.h"
 #include "transporter/visual/visualSystem.h"
 #include "transporter/visual/visualScene.h"
 #include "transporter/physics/physicsFlatLand.h"

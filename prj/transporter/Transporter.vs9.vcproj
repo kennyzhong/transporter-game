@@ -227,6 +227,14 @@
 				Name="visual"
 				>
 				<File
+					RelativePath="..\..\src\transporter\visual\visualHDRCompositor.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualHDRCompositor.h"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\transporter\visual\visualScene.cpp"
 					>
 					<FileConfiguration
@@ -660,6 +668,10 @@
 					RelativePath="..\..\src\input\CInputMouseState.h"
 					>
 				</File>
+			</Filter>
+			<Filter
+				Name="physics"
+				>
 			</Filter>
 		</Filter>
 	</Files>

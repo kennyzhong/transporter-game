@@ -10,7 +10,7 @@ CarSteering::CarSteering( InputSystem* inputSystem )
 	handBrake= false;
 	gearShift= 0;
 
-	steeringSaturation = 0.0008f;
+	steeringSaturation = 0.0010f;
 	brakingSaturation  = 0.0025f;
 	throttleSaturation = 0.0012f;
 
@@ -158,7 +158,7 @@ void CarSteering::onKeyPressed( void* userptr,u32 btn,CInputMap* map )
 
 void CarSteering::updateThrottleKey(u32 timeElapse)
 {
-	if(isThrottleKeyPressed && throttle<1.0f)
+	if(isThrottleKeyPressed && throttle<=1.0f)
 	{
 		throttle = clampValue(throttle + throttleSaturation*(f32)timeElapse,0.0f,1.0f);
 	}
@@ -172,7 +172,7 @@ void CarSteering::updateThrottleKey(u32 timeElapse)
 
 void CarSteering::updateBrakingKey( u32 timeElapse )
 {
-	if(isBrakingKeyPressed && braking<1.0f)
+	if(isBrakingKeyPressed && braking<=1.0f)
 	{
 		braking = clampValue(braking + brakingSaturation*(f32)timeElapse,0.0f,1.0f);
 	}
@@ -188,7 +188,7 @@ void CarSteering::updateSteeringKey( u32 timeElapse )
 {
 	f32 reverseFactor = 1.0f;
 	f32 normalizationFactor = 1.2f;
-	if(isSteeringKey==-1 && steering>-1.0f)
+	if(isSteeringKey==-1 && steering>=-1.0f)
 	{		
 		if(steering > 0.0f)
 		{
@@ -196,7 +196,7 @@ void CarSteering::updateSteeringKey( u32 timeElapse )
 		}
 		steering = clampValue(steering - steeringSaturation*reverseFactor*(f32)timeElapse,-1.0f,1.0f);
 	}
-	else if(isSteeringKey==1 && steering<1.0f)
+	else if(isSteeringKey==1 && steering<=1.0f)
 	{
 		if(steering < 0.0f)
 		{

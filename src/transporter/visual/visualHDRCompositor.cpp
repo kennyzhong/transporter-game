@@ -21,7 +21,7 @@
 * @see		Readme.txt
 */
 
-#include "transporter/visual/visualSystem.h"
+#include "transporter.h"
 
 HDRCompositor::HDRCompositor(RenderWindow* win, Camera* cam) 
 : m_Scales(7)
