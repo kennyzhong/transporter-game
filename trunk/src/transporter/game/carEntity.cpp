@@ -19,55 +19,44 @@ bit CarEntity::init(str name)
 		Ogre::Quaternion orient;
 		Ogre::Vector3 pos;
 
-		Ogre::SceneNode* abstractNode = surfaceNode->createChildSceneNode(name+"PreNode",2.61f*Ogre::Vector3::UNIT_Y);
+		Ogre::Vector3 carNodePos = Ogre::Vector3(0.0f,-0.05,0.0);
+		Ogre::SceneNode* abstractNode = surfaceNode->createChildSceneNode(name+"PreNode",carNodePos);
 		Ogre::SceneNode* carNode = abstractNode->createChildSceneNode(name+"Node");
 		//Ogre::SceneNode* carNode = game->visualSystem.getSceneMgr()->getRootSceneNode()->createChildSceneNode("car");
-		visualEntity = game->visualSystem.getSceneMgr()->createEntity(name,"LamborghiniBody.mesh");	
-		visualEntity->setCastShadows(true);
-		visualEntity->getMesh()->getSubMesh(1)->setMaterialName("bodyNotReflecting");
-		visualEntity->getMesh()->getSubMesh(2)->setMaterialName("blackmatte");
-		visualEntity->getMesh()->getSubMesh(3)->setMaterialName("glassrims");
-		visualEntity->getMesh()->getSubMesh(4)->setMaterialName("glassrims2");
-		visualEntity->getMesh()->getSubMesh(5)->setMaterialName("glass");
-		visualEntity->getMesh()->getSubMesh(6)->setMaterialName("glasslights");
-		visualEntity->getMesh()->getSubMesh(0)->setMaterialName("body");	
+		visualEntity = game->visualSystem.getSceneMgr()->createEntity(name,"body.mesh");	
+		visualEntity->setCastShadows(true);		
+		visualEntity->getMesh()->getSubMesh(1)->setMaterialName("Material_#460/bodyNotReflecting");
+		visualEntity->getMesh()->getSubMesh(2)->setMaterialName("Material_#460/black_matte");
+		visualEntity->getMesh()->getSubMesh(3)->setMaterialName("Material_#460/glassrims");
+		visualEntity->getMesh()->getSubMesh(4)->setMaterialName("Material_#460/glassrims2");
+		visualEntity->getMesh()->getSubMesh(5)->setMaterialName("Material_#460/glass");
+		visualEntity->getMesh()->getSubMesh(6)->setMaterialName("Material_#460/glasslights");
+		visualEntity->getMesh()->getSubMesh(0)->setMaterialName("Material_#460/body");	
 		//visualEntity->setMaterialName("body");
 		carNode->attachObject(visualEntity);		
 
-		Ogre::SceneNode* followCamNode = carNode->createChildSceneNode("followCamNode",Ogre::Vector3(30.0f,18.0f,0.0f));
+		Ogre::SceneNode* followCamNode = carNode->createChildSceneNode("followCamNode",Ogre::Vector3(0.0f,4.0f,6.0f));
 		followCamNode->attachObject(game->visualSystem.getCamera());
 		game->visualSystem.getCamera()->setAutoTracking(true,carNode);	
 		game->visualSystem.getCamera()->setFixedYawAxis(true);
 
-		orient.FromAngleAxis(Ogre::Degree(90.0f),Ogre::Vector3(0.0f,1.0f,0.0f));
-		pos = Ogre::Vector3(7.4f,-1.83f,-4.25f);
-		Ogre::SceneNode* tyreRRNode = carNode->createChildSceneNode(name+"TyreRRNode",pos,orient);
-		tyre[0] = new CarTyreEntity(this->game);
-		tyre[0]->init("TyreRR");	
-		tyreRRNode->attachObject(tyre[0]->getVisualEntity());
+		orient = Ogre::Quaternion::IDENTITY;
+		orient.FromAngleAxis(Ogre::Degree(180.0f),Ogre::Vector3::UNIT_Y);
+		pos = Ogre::Vector3(-1.075f,-0.445f,0.8675f); //x,z,y
+		tyre[3] = new CarTyreEntity(this);
+		tyre[3]->init("TyreFL","TyreFrontRim.mesh","TyreFrontRubber.mesh",pos,orient);	
+		
+		pos = Ogre::Vector3(-1.075f,-0.445f,-0.8675f);
+		tyre[2] = new CarTyreEntity(this);
+		tyre[2]->init("TyreFR","TyreFrontRim.mesh","TyreFrontRubber.mesh",pos);	
 
-		orient.FromAngleAxis(Ogre::Degree(-90.0f),Ogre::Vector3(0.0f,1.0f,0.0f));
-		pos = Ogre::Vector3(7.4f,-1.83f,4.25f);
-		Ogre::SceneNode* tyreRLNode = carNode->createChildSceneNode(name+"TyreRLNode",pos,orient);
-		tyre[1] = new CarTyreEntity(this->game);
-		tyre[1]->init("TyreRL");	
-		tyreRLNode->attachObject(tyre[1]->getVisualEntity());
+		pos = Ogre::Vector3(1.475f,-0.4175f,0.8745f);
+		tyre[1] = new CarTyreEntity(this);
+		tyre[1]->init("TyreRL","TyreRearRim.mesh","TyreRearRubber.mesh",pos,orient);	
 
-		orient.FromAngleAxis(Ogre::Degree(90.0f),Ogre::Vector3(0.0f,1.0f,0.0f));
-		pos = Ogre::Vector3(-5.4f,-1.8f,-4.2125f);
-		Ogre::SceneNode* tyreFRNode = carNode->createChildSceneNode(name+"TyreFRNode",pos,orient);
-		tyreFRNode->setScale(0.97f,0.97f,0.97f);
-		tyre[2] = new CarTyreEntity(this->game);
-		tyre[2]->init("TyreFR");	
-		tyreFRNode->attachObject(tyre[2]->getVisualEntity());
-
-		orient.FromAngleAxis(Ogre::Degree(-90.0f),Ogre::Vector3(0.0f,1.0f,0.0f));
-		pos = Ogre::Vector3(-5.4f,-1.8f,4.2125f);
-		Ogre::SceneNode* tyreFLNode = carNode->createChildSceneNode(name+"TyreFLNode",pos,orient);
-		tyreFLNode->setScale(0.97f,0.97f,0.97f);
-		tyre[3] = new CarTyreEntity(this->game);
-		tyre[3]->init("TyreFL");	
-		tyreFLNode->attachObject(tyre[3]->getVisualEntity());
+		pos = Ogre::Vector3(1.475f,-0.4175f,-0.8745f);
+		tyre[0] = new CarTyreEntity(this);
+		tyre[0]->init("TyreRR","TyreRearRim.mesh","TyreRearRubber.mesh",pos);	
 	}
 
 	//physicsEntity initialization
@@ -78,7 +67,7 @@ bit CarEntity::init(str name)
 		int chassisLayer = 1;
 
 		hkpRigidBodyCinfo chassisInfo;
-		chassisInfo.m_mass = 750.0f;	
+		chassisInfo.m_mass = 900.0f;	
 		chassisInfo.m_shape = chassisShape;
 		chassisInfo.m_friction = 0.8f;
 		chassisInfo.m_motionType = hkpMotion::MOTION_BOX_INERTIA;
@@ -264,11 +253,11 @@ void CarEntity::updateVisual()
 	node->setPosition(vpos(0),vpos(1),vpos(2));
 	node->setOrientation(vOrient(3),vOrient(0),vOrient(1),vOrient(2));
 
-	f32 Yaxis = steeringInput.getThrottle() - steeringInput.getBraking();
-	Ogre::Vector3 offset = Ogre::Vector3::ZERO;
-	offset += 20.0f*Ogre::Vector3::UNIT_Z*steeringInput.getSteering();
-	offset += 5.0f*Ogre::Vector3::UNIT_X*Yaxis;
-	game->visualSystem.getCamera()->setPosition(offset);
+	//f32 Yaxis = steeringInput.getThrottle() - steeringInput.getBraking();
+	//Ogre::Vector3 offset = Ogre::Vector3::ZERO;
+	//offset += 20.0f*Ogre::Vector3::UNIT_Z*steeringInput.getSteering();
+	//offset += 5.0f*Ogre::Vector3::UNIT_X*Yaxis;
+	//game->visualSystem.getCamera()->setPosition(offset);
 
 	Ogre::SceneNode* RRNode = tyre[0]->getVisualEntity()->getParentSceneNode(); 
 	Ogre::SceneNode* RLNode = tyre[1]->getVisualEntity()->getParentSceneNode();
@@ -290,10 +279,10 @@ void CarEntity::updateVisual()
 	f32 deltaSusT2 = susRT2 - susT2;
 	f32 deltaSusT3 = susRT3 - susT3;
 
-	FRNode->setPosition(Ogre::Vector3(-5.4f,-1.80f,-4.2125f) + 3.05f*Ogre::Vector3::UNIT_Y*deltaSusT2);
-	FLNode->setPosition(Ogre::Vector3(-5.4f,-1.80f, 4.2125f) + 3.05f*Ogre::Vector3::UNIT_Y*deltaSusT3);
-	RRNode->setPosition(Ogre::Vector3( 7.4f,-1.83f,-4.25f  ) + 3.25f*Ogre::Vector3::UNIT_Y*deltaSusT0);
-	RLNode->setPosition(Ogre::Vector3( 7.4f,-1.83f, 4.25f  ) + 3.25f*Ogre::Vector3::UNIT_Y*deltaSusT1);
+	FRNode->setPosition(1.0f*Ogre::Vector3::UNIT_Y*deltaSusT2);
+	FLNode->setPosition(1.0f*Ogre::Vector3::UNIT_Y*deltaSusT3);
+	RRNode->setPosition(1.0f*Ogre::Vector3::UNIT_Y*deltaSusT0);
+	RLNode->setPosition(1.0f*Ogre::Vector3::UNIT_Y*deltaSusT1);
 
 	static f32 lastWheelRotation;
 	lastWheelRotation += (hkReal)physicsEntity->getLinearVelocity().length3();
@@ -306,27 +295,25 @@ void CarEntity::updateVisual()
 	
 	q1 = Ogre::Quaternion::IDENTITY;
 	q2 = Ogre::Quaternion::IDENTITY;
-	q1.FromAngleAxis(Ogre::Degree(-lastWheelRotation),Ogre::Vector3::UNIT_X);	
-	q2.FromAngleAxis(degAngleR - Ogre::Degree(270.0f),Ogre::Vector3::UNIT_Y);		
+	q1.FromAngleAxis(Ogre::Degree(lastWheelRotation),Ogre::Vector3::UNIT_Z);	
+	q2.FromAngleAxis(degAngleR,Ogre::Vector3::UNIT_Y);		
 	FRNode->setOrientation(q2*q1);
 
 	q1 = Ogre::Quaternion::IDENTITY;
 	q2 = Ogre::Quaternion::IDENTITY;	
-	q1.FromAngleAxis(Ogre::Degree(lastWheelRotation),Ogre::Vector3::UNIT_X);	
-	q2.FromAngleAxis(degAngleL - Ogre::Degree(90.0f),Ogre::Vector3::UNIT_Y);	
+	q1.FromAngleAxis(Ogre::Degree(-lastWheelRotation),Ogre::Vector3::UNIT_Z);	
+	q2.FromAngleAxis(degAngleL,Ogre::Vector3::UNIT_Y);	
 	FLNode->setOrientation(q2*q1);	
 	
 	q1 = Ogre::Quaternion::IDENTITY;
 	q2 = Ogre::Quaternion::IDENTITY;
-	q1.FromAngleAxis(Ogre::Degree(-lastWheelRotation),Ogre::Vector3::UNIT_X);	
-	q2.FromAngleAxis(Ogre::Degree(90.0f),Ogre::Vector3::UNIT_Y);		
-	RRNode->setOrientation(q2*q1);
+	q1.FromAngleAxis(Ogre::Degree(lastWheelRotation),Ogre::Vector3::UNIT_Z);		
+	RRNode->setOrientation(q1);
 
 	q1 = Ogre::Quaternion::IDENTITY;
 	q2 = Ogre::Quaternion::IDENTITY;
-	q1.FromAngleAxis(Ogre::Degree(lastWheelRotation),Ogre::Vector3::UNIT_X);	
-	q2.FromAngleAxis(Ogre::Degree(270.0f),Ogre::Vector3::UNIT_Y);	 
-	RLNode->setOrientation(q2*q1);	
+	q1.FromAngleAxis(Ogre::Degree(-lastWheelRotation),Ogre::Vector3::UNIT_Z);	
+	RLNode->setOrientation(q1);	
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————

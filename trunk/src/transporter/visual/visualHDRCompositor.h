@@ -23,7 +23,7 @@
 
 #ifndef VISUAL_HDR_COMPOSITOR_H
 #define VISUAL_HDR_COMPOSITOR_H
-#include "transporter/visual/visualSystem.h"
+#include "transporter.h"
 
 using namespace Ogre;
 

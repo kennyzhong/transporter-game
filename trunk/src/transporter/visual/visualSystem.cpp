@@ -11,6 +11,7 @@ VisualSystem::VisualSystem()
 	glPlugin		= NULL;
 	dxPlugin		= NULL;
 	renderWindowHandle = NULL;
+	hdrCompositor	= NULL;
 	game = NULL;
 	isVisualInited  = false;
 	isVisualRunning = false;
@@ -90,6 +91,19 @@ bit VisualSystem::init(Game* game)
 		                         f32(renderViewport->getActualHeight()));
 
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+
+	//hdrCompositor = new HDRCompositor(renderWindow,renderCamera);
+	//hdrCompositor->SetGlarePasses(1);
+	//hdrCompositor->SetAutoKeying(true);
+	//hdrCompositor->SetKey(0.25);
+	//hdrCompositor->SetLumAdapdation(true);
+	//hdrCompositor->SetAdaptationScale(10);
+	//hdrCompositor->SetGlareStrength(0.8f);
+	//hdrCompositor->Create();
+	//hdrCompositor->Enable(true); 
+
+	Ogre::CompositorInstance *instance = Ogre::CompositorManager::getSingleton().addCompositor(renderWindow->getViewport(0), "Bloom");
+	Ogre::CompositorManager::getSingleton().setCompositorEnabled(renderWindow->getViewport(0), "Bloom", true);
 
 	if( renderWindow &&
 		renderSystem &&
@@ -204,6 +218,12 @@ void VisualSystem::cleanUp()
 		delete glPlugin;
 		glPlugin = NULL;
 	}
+
+	//if(hdrCompositor)
+	//{
+	//	delete hdrCompositor;
+	//	hdrCompositor = NULL;
+	//}
 
 	isVisualInited = false;
 }
