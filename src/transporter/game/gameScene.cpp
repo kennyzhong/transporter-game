@@ -18,12 +18,7 @@ GameScene::~GameScene()
 
 bit GameScene::init( Game* game )
 {
-	this->game = game;
-
-	visualWorld.init(game);
-	physicsWorld.init(game);
-
-	createEntities();
+	this->game = game;	
 	return true;
 }
 

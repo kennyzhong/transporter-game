@@ -2,7 +2,17 @@
 #define TRANSPORTER_H
 #include <windows.h>
 
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include <cassert> 
+#include <string>
+#include <vector>
+
 #define DIRECTINPUT_VERSION 0x0800
+#define WIN32_LEAN_AND_MEAN 
 
 #include "base/datatypes.h"
 #include "base/object.h"
@@ -20,7 +30,8 @@
 #include "ogre/cgProgram/OgreCgPlugin.h"
 #include "ogre/OgreOverlay.h"
 #include "ogre/OgreTextAreaOverlayElement.h"
-#include "input/CInputEngine.h"
+#include "ogre/OgrePanelOverlayElement.h"
+#include "input/InputEngine.h"
 #include "physics/Common/Base/hkBase.h"
 #include "physics/Common/Base/Types/Geometry/hkGeometry.h"
 #include "physics/Common/Base/System/Error/hkDefaultError.h"
@@ -56,9 +67,17 @@ class VisualSystem;
 #define AXLE_REAR_LEFT   2
 #define AXLE_REAR_RIGHT  3
 
+#define MAX_LOG_ENTRIES 128
+
 #include "transporter/game/debugRegistry.h"
+#include "transporter/utilities/rtLog.h"
 #include "transporter/utilities/updateListener.h"
 #include "transporter/utilities/updateListenerMgr.h"
+#include "transporter/utilities/xss/XSSparse.h"
+#include "transporter/utilities/xss/XSS.h"
+#include "transporter/utilities/xss/XSSNode.h"
+#include "transporter/utilities/configMgr.h"
+#include "transporter/visual/visualLogListener.h"
 #include "transporter/visual/visualHDRCompositor.h"
 #include "transporter/visual/visualSystem.h"
 #include "transporter/visual/visualScene.h"
@@ -69,9 +88,12 @@ class VisualSystem;
 #include "transporter/input/inputSystem.h"
 #include "transporter/game/gameEntity.h"
 #include "transporter/game/surface.h"
+#include "transporter/game/carInstruments.h"
 #include "transporter/game/carSteering.h"
 #include "transporter/game/carTyreEntity.h"
 #include "transporter/game/carEntity.h"
+#include "transporter/game/gameBootScene.h"
+#include "transporter/game/gameVisualScene.h"
 #include "transporter/game/gameScene.h"
 #include "transporter/game/game.h"
 

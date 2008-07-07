@@ -4,23 +4,28 @@ CarEntity::CarEntity( Surface* surface )
 	: GameEntity(surface->getGame()),
 	  steeringInput(&surface->getGame()->inputSystem)	  
 {
-	this->surface = surface;
-	this->debugInfo.setEntity(this);
+	this->surface = surface;	
+	this->physicsVehicleInstance = NULL;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
 bit CarEntity::init(str name)
 {
-	//visualEntity initialization
+	if(isEntityInited)
 	{
+		return true;
+	}
+
+	game->visualSystem.lockThread();
+	{		
 		Ogre::SceneNode* surfaceNode = surface->getVisualEntity()->getParentSceneNode();
 
 		Ogre::Quaternion orient;
 		Ogre::Vector3 pos;
 
-		Ogre::Vector3 carNodePos = Ogre::Vector3(0.0f,-0.05,0.0);
-		Ogre::SceneNode* abstractNode = surfaceNode->createChildSceneNode(name+"PreNode",carNodePos);
+		//Ogre::Vector3 carNodePos = Ogre::Vector3(0.0f,-0.05,0.0);
+		Ogre::SceneNode* abstractNode = surfaceNode->createChildSceneNode(name+"PreNode");
 		Ogre::SceneNode* carNode = abstractNode->createChildSceneNode(name+"Node");
 		//Ogre::SceneNode* carNode = game->visualSystem.getSceneMgr()->getRootSceneNode()->createChildSceneNode("car");
 		visualEntity = game->visualSystem.getSceneMgr()->createEntity(name,"body.mesh");	
@@ -57,9 +62,12 @@ bit CarEntity::init(str name)
 		pos = Ogre::Vector3(1.475f,-0.4175f,-0.8745f);
 		tyre[0] = new CarTyreEntity(this);
 		tyre[0]->init("TyreRR","TyreRearRim.mesh","TyreRearRubber.mesh",pos);	
-	}
 
-	//physicsEntity initialization
+		instruments.init(this);
+	}
+	game->visualSystem.unlockThread();
+
+	//physics entity initializations
 	{
 		VehicleSetup setup;
 		hkpConvexVerticesShape* chassisShape = createChassisShape(); 
@@ -76,21 +84,22 @@ bit CarEntity::init(str name)
 		chassisInfo.m_centerOfMass.set( -0.037f, 0.143f, 0.0f);
 		chassisInfo.m_collisionFilterInfo = hkpGroupFilter::calcFilterInfo( chassisLayer, 0 );
 
-		physicsEntity = new hkpRigidBody(chassisInfo);
-		game->gameScene.physicsWorld.getWorld()->addEntity(physicsEntity, HK_ENTITY_ACTIVATION_DO_ACTIVATE );
-
-		//hkVector4 rotationAxis(1.0f, 0.0f, 0.0f); 	 
-		//hkVector4 upAxis(0.0f, 1.0f, 0.0f); 	 
-		//physicsActionReorient = new hkpReorientAction(physicsEntity, rotationAxis, upAxis); 	 
-
+		physicsEntity = new hkpRigidBody(chassisInfo);	
 		physicsVehicleInstance = new hkpVehicleInstance(physicsEntity);
+
+		game->gameScene.physicsWorld.getWorld()->lock();
+		game->gameScene.physicsWorld.getWorld()->addEntity(physicsEntity, HK_ENTITY_ACTIVATION_DO_ACTIVATE );
 		setup.buildVehicle(game->gameScene.physicsWorld.getWorld(),*physicsVehicleInstance);
 		game->gameScene.physicsWorld.getWorld()->addAction(physicsVehicleInstance);
+		game->gameScene.physicsWorld.getWorld()->unlock();
 
 		physicsEntity->removeReference();
-		chassisShape->removeReference();
+		chassisShape->removeReference();		
 	}
+	
 
+	isEntityInited = true;
+	this->debugInfo.setEntity(this);
 	return true;
 }
 
@@ -204,13 +213,16 @@ hkpConvexVerticesShape* CarEntity::createChassisShape()
 
 void CarEntity::update( u32 evId,u32 param )
 {
-	if(evId == EV_UPDATE_PHYSICS_FORCE)
+	if(isEntityInited)
 	{
-		updatePhysics(param);
-	}
-	else if(evId == EV_UPDATE_VISUAL_ENTITIES)
-	{
-		updateVisual();
+		if(evId == EV_UPDATE_PHYSICS_FORCE)
+		{
+			updatePhysics(param);
+		}
+		else if(evId == EV_UPDATE_VISUAL_ENTITIES)
+		{
+			updateVisual();
+		}
 	}
 }
 
@@ -219,6 +231,7 @@ void CarEntity::update( u32 evId,u32 param )
 void CarEntity::updatePhysics(u32 timeElapse)
 {
 	steeringInput.update(timeElapse);
+
 	physicsEntity->activate();
 	hkpVehicleDriverInputAnalogStatus* deviceStatus = (hkpVehicleDriverInputAnalogStatus*)physicsVehicleInstance->m_deviceStatus;
 
@@ -229,7 +242,10 @@ void CarEntity::updatePhysics(u32 timeElapse)
 	}
 	deviceStatus->m_positionX = -steeringInput.getSteering();
 	deviceStatus->m_positionY = Yaxis;
-	deviceStatus->m_handbrakeButtonPressed = steeringInput.getHandBrake();
+	deviceStatus->m_handbrakeButtonPressed = steeringInput.getHandBrake();	
+	physicsVehicleInstance->m_currentGear = steeringInput.getGearShift();
+
+	//physicsVehicleInstance->m_transmission->calcTransmission((f32)timeElapse/1000.0f,physicsVehicleInstance,transmissionOutput);
 
 	if(steeringInput.getGearShift() == -1 && Yaxis>0.0f)
 	{
@@ -284,6 +300,8 @@ void CarEntity::updateVisual()
 	RRNode->setPosition(1.0f*Ogre::Vector3::UNIT_Y*deltaSusT0);
 	RLNode->setPosition(1.0f*Ogre::Vector3::UNIT_Y*deltaSusT1);
 
+	//WheelRPM = EngineRPM * (primaryTransmissionRatio * GearRatio[currentGear])
+
 	static f32 lastWheelRotation;
 	lastWheelRotation += (hkReal)physicsEntity->getLinearVelocity().length3();
 
@@ -314,6 +332,13 @@ void CarEntity::updateVisual()
 	q2 = Ogre::Quaternion::IDENTITY;
 	q1.FromAngleAxis(Ogre::Degree(-lastWheelRotation),Ogre::Vector3::UNIT_Z);	
 	RLNode->setOrientation(q1);	
+
+	f32 speed = physicsVehicleInstance->calcKMPH();
+	f32 rpm   = physicsVehicleInstance->calcRPM();
+
+	instruments.setSpeedometer(speed);
+	instruments.setTachometer(rpm);
+	instruments.update();
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -356,8 +381,8 @@ str CarDebugInfo::print()
 
 		f32 speed = entity->physicsVehicleInstance->calcKMPH();
 		f32 rpm   = entity->physicsVehicleInstance->calcRPM();
-		u32 agear = (u32)entity->physicsVehicleInstance->m_currentGear;		
-		f32 torque = entity->physicsVehicleInstance->m_torque;
+		u32 agear = entity->physicsVehicleInstance->m_currentGear;//(u32)entity->transmissionOutput.m_currentGear;
+		f32 torque = entity->physicsVehicleInstance->m_torque;//transmissionOutput.m_mainTransmittedTorque;//entity->transmissionOutput.m_mainTransmittedTorque;
 
 		text += StrPrintf("\ncarPerformance speed:%.2fKM/H, engine RPM:%.1f, Torque:%.2f, auto gear:%d",
 			              speed,rpm,torque,agear);

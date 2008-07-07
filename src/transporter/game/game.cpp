@@ -3,9 +3,14 @@
 void Game::run()
 {
 	isRunning = true;
-	inputSystem.run();
-	physicsSystem.run(&gameScene.physicsWorld);
-	visualSystem.run(&gameScene.visualWorld);	
+			
+	visualSystem.addScene(&gameScene.visualWorld);		
+	physicsSystem.run(&gameScene.physicsWorld);	
+
+	inputSystem.start();
+	bootScene.showLog(false);
+	bootScene.showLoadingScreen(false);
+	visualSystem.waitUntilEnd();
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -13,15 +18,21 @@ void Game::run()
 bit Game::init(HINSTANCE instance)
 {
 	this->appInstance = instance;
-	if(visualSystem.init(this))
+	bit result = visualSystem.init(this);	
+	if(result)
 	{
-		bit result = true;
+		bootScene.init(this);
+		visualSystem.addScene(&bootScene);
+		visualSystem.run();	
+		
 		result &= inputSystem.init(this);
-		result &= physicsSystem.init(this);
-		result &= gameScene.init(this);
-		return result;
+		result &= physicsSystem.init(this);		
+		result &= gameScene.init(this);	
+		result &= gameScene.physicsWorld.init(this);
+		result &= gameScene.visualWorld.init(this);
+		gameScene.createEntities();
 	}
-	return false;
+	return result;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -30,6 +41,8 @@ Game::Game()
 {
 	isRunning = false;
 }
+
+//————————————————————————————————————————————————————————————————————————————————————————
 
 Game::~Game()
 {	

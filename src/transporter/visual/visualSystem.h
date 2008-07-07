@@ -5,39 +5,62 @@
 
 class VisualSystem
 {
-protected : Ogre::RenderWindow* renderWindow;
-			Ogre::RenderSystem* renderSystem;
-			Ogre::Camera* renderCamera;
-			Ogre::Viewport* renderViewport;
+protected : Ogre::RenderSystem* renderSystem;
+			Ogre::RenderWindow* primaryRenderWindow;
 			Ogre::SceneManager* sceneMgr;
 			Ogre::Root* visualRoot;
-			Ogre::GLPlugin* glPlugin;
-			Ogre::D3D9Plugin* dxPlugin;
-			Ogre::OctreePlugin* octreePlugin;
-			Ogre::CgPlugin* cgPlugin;
-			HDRCompositor* hdrCompositor;
 			VisualScene* scene;
+			VisualLogListener logListener;
 			Game* game;
-			HWND renderWindowHandle;
+			CRITICAL_SECTION lock;
 			bit isVisualRunning;
 			bit isVisualInited;	
+			bit isVisualBooted;
 			u32 currentFrame;
+			HANDLE visualThread;
+			HANDLE visualThreadSignal;
+			HANDLE visualInitSignal;
+			f32 maxFPS;
+
+			std::vector<Ogre::Plugin*> plugins;
+			std::map<str,Ogre::RenderWindow*> renderWindows;			
+			std::vector<Ogre::Camera*> renderCameras;
+			std::vector<Ogre::Viewport*> renderViewports;	
+			std::vector<VisualScene*> scenes;
+
 			void cleanUp();
+			bit createVisualRoot();
+			bit createRenderSystem();
+			bit createInternalPlugins();			
+			bit createSceneMgr();
+			bit createRenderCamera();
+			bit createRenderWindow();
+			bit createRenderViewport();		
 			static DWORD WINAPI visualThreadProc(LPVOID param);
 
 public    : VisualSystem();
 			~VisualSystem();
 					
 			bit init(Game* game);
-			void run(VisualScene* scene);
+			void waitUntilEnd();
+			bit boot();
+			void run();
 			void stop();		
 			bit isRunnning();
 			u32 getCurrentFrameNum();
-			HWND getWindowHandle();
-
-			Ogre::RenderWindow* getRenderWindow();
+			HWND getWindowHandle(Ogre::RenderWindow* window);
+			void addScene(VisualScene* scene);
+			void removeScene(VisualScene* scene);
+			void lockThread();
+			void unlockThread();
+			bit loadResources(str resourceGroupName);
+			f32 getMaxFPS(){return maxFPS;}
+		
+			Ogre::RenderWindow* getRenderWindow(str name);	
+			Ogre::RenderWindow* getPrimaryRenderWindow();
+			Ogre::Camera* getCamera(u32 index=0);
+			Ogre::Camera* getCamera(str name);
 			Ogre::RenderSystem* getRenderSystem();
-			Ogre::Camera* getCamera();
 			Ogre::SceneManager* getSceneMgr();
 };
 #endif

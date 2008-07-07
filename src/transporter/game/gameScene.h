@@ -6,14 +6,15 @@ class GameScene
 {
 protected : Game* game;
 			Surface* surface;
-			CarEntity* car;
-			void createEntities();
+			CarEntity* car;			
 public    : GameScene();
 			~GameScene();
 			virtual bit init(Game* game);
 			void cleanUp();
 
-			VisualScene visualWorld;
+			GameVisualScene visualWorld;
 			PhysicsScene physicsWorld;
+
+			void createEntities();
 };
 #endif

@@ -65,6 +65,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="opengl32.lib glu32.lib cg.lib zzip.lib zlib.lib freetype.lib freeimage.lib libJPEG.lib libMNG.lib libOpenJPEG.lib libPNG.lib libTIFF.lib openEXR.lib"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
 			/>

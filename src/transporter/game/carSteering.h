@@ -31,9 +31,9 @@ protected : f32 steering;
 			void updateBrakingKey(u32 timeElapse);
 			void updateSteeringKey(u32 timeElapse);
 
-			static void onKeyDown(void* userptr,u32 btn,CInputMap* map);
-			static void onKeyUp(void* userptr,u32 btn,CInputMap* map);
-			static void onKeyPressed(void* userptr,u32 btn,CInputMap* map);
+			static void onKeyDown(void* userptr,u32 btn);
+			static void onKeyUp(void* userptr,u32 btn);
+			static void onKeyPressed(void* userptr,u32 btn);
 
 			virtual str print();
 

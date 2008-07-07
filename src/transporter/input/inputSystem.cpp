@@ -2,12 +2,7 @@
 
 InputSystem::InputSystem()
 {
-	engine = NULL;
-	inputManager = NULL;
-	defaultInputMap = NULL;
 	isInited = false;
-
-	ZeroMemory(msButtonDown,sizeof(bit)*8);
 	ZeroMemory(msDeltaMovement,sizeof(i32)*3);
 	ZeroMemory(msScreenPos,sizeof(i32)*3);
 }
@@ -16,67 +11,32 @@ InputSystem::InputSystem()
 
 InputSystem::~InputSystem()
 {
-	if(engine)
-	{
-		delete engine;
-		engine = NULL;
-		inputManager = NULL;
-		defaultInputMap = NULL;
-		isInited = false;
-	}
+	isInited = false;
+	mouse.onMouseMove.disconnect(onMouseMove);
+	mouse.onMouseScroll.disconnect(onMouseScroll);
+	keyboard.onKeyPress.disconnect(onKeyPress);
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-bit InputSystem::init( Game* game )
+bit InputSystem::init( Game* game,u32 threadFreq,u32 threadPriority)
 {
-	if(!isInited)
+	if(!this->isInited)
 	{
 		this->game = game;
-		window = game->visualSystem.getWindowHandle();
-		engine = new CInputEngine(game->getAppInstance(),window);
-		inputManager = engine->get_input_manager();
+		window = game->visualSystem.getWindowHandle(game->visualSystem.getPrimaryRenderWindow());
+		isInited = InputEngine::init(game->getAppInstance(),window,threadFreq,threadPriority);
 
-		defaultInputMap = inputManager->create_input_map("default");
-
-		defaultInputMap->onMouseMove.connect(onMouseMove,this);
-		defaultInputMap->onMouseScroll.connect(onMouseScroll,this);
-		defaultInputMap->onMouseBtnDown.connect(onMouseBtnDown,this);
-		defaultInputMap->onMouseBtnUp.connect(onMouseBtnUp,this);
-
-		inputManager->set_active_input_map(defaultInputMap);
-
-		isInited = true;
+		mouse.onMouseMove.connect(onMouseMove,this);
+		mouse.onMouseScroll.connect(onMouseScroll,this);
+		keyboard.onKeyPress.connect(onKeyPress,this);
 	}
 	return true;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void InputSystem::run( u32 threadFreq,u32 threadPriority )
-{
-	if(isInited)
-	{
-		engine->start(threadFreq,threadPriority);
-	}
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
-void InputSystem::stop()
-{
-	if(engine)
-	{
-		engine->stop();
-		ZeroMemory(msButtonDown,sizeof(bit)*8);
-		ZeroMemory(msDeltaMovement,sizeof(i32)*3);
-		ZeroMemory(msScreenPos,sizeof(i32)*3);
-	}
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
-void InputSystem::onMouseMove(void* userptr,i32 dx,i32 dy,CInputMap* map)
+void InputSystem::onMouseMove(void* userptr,i32 dx,i32 dy)
 {
 	InputSystem* This = (InputSystem*)userptr;
 
@@ -111,7 +71,7 @@ void InputSystem::onMouseMove(void* userptr,i32 dx,i32 dy,CInputMap* map)
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void InputSystem::onMouseScroll(void* userptr,i32 dz,CInputMap* map)
+void InputSystem::onMouseScroll(void* userptr,i32 dz)
 {
 	InputSystem* This = (InputSystem*)userptr;
 
@@ -126,33 +86,6 @@ void InputSystem::onMouseScroll(void* userptr,i32 dz,CInputMap* map)
 	{
 		This->msScreenPos[2] = 0;
 	}
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
-void InputSystem::onMouseBtnDown(void* userptr,u32 btn,CInputMap* map)
-{
-	InputSystem* This = (InputSystem*)userptr;
-	This->msButtonDown[btn - DIMOFS_BUTTON0] = true;
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
-void InputSystem::onMouseBtnUp(void* userptr,u32 btn,CInputMap* map)
-{
-	InputSystem* This = (InputSystem*)userptr;
-	This->msButtonDown[btn - DIMOFS_BUTTON0] = false;
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
-bit InputSystem::getMouseBtnState( u32 btn )
-{
-	if(btn >=0 && btn <8)
-	{
-		return msButtonDown[btn];
-	}
-	return false;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -194,10 +127,12 @@ void InputSystem::resetMouseMovement()
 	ZeroMemory(msDeltaMovement,sizeof(i32)*3);
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————
-
-CInputMap* InputSystem::getActiveInputMap()
+void InputSystem::onKeyPress( void* userptr,u32 btn )
 {
-	return defaultInputMap;
+	InputSystem* self = (InputSystem*)userptr;
+	if(btn == DIK_F1)
+	{
+		self->game->bootScene.showLog(!self->game->bootScene.isLogVisible());
+	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————
