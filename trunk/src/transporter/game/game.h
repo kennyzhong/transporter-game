@@ -5,7 +5,7 @@
 class Game
 {
 protected : HINSTANCE appInstance;
-			bit isRunning;
+			bit isRunning;			
 public    : Game();
 			~Game();
 			void run();
@@ -17,6 +17,7 @@ public    : Game();
 			InputSystem inputSystem;
 			PhysicsSystem physicsSystem;
 			GameScene gameScene;
+			GameBootScene bootScene;
 };
 
 #endif

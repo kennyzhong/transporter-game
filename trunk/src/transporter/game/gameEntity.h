@@ -6,6 +6,7 @@ class GameEntity : public UpdateListener
 {
 protected : Ogre::Entity* visualEntity;			
 			hkpRigidBody* physicsEntity;
+			bit isEntityInited;
 			Game* game;
 public    : GameEntity(Game* game);
 			virtual ~GameEntity();

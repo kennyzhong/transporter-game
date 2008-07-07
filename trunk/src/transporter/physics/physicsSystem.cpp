@@ -35,25 +35,29 @@ bit PhysicsSystem::isRunnning()
 
 bit PhysicsSystem::init(Game* game)
 {
-	this->game = game;
-	this->isPhysicsRunning = true;
-	if(physicsThreadSignal)
+	if(!isPhysicsInited)
 	{
-		CloseHandle(physicsThreadSignal);
-		physicsThreadSignal = NULL;
-	}
-	physicsThreadSignal	= CreateEvent(NULL,TRUE,FALSE,NULL);
-	if(physicsThreadSignal)
-	{
-		physicsThread = CreateThread(NULL,4*1024*1024,physicsThreadProc,this,0,NULL);
-		if(physicsThread)
+		this->game = game;
+		this->isPhysicsRunning = true;
+		if(physicsThreadSignal)
 		{
-			isPhysicsInited = true;
-			return true;
+			CloseHandle(physicsThreadSignal);
+			physicsThreadSignal = NULL;
 		}
+		physicsThreadSignal	= CreateEvent(NULL,TRUE,FALSE,NULL);
+		if(physicsThreadSignal)
+		{
+			physicsThread = CreateThread(NULL,4*1024*1024,physicsThreadProc,this,0,NULL);
+			if(physicsThread)
+			{
+				isPhysicsInited = true;
+				return true;
+			}
+		}
+		this->isPhysicsRunning = false;
+		return false;
 	}
-	this->isPhysicsRunning = false;
-	return false;
+	return true;
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -62,11 +66,11 @@ DWORD WINAPI PhysicsSystem::physicsThreadProc( LPVOID params )
 {
 	PhysicsSystem* This = (PhysicsSystem*)params;
 
-	hkThreadMemory threadMemory(&hkMemory::getInstance(), 16);
+	hkThreadMemory threadMemory(&hkMemory::getInstance());
 	hkBaseSystem::initThread(&threadMemory);
 
 	char* stackBuffer;
-	int stackSize = 2*1024*1024; // 2MB stack
+	int stackSize = 8*1024*1024; 
 	stackBuffer = hkAllocate<char>( stackSize, HK_MEMORY_CLASS_BASE);
 	threadMemory.setStackArea( stackBuffer, stackSize);
 
@@ -89,7 +93,9 @@ DWORD WINAPI PhysicsSystem::physicsThreadProc( LPVOID params )
 						
 			This->lastTimeElapsedMs = (u32)clampValue((f32)timeElapsed,10.0f,100.0f);
 			This->scene->update(This->lastTimeElapsedMs);
+			This->scene->getWorld()->lock();
 			This->scene->getWorld()->stepDeltaTime((f32)This->lastTimeElapsedMs/1000.0f);
+			This->scene->getWorld()->unlock();
 			currentFrame++;
 			u64 lasttick = tick.QuadPart;
 			u32 frameleft = framePerSecond - currentFrame;
@@ -134,7 +140,7 @@ void PhysicsSystem::run( PhysicsScene* scene )
 {
 	if(isPhysicsInited)
 	{
-		this->scene = scene;
+		this->scene = scene;		
 		SetEvent(physicsThreadSignal);
 	}
 }

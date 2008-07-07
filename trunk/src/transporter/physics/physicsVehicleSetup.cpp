@@ -158,8 +158,8 @@ void VehicleSetup::setupVehicleData( hkpWorld* world, hkpVehicleData& data )
 	for ( int i = 0 ; i < data.m_numWheels ; i++ )
 	{
 		// This value is also used to calculate the m_primaryTransmissionRatio.
-		data.m_wheelParams[i].m_radius = 0.4f;
-		data.m_wheelParams[i].m_width = 0.2f;
+		data.m_wheelParams[i].m_radius = 0.36f;
+		data.m_wheelParams[i].m_width = 0.32f;
 		data.m_wheelParams[i].m_mass = 10.0f;
 
 		data.m_wheelParams[i].m_viscosityFriction = 0.25f;
@@ -177,7 +177,7 @@ void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefault
 	driverInput.m_slopeChangePointX = 0.8f;
 	driverInput.m_initialSlope = 0.7f;
 	driverInput.m_deadZone = 0.0f;
-	driverInput.m_autoReverse = true;
+	driverInput.m_autoReverse = true;	
 }
 
 void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefaultSteering& steering )
@@ -198,64 +198,60 @@ void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefault
 
 void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefaultEngine& engine )
 {
-	engine.m_maxTorque = 720.0f;
+	engine.m_maxTorque = 680.0f;
 
-	engine.m_minRPM = 900.0f;
-	engine.m_optRPM = 7200.0f;
+	engine.m_minRPM = 1200.0f;
+	engine.m_optRPM = 7000.0f;
 
 	// This value is also used to calculate the m_primaryTransmissionRatio.
 	engine.m_maxRPM = 9000.0f;
 
-	engine.m_torqueFactorAtMinRPM = 0.8f;
-	engine.m_torqueFactorAtMaxRPM = 0.7f;
+	engine.m_torqueFactorAtMinRPM = 0.9975f;
+	engine.m_torqueFactorAtMaxRPM = 0.875f;
 
-	engine.m_resistanceFactorAtMinRPM = 0.05f;
-	engine.m_resistanceFactorAtOptRPM = 0.075f;
-	engine.m_resistanceFactorAtMaxRPM = 0.3f;
+	engine.m_resistanceFactorAtMinRPM = 0.025f;
+	engine.m_resistanceFactorAtOptRPM = 0.465f;
+	engine.m_resistanceFactorAtMaxRPM = 0.605f;
 }
 
 void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefaultTransmission& transmission )
 {
-	int numGears = 7;
+	int numGears = 6;
 
 	transmission.m_gearsRatio.setSize( numGears );
 	transmission.m_wheelsTorqueRatio.setSize( data.m_numWheels );
 
-	transmission.m_downshiftRPM = 3500.0f;
-	transmission.m_upshiftRPM = 8500.0f;
+	transmission.m_downshiftRPM = 5000.0f;
+	transmission.m_upshiftRPM = 7000.0f;
 
 	transmission.m_clutchDelayTime = 0.0f;
-	transmission.m_reverseGearRatio = 1.0f;
-	transmission.m_gearsRatio[0] = 3.0f;
-	transmission.m_gearsRatio[1] = 2.0f;
-	transmission.m_gearsRatio[2] = 1.5f;
-	transmission.m_gearsRatio[3] = 1.0f;
-	transmission.m_gearsRatio[4] = 0.80f;
-	transmission.m_gearsRatio[5] = 0.75f;
-	transmission.m_gearsRatio[6] = 0.60f;
+	transmission.m_reverseGearRatio = 3.0f;
+	transmission.m_gearsRatio[0] = 2.86f;
+	transmission.m_gearsRatio[1] = 1.85f;
+	transmission.m_gearsRatio[2] = 1.62f;
+	transmission.m_gearsRatio[3] = 1.10f;
+	transmission.m_gearsRatio[4] = 1.05f;
+	transmission.m_gearsRatio[5] = 0.86f;
 
 	transmission.m_wheelsTorqueRatio[0] = 0.2f;
 	transmission.m_wheelsTorqueRatio[1] = 0.2f;
 	transmission.m_wheelsTorqueRatio[2] = 0.3f;
 	transmission.m_wheelsTorqueRatio[3] = 0.3f;
-	transmission.m_wheelsTorqueRatio[4] = 0.4f;
-	transmission.m_wheelsTorqueRatio[5] = 0.4f;
-	transmission.m_wheelsTorqueRatio[6] = 0.5f;
 
 	const hkReal vehicleTopSpeed = 300.0f; 	 
-	const hkReal wheelRadius = 0.4f;
+	const hkReal wheelRadius = 0.36f;
 	const hkReal maxEngineRpm = 9000.0f;
-	transmission.m_primaryTransmissionRatio = hkpVehicleDefaultTransmission::calculatePrimaryTransmissionRatio( vehicleTopSpeed,
-																												wheelRadius,
-																												maxEngineRpm,
-																												transmission.m_gearsRatio[ numGears - 1 ] );
+	transmission.m_primaryTransmissionRatio = 1.75;//hkpVehicleDefaultTransmission::calculatePrimaryTransmissionRatio( vehicleTopSpeed,
+												//																wheelRadius,
+												//																maxEngineRpm,
+												//																transmission.m_gearsRatio[ numGears - 1 ] );
 }
 
 void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefaultBrake& brake )
 {
 	brake.m_wheelBrakingProperties.setSize( data.m_numWheels );
 
-	const float bt = 2000.0f;
+	const float bt = 3000.0f;
 	brake.m_wheelBrakingProperties[0].m_maxBreakingTorque = bt+250;
 	brake.m_wheelBrakingProperties[1].m_maxBreakingTorque = bt+250;
 	brake.m_wheelBrakingProperties[2].m_maxBreakingTorque = bt;
@@ -306,7 +302,7 @@ void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefault
 	{
 		const hkReal hardPointFrontX = 1.3f;
 		const hkReal hardPointBackX = -1.1f;
-		const hkReal hardPointY = -0.05f;
+		const hkReal hardPointY = -0.05f;//-0.05f;
 		const hkReal hardPointZ = 1.1f;
 
 		suspension.m_wheelParams[0].m_hardpointChassisSpace.set ( hardPointFrontX, hardPointY, -hardPointZ); 

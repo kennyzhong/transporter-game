@@ -4,6 +4,7 @@ GameEntity::GameEntity( Game* game )
 {
 	this->visualEntity = NULL;
 	this->physicsEntity = NULL;
+	this->isEntityInited = false;
 	this->game = game;
 }
 
@@ -17,7 +18,7 @@ Ogre::Entity* GameEntity::getVisualEntity()
 //————————————————————————————————————————————————————————————————————————————————————————
 
 bit GameEntity::init(str name)
-{
+{	
 	return true;
 }
 

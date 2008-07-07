@@ -26,10 +26,9 @@ CarSteering::CarSteering( InputSystem* inputSystem )
 	isBrakingKeyPressed		= false;
 	isSteeringKey			= false;
 
-	CInputMap* map = inputSystem->getActiveInputMap();
-	map->onKeyDown.connect(onKeyDown,this);
-	map->onKeyUp.connect(onKeyUp,this);
-	map->onKeyPress.connect(onKeyPressed,this);
+	inputSystem->keyboard.onKeyDown.connect(onKeyDown,this);
+	inputSystem->keyboard.onKeyUp.connect(onKeyUp,this);
+	inputSystem->keyboard.onKeyPress.connect(onKeyPressed,this);
 
 	DebugRegistry::getInstance()->addItem(this);
 }
@@ -38,10 +37,9 @@ CarSteering::CarSteering( InputSystem* inputSystem )
 
 CarSteering::~CarSteering()
 {
-	CInputMap* map = inputSystem->getActiveInputMap();
-	map->onKeyDown.disconnect(onKeyDown);
-	map->onKeyUp.disconnect(onKeyUp);
-	map->onKeyPress.disconnect(onKeyPressed);
+	inputSystem->keyboard.onKeyDown.disconnect(onKeyDown);
+	inputSystem->keyboard.onKeyUp.disconnect(onKeyUp);
+	inputSystem->keyboard.onKeyPress.disconnect(onKeyPressed);
 	DebugRegistry::getInstance()->removeItem(this->debugItemName);
 }
 
@@ -104,7 +102,7 @@ void CarSteering::setBrakingSaturation( f32 value )
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void CarSteering::onKeyDown( void* userptr,u32 btn,CInputMap* map )
+void CarSteering::onKeyDown( void* userptr,u32 btn )
 {	
 	CarSteering* This = (CarSteering*)userptr;
 
@@ -124,7 +122,7 @@ void CarSteering::onKeyDown( void* userptr,u32 btn,CInputMap* map )
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void CarSteering::onKeyUp( void* userptr,u32 btn,CInputMap* map )
+void CarSteering::onKeyUp( void* userptr,u32 btn )
 {
 	CarSteering* This = (CarSteering*)userptr;
 
@@ -144,7 +142,7 @@ void CarSteering::onKeyUp( void* userptr,u32 btn,CInputMap* map )
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-void CarSteering::onKeyPressed( void* userptr,u32 btn,CInputMap* map )
+void CarSteering::onKeyPressed( void* userptr,u32 btn )
 {
 	CarSteering* This = (CarSteering*)userptr;
 
@@ -187,12 +185,12 @@ void CarSteering::updateBrakingKey( u32 timeElapse )
 void CarSteering::updateSteeringKey( u32 timeElapse )
 {
 	f32 reverseFactor = 1.0f;
-	f32 normalizationFactor = 1.2f;
+	f32 normalizationFactor = 1.25f;
 	if(isSteeringKey==-1 && steering>=-1.0f)
 	{		
 		if(steering > 0.0f)
 		{
-			reverseFactor = 1.0f+steering;
+			reverseFactor = 2.0f+steering;
 		}
 		steering = clampValue(steering - steeringSaturation*reverseFactor*(f32)timeElapse,-1.0f,1.0f);
 	}
@@ -200,7 +198,7 @@ void CarSteering::updateSteeringKey( u32 timeElapse )
 	{
 		if(steering < 0.0f)
 		{
-			reverseFactor = 1.0f-steering;
+			reverseFactor = 2.0f-steering;
 		}
 		steering = clampValue(steering + steeringSaturation*(f32)timeElapse,-1.0f,1.0f);
 	}

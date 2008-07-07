@@ -164,7 +164,7 @@
 				OptimizeForWindows98="1"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
+				ImportLibrary=""
 				TargetMachine="1"
 			/>
 			<Tool
@@ -227,11 +227,11 @@
 				Name="visual"
 				>
 				<File
-					RelativePath="..\..\src\transporter\visual\visualHDRCompositor.cpp"
+					RelativePath="..\..\src\transporter\visual\visualLogListener.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\transporter\visual\visualHDRCompositor.h"
+					RelativePath="..\..\src\transporter\visual\visualLogListener.h"
 					>
 				</File>
 				<File
@@ -328,14 +328,6 @@
 					RelativePath="..\..\src\transporter\game\game.h"
 					>
 				</File>
-				<File
-					RelativePath="..\..\src\transporter\game\gameScene.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\transporter\game\gameScene.h"
-					>
-				</File>
 				<Filter
 					Name="entities"
 					>
@@ -364,6 +356,14 @@
 						</File>
 						<File
 							RelativePath="..\..\src\transporter\game\carEntity.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carInstruments.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carInstruments.h"
 							>
 						</File>
 						<File
@@ -396,11 +396,27 @@
 					Name="utilities"
 					>
 					<File
+						RelativePath="..\..\src\transporter\utilities\configMgr.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\configMgr.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\transporter\game\debugRegistry.cpp"
 						>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\game\debugRegistry.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\rtLog.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\rtLog.h"
 						>
 					</File>
 					<File
@@ -417,6 +433,62 @@
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\utilities\updateListenerMgr.h"
+						>
+					</File>
+					<Filter
+						Name="XSS"
+						>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSS.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSS.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSSNode.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSSNode.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSSparse.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSSparse.h"
+							>
+						</File>
+					</Filter>
+				</Filter>
+				<Filter
+					Name="scenes"
+					>
+					<File
+						RelativePath="..\..\src\transporter\game\gameBootScene.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameBootScene.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameScene.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameScene.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameVisualScene.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameVisualScene.h"
 						>
 					</File>
 				</Filter>
@@ -504,6 +576,14 @@
 			<Filter
 				Name="utilities"
 				>
+				<File
+					RelativePath="..\..\src\utilities\AsyncEvent.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\utilities\AsyncEvent.h"
+					>
+				</File>
 				<File
 					RelativePath="..\..\src\utilities\Event.cpp"
 					>

@@ -3,36 +3,27 @@
 
 #include "transporter.h"
 
-class InputSystem
+class InputSystem : public InputEngine
 {
-protected : CInputEngine* engine;
-			CInputManager* inputManager;
-			CInputMap* defaultInputMap;
-			Game* game;
+protected : Game* game;
 			HWND window;
 			bit isInited;
-			bit msButtonDown[8];
 			i32 msDeltaMovement[3];
 			i32 msScreenPos[3];
 
-			static void onMouseMove(void* userptr,i32 dx,i32 dy,CInputMap* map);
-			static void onMouseScroll(void* userptr,i32 dz,CInputMap* map);
-			static void onMouseBtnDown(void* userptr,u32 btn,CInputMap* map);
-			static void onMouseBtnUp(void* userptr,u32 btn,CInputMap* map);
+			static void onMouseMove(void* userptr,i32 dx,i32 dy);
+			static void onMouseScroll(void* userptr,i32 dz);
+			static void onKeyPress(void* userptr,u32 btn);
 
 public    : InputSystem();
 			~InputSystem();
 
-			bit init(Game* game);
-			void run(u32 threadFreq=30,u32 threadPriority = NORMAL_PRIORITY_CLASS);
-			void stop();	
+			bit init(Game* game,u32 threadFreq=60,u32 threadPriority = NORMAL_PRIORITY_CLASS);
 
-			bit getMouseBtnState(u32 btn);
 			i32 getMouseMovement(u32 axis);
 			i32 getMouseScreenPos(u32 axis);
 			void resetMouseMovement(u32 axis);
 			void resetMouseMovement();
-			CInputMap* getActiveInputMap();
 
 };
 #endif

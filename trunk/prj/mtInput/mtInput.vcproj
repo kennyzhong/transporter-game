@@ -160,83 +160,79 @@
 			Name="src"
 			>
 			<File
-				RelativePath="..\..\src\input\CInputDevice.cpp"
+				RelativePath="..\..\src\input\InputDevice.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputDevice.h"
+				RelativePath="..\..\src\input\InputDevice.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputEngine.cpp"
+				RelativePath="..\..\src\input\InputEngine.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputEngine.h"
+				RelativePath="..\..\src\input\InputEngine.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputEvent.cpp"
+				RelativePath="..\..\src\input\InputKeyboard.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputEvent.h"
+				RelativePath="..\..\src\input\InputKeyboard.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputEventObject.cpp"
+				RelativePath="..\..\src\input\InputKeyboardState.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputEventObject.h"
+				RelativePath="..\..\src\input\InputKeyboardState.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputKeyboard.cpp"
+				RelativePath="..\..\src\input\InputMouse.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputKeyboard.h"
+				RelativePath="..\..\src\input\InputMouse.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputKeyboardState.cpp"
+				RelativePath="..\..\src\input\InputMouseState.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputKeyboardState.h"
+				RelativePath="..\..\src\input\InputMouseState.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="extsrc"
+			>
+			<File
+				RelativePath="..\..\src\utilities\AsyncEvent.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputManager.cpp"
+				RelativePath="..\..\src\utilities\AsyncEvent.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputManager.h"
+				RelativePath="..\..\src\base\datatypes.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputMap.cpp"
+				RelativePath="..\..\src\base\datatypes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputMap.h"
+				RelativePath="..\..\src\utilities\Event.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\input\CInputMouse.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\input\CInputMouse.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\input\CInputMouseState.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\input\CInputMouseState.h"
+				RelativePath="..\..\src\utilities\Event.h"
 				>
 			</File>
 		</Filter>
