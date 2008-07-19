@@ -27,32 +27,45 @@ bit GameVisualScene::init( Game* game )
 	VisualScene::init(game);
 
 	Ogre::Light* light = game->visualSystem.getSceneMgr()->createLight("MainLight");
-	light->setType(Ogre::Light::LT_SPOTLIGHT);
-	light->setPosition(600,1500,800);
+	light->setType(Ogre::Light::LT_DIRECTIONAL);
+	light->setPosition(800,500,-100);
 	Ogre::Vector3 dir = -light->getPosition();
 	dir.normalise();
 	light->setDirection(dir);
 	light->setSpecularColour(1.0f,1.0f,1.0f);
 	light->setDiffuseColour(0.85f,0.85f,0.865f);
-	light->setSpotlightRange(Ogre::Degree(35), Ogre::Degree(60));
+	//light->setSpotlightRange(Ogre::Degree(50), Ogre::Degree(75));
 	light->setPowerScale(1.0f);
 	light->setCastShadows(true);	
 
+	//Ogre::LiSPSMShadowCameraSetup* cameraSetup = new Ogre::LiSPSMShadowCameraSetup;
+	//game->visualSystem.getSceneMgr()->setShadowCameraSetup(Ogre::ShadowCameraSetupPtr(cameraSetup));
+
 	game->visualSystem.getSceneMgr()->getRootSceneNode()->attachObject(light);
 
-	game->visualSystem.getSceneMgr()->setAmbientLight(Ogre::ColourValue(0.0,0.0,0.0));
-	game->visualSystem.getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
-	game->visualSystem.getSceneMgr()->setShadowTextureSize(512);
-	game->visualSystem.getSceneMgr()->setShadowFarDistance(64);
+	game->visualSystem.getSceneMgr()->setAmbientLight(Ogre::ColourValue(0.95,0.85,0.65));
+	//game->visualSystem.getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_TEXTURE_ADDITIVE);
+	game->visualSystem.getSceneMgr()->setShadowTextureSize(1024);
+	//game->visualSystem.getSceneMgr()->setShadowTextureSettings(1024,2);
+	game->visualSystem.getSceneMgr()->setShadowFarDistance(10);
+	game->visualSystem.getSceneMgr()->setShadowDirLightTextureOffset(0.15);
 	game->visualSystem.getSceneMgr()->setShadowTextureSelfShadow(true);
 	game->visualSystem.getSceneMgr()->setShadowColour( Ogre::ColourValue(0.35f, 0.35f, 0.35f) );
-	game->visualSystem.getSceneMgr()->setSkyBox(true,"skybox",3000);	
+	game->visualSystem.getSceneMgr()->setSkyBox(true,"skybox",1000);	
+	game->visualSystem.getSceneMgr()->setShadowTextureCasterMaterial("depthShadowMapCasterMaterial");
+	//game->visualSystem.getSceneMgr()->setShadowTextureCasterMaterial("VarianceShadowMapping/ShadowCaster");
+	game->visualSystem.getSceneMgr()->setShadowTexturePixelFormat(PF_FLOAT32_R);
+	game->visualSystem.getSceneMgr()->setShadowCasterRenderBackFaces(true);
+	game->visualSystem.getSceneMgr()->setShadowTechnique(SHADOWTYPE_TEXTURE_ADDITIVE_INTEGRATED);
+
 
 	Ogre::OverlayManager* overlayManager = Ogre::OverlayManager::getSingletonPtr();
 	Ogre::Overlay* overlay = overlayManager->getByName("debugText");
 	overlay->show();
 	debugTextOverlay  = (Ogre::TextAreaOverlayElement*)overlayManager->getOverlayElement("debugTextArea");
 	debugTextOverlay->show();
+
+	updateCamera();
 
 	game->visualSystem.unlockThread();
 
@@ -75,12 +88,12 @@ void GameVisualScene::update()
 void GameVisualScene::updateCamera()
 {
 	static f32 rotz;
-	static f32 rotx;
-	static f32 roty;
+	static f32 rotx = 5.0;
+	static f32 roty = 5.0;
 
-	rotz += f32(game->inputSystem.getMouseMovement(2))/10.0f; 
+	rotz += f32(game->inputSystem.getMouseMovement(2))/200.0f; 
 	//rotz  = clampValue(rotz,1.0f,50.0f);
-	rotz  = clampValue(rotz,5.0f,50.0f);
+	rotz  = clampValue(rotz,5.0f,15.0f);
 
 	if(game->inputSystem.mouse.state.isBtnDown(1)) 
 	{

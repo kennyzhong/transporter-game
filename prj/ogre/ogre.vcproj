@@ -40,8 +40,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\freetype&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;OGRE_NONCLIENT_BUILD"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\freeimage&quot;;&quot;$(SolutionDir)src\freetype&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL;OGRE_NONCLIENT_BUILD;NOMINMAX"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -49,7 +49,7 @@
 				PrecompiledHeaderThrough="OgreStableHeaders.h"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="4"
+				DebugInformationFormat="1"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -126,10 +126,10 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				EnableFiberSafeOptimizations="true"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\freetype&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;FREEIMAGE_LIB;OGRE_NONCLIENT_BUILD"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\freeimage&quot;;&quot;$(SolutionDir)src\freetype&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL;OGRE_NONCLIENT_BUILD;NOMINMAX"
 				StringPooling="true"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				StructMemberAlignment="5"
 				BufferSecurityCheck="false"
 				EnableEnhancedInstructionSet="2"
@@ -150,7 +150,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="zzip.lib zlib.lib freetype.lib freeimage.lib libJPEG.lib libMNG.lib libOpenJPEG.lib libPNG.lib libTIFF.lib openEXR.lib"
+				AdditionalDependencies="zlib.lib freetype.lib freeimage.lib zzip.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="false"
@@ -263,19 +263,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ogre\OgreAtomicWrappers.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\ogre\OgreAutoParamDataSource.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\src\ogre\OgreAutoParamDataSource.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreAxisAlignedBox.cpp"
 				>
 			</File>
 			<File
@@ -719,6 +711,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\ogre\OgreImageCodec.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\ogre\OgreImageResampler.h"
 				>
 			</File>
@@ -791,6 +787,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\ogre\OgreMaterialScriptCompiler.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ogre\OgreMaterialScriptCompiler.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\ogre\OgreMaterialSerializer.cpp"
 				>
 			</File>
@@ -823,35 +827,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ogre\OgreMemoryAllocatedObject.h"
+				RelativePath="..\..\src\ogre\OgreMemoryMacros.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ogre\OgreMemoryAllocatorConfig.h"
+				RelativePath="..\..\src\ogre\OgreMemoryManager.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ogre\OgreMemoryNedAlloc.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreMemoryNedAlloc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreMemoryStdAlloc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreMemorySTLAllocator.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreMemoryTracker.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreMemoryTracker.h"
+				RelativePath="..\..\src\ogre\OgreMemoryManager.h"
 				>
 			</File>
 			<File
@@ -912,6 +896,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\ogre\OgreNode.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ogre\OgreNoMemoryMacros.h"
 				>
 			</File>
 			<File
@@ -1255,22 +1243,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ogre\OgreRenderSystemCapabilitiesManager.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreRenderSystemCapabilitiesManager.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreRenderSystemCapabilitiesSerializer.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreRenderSystemCapabilitiesSerializer.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\ogre\OgreRenderTarget.cpp"
 				>
 			</File>
@@ -1387,39 +1359,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ogre\OgreScriptCompiler.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreScriptCompiler.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreScriptLexer.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreScriptLexer.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\ogre\OgreScriptLoader.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreScriptParser.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreScriptParser.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreScriptTranslator.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreScriptTranslator.h"
 				>
 			</File>
 			<File
@@ -1639,14 +1579,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ogre\OgreTangentSpaceCalc.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ogre\OgreTangentSpaceCalc.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\ogre\OgreTechnique.cpp"
 				>
 			</File>
@@ -1807,6 +1739,10 @@
 				</File>
 				<File
 					RelativePath="..\..\src\ogre\WIN32\OgreTimerImp.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ogre\WIN32\resource.h"
 					>
 				</File>
 				<File

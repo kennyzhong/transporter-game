@@ -32,11 +32,6 @@ void VisualSystem::cleanUp()
 	//	delete visualRoot;
 	//}
 
-	for(u32 i=0 ; i<plugins.size() ; i++)
-	{
-		delete plugins.at(i);
-	}
-	plugins.clear();
 	renderCameras.clear();
 	renderWindows.clear();
 	renderViewports.clear();
@@ -192,8 +187,8 @@ u32 VisualSystem::getCurrentFrameNum()
 
 bit VisualSystem::createVisualRoot()
 {	
-	str visualConfigFile = "visual-config.cfg";
-	str pluginConfigFile = "visual-plugins.cfg";
+	str visualConfigFile = "";
+	str pluginConfigFile = "";
 	str loggingFile		 = "visual-log.txt";
 
 	XSSNode* visualCfgNode = ConfigMgr::get("game.config");
@@ -232,6 +227,7 @@ bit VisualSystem::createRenderSystem()
 	}
 
 	str renderSystemName = "Direct3D9 Rendering Subsystem";
+	str renderSystemModuleFile = renderSystemName+".dll";
 	std::map<str,str> renderSystemConfigKey;
 
 	XSSNode* visualCfgNode = ConfigMgr::get("game.config");
@@ -242,6 +238,7 @@ bit VisualSystem::createRenderSystem()
 		if(cfgNode)
 		{
 			renderSystemName = cfgNode->getValue();
+			renderSystemModuleFile = renderSystemName+".dll";
 			cfgNode = visualCfgNode->get("GameConfig");
 			if(cfgNode)
 			{
@@ -256,7 +253,7 @@ bit VisualSystem::createRenderSystem()
 					}
 				}
 			}
-		}
+		}		
 		if(renderSystemCfgNode)
 		{
 			for(u32 i=0 ; i<renderSystemCfgNode->countChild() ; i++)
@@ -271,22 +268,19 @@ bit VisualSystem::createRenderSystem()
 						renderSystemConfigKey[cfgKey] = cfgValue;
 					}
 				}
+				else if(childNode->getKey() == "module")
+				{
+					renderSystemModuleFile = childNode->getValue();
+					if(renderSystemModuleFile.empty())
+					{
+						renderSystemModuleFile = renderSystemName+".dll"; 
+					}
+				}
 			}
 		}
 	}
 
-	if(renderSystemName == "Direct3D9 Rendering Subsystem")
-	{
-		Ogre::D3D9Plugin* dxPlugin = new Ogre::D3D9Plugin;
-		visualRoot->installPlugin(dxPlugin);
-		plugins.push_back(dxPlugin);
-	}
-	else if(renderSystemName == "OpenGL Rendering Subsystem")
-	{
-		Ogre::GLPlugin* glPlugin = new Ogre::GLPlugin;
-		visualRoot->installPlugin(glPlugin);
-		plugins.push_back(glPlugin);
-	}
+	visualRoot->loadPlugin(renderSystemModuleFile);
 
 	renderSystem = visualRoot->getRenderSystemByName(renderSystemName);
 	if(renderSystem)
@@ -305,43 +299,44 @@ bit VisualSystem::createRenderSystem()
 
 //————————————————————————————————————————————————————————————————————————————————————————
 
-bit VisualSystem::createInternalPlugins()
+bit VisualSystem::loadPlugins()
 {
 	if(!visualRoot)
 	{
 		return false;
 	}
 
-	bit installOctreeSceneMgr = true;
-	bit installCgManager = true;
 	XSSNode* visualCfgNode = ConfigMgr::get("game.config");
 	if(visualCfgNode)
 	{
-		XSSNode* node = visualCfgNode->get("GameConfig.internalPlugins.OctreeSceneMgr");
+		XSSNode* node = visualCfgNode->get("GameConfig.externalPlugins");
 		if(node)
 		{
-			installOctreeSceneMgr = node->getValueAsBool();
+			for(u32 i=0 ; i<node->countChild() ; i++)
+			{
+				XSSNode* pluginNode = node->getChild(i);
+				if(pluginNode && pluginNode->getKey()=="externalPlugin")
+				{
+					str pluginName = pluginNode->getNdx();
+					str moduleName = pluginName+".dll";
+					bit load = true;
+					XSSNode* moduleNode = pluginNode->get("module");
+					if(moduleNode)
+					{
+						moduleName = moduleNode->getValue();
+					}
+					XSSNode* isLoadNode = pluginNode->get("load");
+					if(isLoadNode)
+					{
+						load = isLoadNode->getValueAsBool();
+					}
+					if(load)
+					{
+						visualRoot->loadPlugin(moduleName);
+					}
+				}
+			}
 		}
-
-		node = visualCfgNode->get("GameConfig.internalPlugins.nVidiaCG");
-		if(node)
-		{
-			installCgManager = node->getValueAsBool();
-		}
-	}
-
-	if(installOctreeSceneMgr)
-	{
-		Ogre::OctreePlugin* octreePlugin = new Ogre::OctreePlugin;
-		visualRoot->installPlugin(octreePlugin);
-		plugins.push_back(octreePlugin);
-	}
-
-	if(installCgManager)
-	{
-		Ogre::CgPlugin* cgPlugin = new Ogre::CgPlugin;
-		visualRoot->installPlugin(cgPlugin);
-		plugins.push_back(cgPlugin);
 	}
 
 	return true;
@@ -982,7 +977,7 @@ DWORD WINAPI VisualSystem::visualThreadProc( LPVOID param )
 		{
 			if(This->createRenderSystem())
 			{
-				This->createInternalPlugins();				
+				This->loadPlugins();				
 				This->createSceneMgr();
 				This->createRenderWindow();
 				This->createRenderCamera();

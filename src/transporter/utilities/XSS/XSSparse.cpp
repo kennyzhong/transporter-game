@@ -61,7 +61,7 @@ void CStructItem::set(char* item)
 				{
 					ndx = ndx.substr(0,sep);
 				}
-				ndx = chrreplacestr(value," \n\t\r","");
+				ndx = chrreplacestr(ndx," \n\t\r","");
 			}
 		}
 		expstr = chrexplodestr(" \n\t",expstr.at(0));

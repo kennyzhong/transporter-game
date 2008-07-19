@@ -5,13 +5,14 @@
 class GameVisualScene : public VisualScene
 {
 protected : Ogre::TextAreaOverlayElement* debugTextOverlay;
-			void updateCamera();
-			void updateOverlays();
+			
 public    : GameVisualScene();
 			virtual ~GameVisualScene();
 
 			virtual bit init(Game* game);
 			virtual void update();
 			virtual void cleanUp();
+			void updateCamera();
+			void updateOverlays();
 };
 #endif

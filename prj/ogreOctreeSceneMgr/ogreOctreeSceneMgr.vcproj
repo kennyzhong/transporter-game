@@ -67,7 +67,7 @@
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				SubSystem="2"
-				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
+				ImportLibrary="$(SolutionDir)lib\$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -120,13 +120,23 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\freetype&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;OGRE_TERRAINPLUGIN_EXPORTS"
-				RuntimeLibrary="2"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="true"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)src\ogre\ogreOctreeSceneMgr&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL;OGRE_TERRAINPLUGIN_EXPORTS"
+				StringPooling="true"
+				RuntimeLibrary="0"
+				StructMemberAlignment="5"
+				BufferSecurityCheck="false"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
+				DebugInformationFormat="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -139,14 +149,16 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="ogre.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
-				GenerateDebugInformation="true"
+				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(SolutionDir)lib\$(ConfigurationName)\$(TargetName).lib"
+				OptimizeForWindows98="1"
+				ImportLibrary="$(SolutionDir)lib\$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool

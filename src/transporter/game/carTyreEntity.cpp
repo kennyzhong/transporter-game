@@ -22,6 +22,7 @@ bit CarTyreEntity::init(str name,str meshName,str rubberMeshName,const Ogre::Vec
 	visualEntity->setCastShadows(true);
 
 	rubberTyre = game->visualSystem.getSceneMgr()->createEntity(name+"Rubber",rubberMeshName);
+	rubberTyre->getMesh()->buildTangentVectors();
 	rubberTyre->setMaterialName("TyreRubberMaterial");
 	rubberTyre->setCastShadows(true);
 

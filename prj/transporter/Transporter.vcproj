@@ -17,10 +17,10 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)obj\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="1"
+			CharacterSet="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -40,14 +40,15 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc\physics&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="4"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -60,8 +61,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="ogre.lib mtInput.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				SubSystem="2"
 				TargetMachine="1"
 			/>
@@ -92,10 +96,10 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)obj\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="1"
+			CharacterSet="0"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -115,12 +119,23 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
-				RuntimeLibrary="2"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="true"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc\physics&quot;;&quot;$(SolutionDir)inc&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL;_MT"
+				StringPooling="true"
+				RuntimeLibrary="0"
+				StructMemberAlignment="5"
+				BufferSecurityCheck="false"
+				EnableEnhancedInstructionSet="2"
+				FloatingPointModel="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="3"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -133,11 +148,17 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="ogre.lib mtInput.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib"
 				LinkIncremental="1"
-				GenerateDebugInformation="true"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
+				IgnoreDefaultLibraryNames=""
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				OptimizeForWindows98="1"
+				ImportLibrary="$(SolutionDir)lib\$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -169,6 +190,470 @@
 	<References>
 	</References>
 	<Files>
+		<Filter
+			Name="extsrc"
+			>
+			<Filter
+				Name="base"
+				>
+				<File
+					RelativePath="..\..\src\base\datatypes.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\datatypes.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\object.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\object.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\ObjectFactory.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\base\ObjectFactory.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="inputEngine"
+				>
+				<File
+					RelativePath="..\..\src\input\InputDevice.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\InputEngine.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\InputKeyboard.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\InputKeyboardState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\InputMouse.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\input\InputMouseState.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="math"
+				>
+				<File
+					RelativePath="..\..\inc\math\HMAngle.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMAngle.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMath.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMath.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMConstant.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMMatrix3.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMMatrix3.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMMatrix4.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMMatrix4.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMQuaternion.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMQuaternion.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMTrigonometry.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMTrigonometry.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMUtility.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMUtility.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector2.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector2.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector2_64.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector2_64.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector3.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector3.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector3_64.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector3_64.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector4.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\inc\math\HMVector4.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="physics"
+				>
+			</Filter>
+			<Filter
+				Name="utilities"
+				>
+				<File
+					RelativePath="..\..\src\utilities\AsyncEvent.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\utilities\AsyncEvent.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\utilities\Event.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\utilities\Event.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\utilities\genfunction.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\utilities\genfunction.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
+		<Filter
+			Name="src"
+			>
+			<File
+				RelativePath="..\..\src\transporter\transporter.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\transporter\transporter.h"
+				>
+			</File>
+			<Filter
+				Name="game"
+				>
+				<File
+					RelativePath="..\..\src\transporter\game\game.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\game\game.h"
+					>
+				</File>
+				<Filter
+					Name="entities"
+					>
+					<File
+						RelativePath="..\..\src\transporter\game\gameEntity.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameEntity.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\surface.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\surface.h"
+						>
+					</File>
+					<Filter
+						Name="car"
+						>
+						<File
+							RelativePath="..\..\src\transporter\game\carEntity.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carEntity.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carInstruments.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carInstruments.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carSteering.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carSteering.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carTyreEntity.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\game\carTyreEntity.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\physics\physicsVehicleSetup.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\physics\physicsVehicleSetup.h"
+							>
+						</File>
+					</Filter>
+				</Filter>
+				<Filter
+					Name="scenes"
+					>
+					<File
+						RelativePath="..\..\src\transporter\game\gameBootScene.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameBootScene.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameScene.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameScene.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameVisualScene.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\gameVisualScene.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="utilities"
+					>
+					<File
+						RelativePath="..\..\src\transporter\utilities\configMgr.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\configMgr.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\debugRegistry.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\debugRegistry.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\rtLog.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\rtLog.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\updateListener.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\updateListener.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\updateListenerMgr.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\utilities\updateListenerMgr.h"
+						>
+					</File>
+					<Filter
+						Name="XSS"
+						>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSS.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSS.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSSNode.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSSNode.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSSparse.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\transporter\utilities\XSS\XSSparse.h"
+							>
+						</File>
+					</Filter>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="input"
+				>
+				<File
+					RelativePath="..\..\src\transporter\input\inputSystem.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\input\inputSystem.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="physics"
+				>
+				<File
+					RelativePath="..\..\src\transporter\physics\physicsScene.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\physics\physicsScene.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\physics\physicsSystem.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\physics\physicsSystem.h"
+					>
+				</File>
+				<Filter
+					Name="shapes"
+					>
+					<File
+						RelativePath="..\..\src\transporter\physics\physicsFlatLand.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\physics\physicsFlatLand.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\physics\physicsLandscapeRepository.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\physics\physicsLandscapeRepository.h"
+						>
+					</File>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="visual"
+				>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualLogListener.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualLogListener.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualScene.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualScene.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualSystem.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\transporter\visual\visualSystem.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
