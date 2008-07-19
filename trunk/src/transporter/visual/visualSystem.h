@@ -22,7 +22,6 @@ protected : Ogre::RenderSystem* renderSystem;
 			HANDLE visualInitSignal;
 			f32 maxFPS;
 
-			std::vector<Ogre::Plugin*> plugins;
 			std::map<str,Ogre::RenderWindow*> renderWindows;			
 			std::vector<Ogre::Camera*> renderCameras;
 			std::vector<Ogre::Viewport*> renderViewports;	
@@ -31,7 +30,7 @@ protected : Ogre::RenderSystem* renderSystem;
 			void cleanUp();
 			bit createVisualRoot();
 			bit createRenderSystem();
-			bit createInternalPlugins();			
+			bit loadPlugins();			
 			bit createSceneMgr();
 			bit createRenderCamera();
 			bit createRenderWindow();

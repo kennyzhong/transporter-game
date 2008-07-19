@@ -200,16 +200,16 @@ namespace Ogre
 		}
 	}
 	//-----------------------------------------------------------------------
-	Matrix4 LiSPSMShadowCameraSetup::buildFrustumProjection(Real left, Real right, 
-		Real bottom, Real top, Real near, Real far) const
+	Matrix4 LiSPSMShadowCameraSetup::buildFrustumProjection(Real fleft, Real fright, 
+		Real fbottom, Real ftop, Real fnear, Real ffar) const
 	{
-		Real m00 = 2 * near / (right - left),
-			m02 = (right + left) / (right - left),
-			m11 = 2 * near / (top - bottom),
-			m12 = (top + bottom) / (top - bottom),
-			m22 = -(far + near) / (far - near),
-			m23 = -2 * far * near / (far - near),
-			m32 = -1;
+		Real m00 = 2 * fnear / (fright - fleft);
+		Real m02 = (fright + fleft) / (fright - fleft);
+		Real m11 = 2 * fnear / (ftop - fbottom);
+		Real m12 = (ftop + fbottom) / (ftop - fbottom);
+		Real m22 = -(ffar + fnear) / (ffar - fnear);
+		Real m23 = -2 * ffar * fnear / (ffar - fnear);
+		Real m32 = -1;
 
 		Matrix4 m(m00, 0.0, m02, 0.0,
 			0.0, m11, m12, 0.0,

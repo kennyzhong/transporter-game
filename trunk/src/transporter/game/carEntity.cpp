@@ -35,8 +35,9 @@ bit CarEntity::init(str name)
 		visualEntity->getMesh()->getSubMesh(3)->setMaterialName("Material_#460/glassrims");
 		visualEntity->getMesh()->getSubMesh(4)->setMaterialName("Material_#460/glassrims2");
 		visualEntity->getMesh()->getSubMesh(5)->setMaterialName("Material_#460/glass");
-		visualEntity->getMesh()->getSubMesh(6)->setMaterialName("Material_#460/glasslights");
+		visualEntity->getMesh()->getSubMesh(6)->setMaterialName("Material_#460/glass");
 		visualEntity->getMesh()->getSubMesh(0)->setMaterialName("Material_#460/body");	
+		visualEntity->getMesh()->buildTangentVectors();
 		//visualEntity->setMaterialName("body");
 		carNode->attachObject(visualEntity);		
 
@@ -62,6 +63,8 @@ bit CarEntity::init(str name)
 		pos = Ogre::Vector3(1.475f,-0.4175f,-0.8745f);
 		tyre[0] = new CarTyreEntity(this);
 		tyre[0]->init("TyreRR","TyreRearRim.mesh","TyreRearRubber.mesh",pos);	
+
+		game->gameScene.visualWorld.updateCamera();
 
 		instruments.init(this);
 	}

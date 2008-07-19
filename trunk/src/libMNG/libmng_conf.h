@@ -2,7 +2,7 @@
 /* *                                                                        * */
 /* * project   : libmng                                                     * */
 /* * file      : libmng_conf.h             copyright (c) G.Juyn 2000-2004   * */
-/* * version   : 1.0.7                                                      * */
+/* * version   : 1.0.9                                                      * */
 /* *                                                                        * */
 /* * purpose   : main configuration file                                    * */
 /* *                                                                        * */
@@ -68,17 +68,6 @@
 /* *                                                                        * */
 /* *  User-selectable compile-time options                                  * */
 /* *                                                                        * */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/* added by FreeImage */
-/* ************************************************************************** */
-
-#define MNG_OPTIMIZE_CHUNKINITFREE
-#define MNG_OPTIMIZE_OBJCLEANUP
-#define MNG_OPTIMIZE_CHUNKASSIGN
-#define MNG_OPTIMIZE_CHUNKREADER
-
 /* ************************************************************************** */
 
 /* enable exactly one(1) of the MNG-(sub)set selectors */

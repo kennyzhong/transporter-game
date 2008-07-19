@@ -35,7 +35,12 @@ Torus Knot Software Ltd.
 #if OGRE_COMPILER == OGRE_COMPILER_MSVC
 #include <excpt.h>      // For SEH values
 	#if _MSC_VER >= 1400
+		//#include <intrin.h>
+		#define _interlockedbittestandset fk_m$_set
+		#define _interlockedbittestandreset fk_m$_reset
 		#include <intrin.h>
+		#undef _interlockedbittestandset
+		#undef _interlockedbittestandreset
 	#endif
 #elif OGRE_COMPILER == OGRE_COMPILER_GNUC
 #include <signal.h>
