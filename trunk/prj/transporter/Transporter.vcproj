@@ -39,9 +39,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm256"
 				Optimization="0"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc\physics&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL;HAVOK_PHYSICS_ENABLED"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -61,7 +62,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ogre.lib mtInput.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib"
+				AdditionalDependencies="ogre.lib mtInput.lib hkBase.lib hkSerialize.lib hkVisualize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
@@ -119,13 +120,14 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm256"
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				EnableFiberSafeOptimizations="true"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\transporter&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc\physics&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL;_MT"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL;HAVOK_PHYSICS_ENABLED"
 				StringPooling="true"
 				RuntimeLibrary="0"
 				StructMemberAlignment="5"
@@ -148,7 +150,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ogre.lib mtInput.lib hkBase.lib hkSerialize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib"
+				AdditionalDependencies="ogre.lib mtInput.lib hkBase.lib hkVisualize.lib hkSceneData.lib hkCompat.lib hkpCollide.lib hkSerialize.lib hkpConstraintSolver.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib\$(ConfigurationName)&quot;;&quot;$(SolutionDir)lib&quot;"
 				IgnoreDefaultLibraryNames=""
@@ -392,6 +394,24 @@
 			<File
 				RelativePath="..\..\src\transporter\transporter.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderThrough="transporter.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderThrough="transporter.h"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\transporter\transporter.h"
@@ -403,6 +423,24 @@
 				<File
 					RelativePath="..\..\src\transporter\game\game.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\transporter\game\game.h"
@@ -412,16 +450,76 @@
 					Name="entities"
 					>
 					<File
+						RelativePath="..\..\src\transporter\game\Bridge.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\Bridge.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\Crate.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\Crate.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\transporter\game\gameEntity.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\game\gameEntity.h"
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\transporter\game\RoadBarrier.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\transporter\game\RoadBarrier.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\transporter\game\surface.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\game\surface.h"
@@ -433,6 +531,24 @@
 						<File
 							RelativePath="..\..\src\transporter\game\carEntity.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\transporter\game\carEntity.h"
@@ -441,6 +557,24 @@
 						<File
 							RelativePath="..\..\src\transporter\game\carInstruments.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\transporter\game\carInstruments.h"
@@ -449,6 +583,24 @@
 						<File
 							RelativePath="..\..\src\transporter\game\carSteering.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\transporter\game\carSteering.h"
@@ -457,6 +609,24 @@
 						<File
 							RelativePath="..\..\src\transporter\game\carTyreEntity.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\transporter\game\carTyreEntity.h"
@@ -465,6 +635,24 @@
 						<File
 							RelativePath="..\..\src\transporter\physics\physicsVehicleSetup.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\transporter\physics\physicsVehicleSetup.h"
@@ -478,6 +666,24 @@
 					<File
 						RelativePath="..\..\src\transporter\game\gameBootScene.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\game\gameBootScene.h"
@@ -486,6 +692,24 @@
 					<File
 						RelativePath="..\..\src\transporter\game\gameScene.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\game\gameScene.h"
@@ -494,6 +718,24 @@
 					<File
 						RelativePath="..\..\src\transporter\game\gameVisualScene.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\game\gameVisualScene.h"
@@ -506,6 +748,24 @@
 					<File
 						RelativePath="..\..\src\transporter\utilities\configMgr.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\utilities\configMgr.h"
@@ -514,6 +774,24 @@
 					<File
 						RelativePath="..\..\src\transporter\game\debugRegistry.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\game\debugRegistry.h"
@@ -522,6 +800,24 @@
 					<File
 						RelativePath="..\..\src\transporter\utilities\rtLog.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\utilities\rtLog.h"
@@ -530,6 +826,24 @@
 					<File
 						RelativePath="..\..\src\transporter\utilities\updateListener.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\utilities\updateListener.h"
@@ -538,6 +852,24 @@
 					<File
 						RelativePath="..\..\src\transporter\utilities\updateListenerMgr.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="2"
+								PrecompiledHeaderThrough="transporter.h"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\transporter\utilities\updateListenerMgr.h"
@@ -549,6 +881,24 @@
 						<File
 							RelativePath="..\..\src\transporter\utilities\XSS\XSS.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\transporter\utilities\XSS\XSS.h"
@@ -557,6 +907,24 @@
 						<File
 							RelativePath="..\..\src\transporter\utilities\XSS\XSSNode.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\transporter\utilities\XSS\XSSNode.h"
@@ -565,6 +933,24 @@
 						<File
 							RelativePath="..\..\src\transporter\utilities\XSS\XSSparse.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="2"
+									PrecompiledHeaderThrough="transporter.h"
+								/>
+							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\transporter\utilities\XSS\XSSparse.h"
@@ -579,6 +965,24 @@
 				<File
 					RelativePath="..\..\src\transporter\input\inputSystem.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\transporter\input\inputSystem.h"
@@ -591,6 +995,24 @@
 				<File
 					RelativePath="..\..\src\transporter\physics\physicsScene.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\transporter\physics\physicsScene.h"
@@ -599,6 +1021,24 @@
 				<File
 					RelativePath="..\..\src\transporter\physics\physicsSystem.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\transporter\physics\physicsSystem.h"
@@ -631,6 +1071,24 @@
 				<File
 					RelativePath="..\..\src\transporter\visual\visualLogListener.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\transporter\visual\visualLogListener.h"
@@ -639,6 +1097,24 @@
 				<File
 					RelativePath="..\..\src\transporter\visual\visualScene.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\transporter\visual\visualScene.h"
@@ -647,6 +1123,24 @@
 				<File
 					RelativePath="..\..\src\transporter\visual\visualSystem.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="2"
+							PrecompiledHeaderThrough="transporter.h"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\transporter\visual\visualSystem.h"

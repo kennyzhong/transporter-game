@@ -127,12 +127,27 @@ void InputSystem::resetMouseMovement()
 	ZeroMemory(msDeltaMovement,sizeof(i32)*3);
 }
 
+//————————————————————————————————————————————————————————————————————————————————————————
+
 void InputSystem::onKeyPress( void* userptr,u32 btn )
 {
 	InputSystem* self = (InputSystem*)userptr;
 	if(btn == DIK_F1)
 	{
 		self->game->bootScene.showLog(!self->game->bootScene.isLogVisible());
+	}
+	else if(btn == DIK_F2)
+	{
+		static bit isWireframe;
+		isWireframe = !isWireframe;
+		if(isWireframe)
+		{
+			self->game->visualSystem.getCamera()->setPolygonMode(Ogre::PM_WIREFRAME);
+		}
+		else
+		{
+			self->game->visualSystem.getCamera()->setPolygonMode(Ogre::PM_SOLID);
+		}
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————

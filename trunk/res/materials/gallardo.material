@@ -1,0 +1,295 @@
+
+material Material_#460/body
+{
+	technique
+	{
+		pass lighting
+		{	
+			vertex_program_ref specDiffCubeLighting_vs
+			{
+			}
+
+			fragment_program_ref specDiffCubeLighting_ps
+			{
+				param_named ambientClr float4 1.0 0.85 0.8 1.0
+				param_named diffFactor float  0.175
+				param_named specFactor float  20.0
+				param_named cubeFactor float  0.615
+				param_named specExp    float  75.0
+				param_named baseFactor float  0.575
+			}		
+
+			texture_unit
+			{
+				texture_alias cubeMap
+				cubic_texture stormy.jpg combinedUVW
+				tex_address_mode clamp
+			}			
+
+			texture_unit
+			{
+				texture_alias baseMap
+				texture GallardoBody-base.png
+			}
+
+			texture_unit
+			{
+				texture_alias specMap
+				texture GallardoBody-specular.png
+			}
+			
+			texture_unit
+			{
+				texture_alias diffMap
+				texture GallardoBody-diffuse.png
+			}					
+		}
+	}
+}
+
+material Material_#460/bodyNotReflecting
+{
+	technique
+	{
+		pass
+		{			
+			vertex_program_ref baseLighting_vs
+			{
+			}
+
+			fragment_program_ref baseLighting_ps
+			{
+				param_named ambientClr float4 1.0 0.9 0.8 1.0
+				param_named diffColor  float4 0.75 0.75 0.75 1.0
+				param_named specColor  float4 1.5 1.5 1.5 1.0
+				param_named specExp    float  15.0
+				param_named baseFactor float  0.75
+			}	
+
+			texture_unit
+			{
+				texture_alias baseMap
+				texture GallardoBody-base.png
+			}
+		}
+	}
+}
+
+material Material_#460/black_matte
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.0784314 0.0784314 0.0784314 
+			diffuse 0.0784314 0.0784314 0.0784314 
+			specular 0 0 0 1
+			emissive 0 0 0 
+		}
+	}
+}
+
+material Material_#460/glassrims
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			specular 0.135 0.135 0.135 1 1
+			cull_hardware none
+			cull_software none
+
+			texture_unit
+			{
+				texture GallardoGlass.png
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+material Material_#460/glassrims2
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			specular 0.315 0.315 0.315 1 20
+			cull_hardware none
+			cull_software none
+
+			texture_unit
+			{
+				texture GallardoGlass.png
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+material Material_#460/glass
+{
+	technique
+	{
+		pass
+		{
+			ambient  0.25 0.25 0.25 
+			diffuse  0.15 0.15 0.15 
+			specular 0.95 0.95 0.95 1.0 35
+			emissive 0.10 0.10 0.10
+			scene_blend alpha_blend
+			cull_hardware none
+			cull_software none
+
+			texture_unit
+			{
+				texture GallardoGlass.png
+				tex_address_mode clamp			
+			}
+			texture_unit
+			{
+				cubic_texture desert07.jpg separateUV
+				tex_address_mode clamp
+				env_map cubic_reflection
+				colour_op add
+			}
+		}
+	}
+}
+
+material Material_#460/glasslights
+{
+	technique
+	{
+		pass
+		{
+			ambient  0.25 0.25 0.25 0.5
+			diffuse  0.15 0.15 0.15 0.5
+			specular 0.95 0.95 0.95 0.5 35
+			emissive 0.10 0.10 0.10	0.5	
+			scene_blend alpha_blend
+			cull_hardware anticlockwise	
+			cull_software none
+			
+			texture_unit
+			{
+				texture_alias baseMap
+				texture GallardoHeadLight.png
+				tex_address_mode clamp						
+			}				
+			texture_unit
+			{
+				cubic_texture desert07.jpg separateUV
+				tex_address_mode clamp
+				env_map cubic_reflection
+				colour_op add
+			}			
+		}
+	}
+}
+
+material 1_-_Default/ogre_Tyre
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			specular 0.25 0.25 0.25 1 25
+
+			texture_unit
+			{
+				texture TyreRubber.png
+			}
+		}
+	}
+}
+
+material 1_-_Default/ogre_Alloy
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			specular 0.75 0.75 0.75 1.0 42
+
+			texture_unit
+			{
+				texture AluminumBrush.jpg
+			}
+		}
+	}
+}
+
+material TyreRimMaterial
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref cubeLighting_vs
+			{
+			}
+
+			fragment_program_ref cubeLighting_ps
+			{
+				param_named ambientClr float4 1.0 0.9 0.8 1.0
+				param_named diffColor  float4 0.5 0.5 0.5 1.0
+				param_named specColor  float4 1.0 1.0 1.0 1.0
+				param_named specExp    float  25.0
+				param_named specFactor float  7.5				
+				param_named cubeFactor float  0.9
+				param_named baseFactor float  0.1
+			}
+			
+			texture_unit
+			{
+				texture_alias baseMap
+				texture AluminumBrush.jpg
+			}			
+			texture_unit
+			{
+				texture_alias cubeMap
+				cubic_texture desert07.jpg combinedUVW
+			}		
+		}
+	}
+}
+
+material TyreRubberMaterial
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref normLighting_vs
+			{
+			}
+
+			fragment_program_ref normLighting_ps
+			{
+				param_named ambientClr float4 0.7 0.6 0.5 1.0
+				param_named diffColor  float4 0.15 0.15 0.15 1.0
+				param_named specColor  float4 1.5 1.5 1.0 1.5
+				param_named specExp    float  8.0
+				param_named baseFactor float  0.6
+			}
+			
+			texture_unit
+			{
+				texture_alias baseMap
+				texture TyreRubber.png
+			}			
+			texture_unit
+			{
+				texture_alias bumpMap
+				texture TyreRubber-normal.png
+				filtering anisotropic
+				max_anisotropy 32
+			}				
+		}
+	}
+}

@@ -6,6 +6,7 @@
  * 
  */
 
+
 #ifndef HK_CLASSES_FILE
 #	error Please define HK_CLASSES_FILE before including this file
 #endif

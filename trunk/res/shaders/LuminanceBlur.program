@@ -1,0 +1,27 @@
+vertex_program vp_LuminanceBlurVertVS11 hlsl
+{
+	source LuminanceBlurVertVS11.hlsl
+	target vs_1_1
+	entry_point main
+}
+
+fragment_program fp_LuminanceBlurVertPS20 hlsl
+{
+	source LuminanceBlurVertPS20.hlsl
+	target ps_2_0
+	entry_point main
+}
+
+vertex_program vp_LuminanceBlurHorzVS11 hlsl
+{
+	source LuminanceBlurHorzVS11.hlsl
+	target vs_1_1
+	entry_point main
+}
+
+fragment_program fp_LuminanceBlurHorzPS20 hlsl
+{
+	source LuminanceBlurHorzPS20.hlsl
+	target ps_2_0
+	entry_point main
+}

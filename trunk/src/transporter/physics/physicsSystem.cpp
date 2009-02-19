@@ -7,7 +7,7 @@ PhysicsSystem::PhysicsSystem()
 	physicsThread = NULL;
 	physicsThreadSignal = NULL;
 	scene = NULL;
-	game = NULL;
+	game = NULL;	
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -96,6 +96,7 @@ DWORD WINAPI PhysicsSystem::physicsThreadProc( LPVOID params )
 			This->scene->getWorld()->lock();
 			This->scene->getWorld()->stepDeltaTime((f32)This->lastTimeElapsedMs/1000.0f);
 			This->scene->getWorld()->unlock();
+			This->scene->getDebugger()->step(This->lastTimeElapsedMs);
 			currentFrame++;
 			u64 lasttick = tick.QuadPart;
 			u32 frameleft = framePerSecond - currentFrame;

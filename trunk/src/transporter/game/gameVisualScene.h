@@ -4,8 +4,7 @@
 
 class GameVisualScene : public VisualScene
 {
-protected : Ogre::TextAreaOverlayElement* debugTextOverlay;
-			
+protected : Ogre::TextAreaOverlayElement* debugTextOverlay;		
 public    : GameVisualScene();
 			virtual ~GameVisualScene();
 

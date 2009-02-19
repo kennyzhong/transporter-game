@@ -1,0 +1,12 @@
+loadingScreen
+{
+	container Panel(loadingScreenPanel)
+	{
+		metrics_mode relative
+		left 0 
+		top 0
+		width 1.0
+		height 1.0
+		material loadingScreenMaterial
+	}
+}

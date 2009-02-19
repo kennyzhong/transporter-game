@@ -1,0 +1,67 @@
+material asphalt
+{
+	technique
+	{
+		pass lighting
+		{	
+			vertex_program_ref perPixelLighting_vs
+			{
+			}
+
+			fragment_program_ref perPixelLighting_ps
+			{
+				param_named ambientClr float4 1.0 0.95 0.85 1.0
+				param_named diffFactor float  1.5
+				param_named specFactor float  2.75
+				param_named specExp    float  9.0
+				param_named baseFactor float  0.75		
+			}						
+
+			texture_unit
+			{
+				texture_alias baseMap
+				texture asphalt3-base.jpg
+				filtering anisotropic
+				max_anisotropy 32
+			}
+
+			texture_unit
+			{
+				texture_alias specMap
+				texture asphalt3-spec.jpg
+			}
+			
+			texture_unit
+			{
+				texture_alias diffMap
+				texture asphalt3-diffuse.jpg
+			}
+			
+			texture_unit
+			{
+				texture_alias bumpMap
+				texture asphalt3-normal.jpg
+				filtering anisotropic
+				max_anisotropy 32
+			}		
+		}
+		pass receiveShadow
+        {
+			ambient 0 0 0 
+			iteration once_per_light 
+			scene_blend modulate
+			vertex_program_ref depthShadowMapReceiverVP
+            {
+            }
+            fragment_program_ref depthShadowMapReceiverFP
+            {
+            }
+            texture_unit ShadowMap
+            {
+				content_type shadow
+                tex_address_mode clamp
+                filtering bilinear bilinear bilinear
+            }
+        }	
+	}
+} 

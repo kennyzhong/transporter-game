@@ -1,0 +1,9 @@
+crispFont
+{
+	type 		truetype
+	source 		Crisp.ttf
+	size 		18
+	resolution 	96
+}
+
+

@@ -1,5 +1,6 @@
 #ifndef TRANSPORTER_H
 #define TRANSPORTER_H
+#define _WIN32_WINNT 0x0501
 #include <windows.h>
 
 #include <stdio.h>
@@ -22,16 +23,11 @@
 #include "math/HMath.h"
 
 #include "ogre/Ogre.h"
-//#include "ogre/openGLRenderSystem/OgreGLRenderSystem.h"
-//#include "ogre/ogreOctreeSceneMgr/OgreOctreeSceneManager.h"
-//#include "ogre/openGLRenderSystem/OgreGLPlugin.h"
-//#include "ogre/ogreOctreeSceneMgr/OgreOctreePlugin.h"
-//#include "ogre/DXRenderSystem/OgreD3D9Plugin.h"
-//#include "ogre/cgProgram/OgreCgPlugin.h"
 #include "ogre/OgreOverlay.h"
 #include "ogre/OgreTextAreaOverlayElement.h"
 #include "ogre/OgrePanelOverlayElement.h"
 #include "input/InputEngine.h"
+
 #include "physics/Common/Base/hkBase.h"
 #include "physics/Common/Base/Types/Geometry/hkGeometry.h"
 #include "physics/Common/Base/System/Error/hkDefaultError.h"
@@ -49,11 +45,23 @@
 #include "physics/Physics/Collide/Dispatch/hkpAgentRegisterUtil.h"
 #include "physics/Physics/Collide/Filter/Group/hkpGroupFilter.h"
 #include "physics/Physics/Collide/Shape/Convex/ConvexVertices/hkpConvexVerticesShape.h"
+#include "physics/Physics/Collide/Shape/Convex/Box/hkpBoxShape.h"
 #include "physics/Physics/Internal/hkpInternal.h"
 #include "physics/Physics/Vehicle/hkpVehicle.h"
 #include "physics/Physics/Utilities/Actions/Reorient/hkpReorientAction.h"
 #include "physics/Physics/Vehicle/hkpVehicleInstance.h"
 #include "physics/Internal/PreProcess/ConvexHull/hkpGeometryUtility.h"
+#include "physics/Common/Visualize/hkVisualDebugger.h"
+#include "physics/Utilities/VisualDebugger/hkpPhysicsContext.h"
+
+extern void getMeshInformation(const Ogre::Mesh* const mesh,
+						size_t &vertex_count,
+						Ogre::Vector3* &vertices,
+						size_t &index_count,
+						unsigned long* &indices,
+						const Ogre::Vector3 &position,
+						const Ogre::Quaternion &orient,
+						const Ogre::Vector3 &scale);
 
 class Game;
 class VisualScene;
@@ -88,6 +96,9 @@ class VisualSystem;
 #include "transporter/input/inputSystem.h"
 #include "transporter/game/gameEntity.h"
 #include "transporter/game/surface.h"
+#include "transporter/game/RoadBarrier.h"
+#include "transporter/game/Crate.h"
+#include "transporter/game/Bridge.h"
 #include "transporter/game/carInstruments.h"
 #include "transporter/game/carSteering.h"
 #include "transporter/game/carTyreEntity.h"

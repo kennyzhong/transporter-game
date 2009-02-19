@@ -1,0 +1,18 @@
+vertex_program HLSL/Ocean2VS hlsl
+{
+	source ocean.hlsl
+	entry_point main_vs
+	target vs_1_1
+	default_params
+	{
+		param_named_auto WorldViewProj worldviewproj_matrix
+		param_named_auto eyePosition camera_position_object_space
+	}
+}
+
+fragment_program HLSL/Ocean2FS hlsl
+{
+	source ocean.hlsl
+	entry_point main_ps
+	target ps_2_0
+}

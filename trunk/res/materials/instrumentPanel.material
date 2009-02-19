@@ -1,0 +1,51 @@
+material instrumentPanelMaterial
+{
+	technique
+	{
+		pass
+		{
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture InstGaugeBackground.png
+				filtering none none none
+			}
+		}
+	}
+}
+
+material tachoMeterGaugelMaterial
+{
+	technique
+	{
+		pass
+		{
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture tachoMeterGauge.png
+				tex_address_mode clamp
+				filtering anisotropic
+				max_anisotropy 32
+			}
+		}
+	}
+}
+
+material speedoMeterGaugelMaterial
+{
+	technique
+	{
+		pass
+		{
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture speedoMeterGauge.png
+				tex_address_mode clamp
+				filtering anisotropic
+				max_anisotropy 32
+			}
+		}
+	}
+}

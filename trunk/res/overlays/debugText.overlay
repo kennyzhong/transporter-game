@@ -1,0 +1,31 @@
+debugText
+{
+	container Panel(debugTextPanel)
+	{
+		metrics_mode pixels
+		left 0 
+		top 0
+		width 400
+		height 600
+		//material debugTextMaterial
+		
+		element TextArea(debugTextArea)
+		{
+			metrics_mode pixels
+			left 4
+			top 4
+			width 480
+			height 600
+			font_name crispFont
+			char_height 14
+			caption debugText
+			colour_top 0.2 0.15 0.1
+			colour_bottom 0.0 0.0 0.0
+		}		
+	}
+}
+
+
+
+
+

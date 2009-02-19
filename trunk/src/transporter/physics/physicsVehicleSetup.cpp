@@ -130,7 +130,7 @@ void VehicleSetup::setupVehicleData( hkpWorld* world, hkpVehicleData& data )
 	// Adds or removes torque around the yaw axis 
 	// based on the current steering angle.  This will 
 	// affect steering.
-	data.m_extraTorqueFactor = -0.5f; 
+	data.m_extraTorqueFactor = -1.5f; 
 	data.m_maxVelocityForPositionalFriction = 0.0f; 
 
 	//
@@ -145,10 +145,10 @@ void VehicleSetup::setupVehicleData( hkpWorld* world, hkpVehicleData& data )
 	data.m_wheelParams[2].m_axle = 1;
 	data.m_wheelParams[3].m_axle = 1;
 
-	data.m_wheelParams[0].m_friction = 1.5f;
-	data.m_wheelParams[1].m_friction = 1.5f;
-	data.m_wheelParams[2].m_friction = 1.5f;
-	data.m_wheelParams[3].m_friction = 1.5f;
+	data.m_wheelParams[0].m_friction = 2.5f;
+	data.m_wheelParams[1].m_friction = 2.5f;
+	data.m_wheelParams[2].m_friction = 2.5f;
+	data.m_wheelParams[3].m_friction = 2.5f;
 
 	data.m_wheelParams[0].m_slipAngle = 0.0f;
 	data.m_wheelParams[1].m_slipAngle = 0.0f;
@@ -158,7 +158,7 @@ void VehicleSetup::setupVehicleData( hkpWorld* world, hkpVehicleData& data )
 	for ( int i = 0 ; i < data.m_numWheels ; i++ )
 	{
 		// This value is also used to calculate the m_primaryTransmissionRatio.
-		data.m_wheelParams[i].m_radius = 0.36f;
+		data.m_wheelParams[i].m_radius = 0.35f;
 		data.m_wheelParams[i].m_width = 0.32f;
 		data.m_wheelParams[i].m_mass = 10.0f;
 
@@ -185,15 +185,15 @@ void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefault
 	steering.m_doesWheelSteer.setSize( data.m_numWheels );
 
 	// degrees
-	steering.m_maxSteeringAngle = 37 * ( HK_REAL_PI / 180 );
+	steering.m_maxSteeringAngle = 40 * ( HK_REAL_PI / 180 );
 
 	// [mph/h] The steering angle decreases linearly 
 	// based on your overall max speed of the vehicle. 
-	steering.m_maxSpeedFullSteeringAngle = 80.0f * (1.605f / 3.6f);
-	steering.m_doesWheelSteer[0] = true;
-	steering.m_doesWheelSteer[1] = true;
-	steering.m_doesWheelSteer[2] = false;
-	steering.m_doesWheelSteer[3] = false;
+	steering.m_maxSpeedFullSteeringAngle = 75.0f * (1.605f / 3.6f);
+	steering.m_doesWheelSteer[0] = false;
+	steering.m_doesWheelSteer[1] = false;
+	steering.m_doesWheelSteer[2] = true;
+	steering.m_doesWheelSteer[3] = true;
 }
 
 void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefaultEngine& engine )
@@ -239,7 +239,7 @@ void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefault
 	transmission.m_wheelsTorqueRatio[3] = 0.3f;
 
 	const hkReal vehicleTopSpeed = 300.0f; 	 
-	const hkReal wheelRadius = 0.36f;
+	const hkReal wheelRadius = 0.35f;
 	const hkReal maxEngineRpm = 9000.0f;
 	transmission.m_primaryTransmissionRatio = 1.75;//hkpVehicleDefaultTransmission::calculatePrimaryTransmissionRatio( vehicleTopSpeed,
 												//																wheelRadius,
@@ -285,7 +285,7 @@ void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefault
 	suspension.m_wheelSpringParams[2].m_strength = str;
 	suspension.m_wheelSpringParams[3].m_strength = str;
 
-	const float wd = 3.0f; 
+	const float wd = 2.5f; 
 	suspension.m_wheelSpringParams[0].m_dampingCompression = wd;
 	suspension.m_wheelSpringParams[1].m_dampingCompression = wd;
 	suspension.m_wheelSpringParams[2].m_dampingCompression = wd;
@@ -303,7 +303,7 @@ void VehicleSetup::setupComponent( const hkpVehicleData& data, hkpVehicleDefault
 		const hkReal hardPointFrontX = 1.3f;
 		const hkReal hardPointBackX = -1.1f;
 		const hkReal hardPointY = -0.05f;//-0.05f;
-		const hkReal hardPointZ = 1.1f;
+		const hkReal hardPointZ = 0.925f;
 
 		suspension.m_wheelParams[0].m_hardpointChassisSpace.set ( hardPointFrontX, hardPointY, -hardPointZ); 
 		suspension.m_wheelParams[1].m_hardpointChassisSpace.set ( hardPointFrontX, hardPointY,  hardPointZ); 

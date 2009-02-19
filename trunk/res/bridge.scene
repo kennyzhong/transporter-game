@@ -1,0 +1,918 @@
+<scene formatVersion="1.0" upAxis="y" unitsPerMeter="1" minOgreVersion="1.4" author="OgreMax Scene Exporter by Derek Nedelman (www.ogremax.com)">
+    <environment>
+        <colourAmbient r="0" g="0" b="0" />
+        <colourBackground r="0" g="0" b="0" />
+    </environment>
+    <nodes>
+        <node name="NorthIsland">
+            <scale x="1" y="1" z="1" />
+            <position x="-57.6726" y="-94.3464" z="-918.976" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthIsland" id="418" meshFile="NorthIsland.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeIslandMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthIsland">
+            <scale x="1" y="1" z="1" />
+            <position x="-57.6726" y="-94.3464" z="952.714" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthIsland" id="419" meshFile="SouthIsland.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeIslandMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line76">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8245" y="-13.4304" z="-29.9465" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line76" id="379" meshFile="Line76.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line74">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8245" y="-9.44093" z="-94.0097" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line74" id="377" meshFile="Line74.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line71">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8245" y="-3.9501" z="-160.152" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line71" id="374" meshFile="Line71.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line68">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8245" y="9.20819" z="-258.205" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line68" id="371" meshFile="Line68.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line66">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8246" y="21.1886" z="-321.652" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line66" id="369" meshFile="Line66.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line65">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8246" y="36.2154" z="-386.543" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line65" id="368" meshFile="Line65.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line64">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8246" y="54.3408" z="-449.256" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line64" id="367" meshFile="Line64.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line30">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="-13.4304" z="-29.9465" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line30" id="347" meshFile="Line30.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line28">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="-9.44093" z="-94.0097" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line28" id="345" meshFile="Line28.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line26">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="-3.9501" z="-160.152" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line26" id="342" meshFile="Line26.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line23">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="9.20819" z="-258.205" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line23" id="339" meshFile="Line23.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line21">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="21.1886" z="-321.652" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line21" id="337" meshFile="Line21.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line19">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="36.2154" z="-386.543" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line19" id="335" meshFile="Line19.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line11">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="54.3408" z="-449.256" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line11" id="334" meshFile="Line11.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="BarrierLeft">
+            <scale x="1" y="1" z="1" />
+            <position x="-10.8955" y="-23.7755" z="17.7291" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="BarrierLeft" id="415" meshFile="BarrierLeft.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeBarrierMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="BarrierRight">
+            <scale x="1" y="1" z="1" />
+            <position x="13.0344" y="-23.7909" z="17.7291" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="BarrierRight" id="414" meshFile="BarrierRight.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeBarrierMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="RoadBase7">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-29.9113" z="-951.67" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RoadBase7" id="411" meshFile="RoadBase7.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeConcrete" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Road7">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-22.1798" z="-951.67" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Road7" id="410" meshFile="Road7.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeRoadMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line45">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="-11.5355" z="100.068" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line45" id="393" meshFile="Line45.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line43">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="-0.237206" z="229.241" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line43" id="391" meshFile="Line43.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line42">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="-8.10019" z="163.304" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line42" id="390" meshFile="Line42.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line38">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="9.20816" z="294.517" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line38" id="386" meshFile="Line38.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line36">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="21.1886" z="357.964" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line36" id="384" meshFile="Line36.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line34">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="36.2154" z="422.855" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line34" id="382" meshFile="Line34.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line33">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="54.3408" z="485.569" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line33" id="381" meshFile="Line33.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line32">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.8355" y="-12.9111" z="32.9578" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line32" id="380" meshFile="Line32.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="MiddleLeftMainCable">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.6185" y="872.278" z="16.5902" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="MiddleLeftMainCable" id="331" meshFile="MiddleLeftMainCable.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="MiddleRightMainCable">
+            <scale x="1" y="1" z="1" />
+            <position x="15.0043" y="872.278" z="16.5902" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="MiddleRightMainCable" id="330" meshFile="MiddleRightMainCable.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Road2">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-22.1798" z="664.276" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Road2" id="81" meshFile="Road2.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeRoadMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthStructure">
+            <scale x="1" y="1" z="1" />
+            <position x="-33.9961" y="-67.5836" z="927.86" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthStructure" id="78" meshFile="SouthStructure.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="RoadBase1">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-29.9113" z="987.486" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RoadBase1" id="77" meshFile="RoadBase1.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeConcrete" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="RoadBase2">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-29.9113" z="663.818" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RoadBase2" id="74" meshFile="RoadBase2.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeConcrete" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthColumnLeftFront">
+            <scale x="1" y="1" z="1" />
+            <position x="-16.8817" y="-122.031" z="815.781" />
+            <rotation qx="0" qy="-8.74228e-008" qz="0" qw="1" />
+            <entity name="SouthColumnLeftFront" id="71" meshFile="SouthColumnLeftFront.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeColumnMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthColumnRightFront">
+            <scale x="1" y="1" z="1" />
+            <position x="19.0129" y="-122.031" z="815.781" />
+            <rotation qx="-8.74228e-008" qy="-8.74228e-008" qz="-7.64274e-015" qw="1" />
+            <entity name="SouthColumnRightFront" id="70" meshFile="SouthColumnRightFront.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeColumnMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthColumnRightRear">
+            <scale x="1" y="1" z="1" />
+            <position x="19.0129" y="-122.031" z="965.755" />
+            <rotation qx="-8.74228e-008" qy="-8.74228e-008" qz="-7.64274e-015" qw="1" />
+            <entity name="SouthColumnRightRear" id="69" meshFile="SouthColumnRightRear.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeColumnMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthColumnLeftRear">
+            <scale x="1" y="1" z="1" />
+            <position x="-16.8817" y="-122.031" z="965.755" />
+            <rotation qx="0" qy="-8.74228e-008" qz="0" qw="1" />
+            <entity name="SouthColumnLeftRear" id="68" meshFile="SouthColumnLeftRear.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeColumnMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthTowerBar5Inside">
+            <scale x="1" y="1" z="1" />
+            <position x="-0.0423242" y="105.587" z="503.241" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthTowerBar5Inside" id="65" meshFile="SouthTowerBar5Inside.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthTowerBar6Inside">
+            <scale x="1" y="1" z="1" />
+            <position x="-0.0423242" y="145.863" z="503.241" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthTowerBar6Inside" id="64" meshFile="SouthTowerBar6Inside.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthTowerBar3Inside">
+            <scale x="1" y="1" z="1" />
+            <position x="-0.0423242" y="29.0416" z="503.241" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthTowerBar3Inside" id="62" meshFile="SouthTowerBar3Inside.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthTowerBar6">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20961" y="147.51" z="501.548" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthTowerBar6" id="61" meshFile="SouthTowerBar6.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthTowerBar5">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20961" y="106.731" z="501.548" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthTowerBar5" id="60" meshFile="SouthTowerBar5.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthTowerBar3">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20961" y="32.0648" z="501.548" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthTowerBar3" id="58" meshFile="SouthTowerBar3.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthTowerBar2">
+            <scale x="1" y="1" z="1" />
+            <position x="1.32332" y="-36.0118" z="502.212" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthTowerBar2" id="57" meshFile="SouthTowerBar2.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthRightTower">
+            <scale x="1" y="1" z="1" />
+            <position x="14.5168" y="-90.5743" z="503.136" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthRightTower" id="50" meshFile="SouthRightTower.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthLeftTower">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.1081" y="-90.5743" z="503.136" />
+            <rotation qx="-8.74228e-008" qy="0" qz="0" qw="1" />
+            <entity name="SouthLeftTower" id="48" meshFile="SouthLeftTower.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthFoundation">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20435" y="-115.691" z="503.075" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthFoundation" id="47" meshFile="SouthFoundation.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeFoundationMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthBase">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20435" y="-122.031" z="503.031" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthBase" id="46" meshFile="SouthBase.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeFoundationMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="RoadBase3">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-29.9114" z="341.634" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RoadBase3" id="44" meshFile="RoadBase3.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeConcrete" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Road3">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-22.1798" z="341.176" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Road3" id="43" meshFile="Road3.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeRoadMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="RoadBase4">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-29.9114" z="18.4492" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RoadBase4" id="41" meshFile="RoadBase4.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeConcrete" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Road4">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-22.1798" z="17.9908" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Road4" id="40" meshFile="Road4.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeRoadMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Road5">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-22.1798" z="-305.219" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Road5" id="36" meshFile="Road5.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeRoadMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="RoadBase5">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-29.9114" z="-305.219" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RoadBase5" id="35" meshFile="RoadBase5.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeConcrete" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Road6">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-22.1798" z="-628.46" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Road6" id="33" meshFile="Road6.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeRoadMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthStructure">
+            <scale x="1" y="1" z="1" />
+            <position x="-33.9961" y="-67.5836" z="-892.044" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthStructure" id="31" meshFile="NorthStructure.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthColumnRightFront">
+            <scale x="1" y="1" z="1" />
+            <position x="19.0129" y="-122.031" z="-929.939" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthColumnRightFront" id="30" meshFile="NorthColumnRightFront.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeColumnMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthColumnLeftFront">
+            <scale x="1" y="1" z="1" />
+            <position x="-16.8817" y="-122.031" z="-929.939" />
+            <rotation qx="-8.74228e-008" qy="0" qz="0" qw="1" />
+            <entity name="NorthColumnLeftFront" id="29" meshFile="NorthColumnLeftFront.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeColumnMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthColumnLeftRear">
+            <scale x="1" y="1" z="1" />
+            <position x="-16.8817" y="-122.031" z="-779.965" />
+            <rotation qx="-8.74228e-008" qy="0" qz="0" qw="1" />
+            <entity name="NorthColumnLeftRear" id="28" meshFile="NorthColumnLeftRear.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeColumnMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthColumnRightRear">
+            <scale x="1" y="1" z="1" />
+            <position x="19.0129" y="-122.031" z="-779.965" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthColumnRightRear" id="27" meshFile="NorthColumnRightRear.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeColumnMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="RoadBase6">
+            <scale x="1" y="1" z="1" />
+            <position x="15.4112" y="-29.9113" z="-628.002" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RoadBase6" id="24" meshFile="RoadBase6.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeConcrete" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthTowerBar5Inside">
+            <scale x="1" y="1" z="1" />
+            <position x="-0.0423242" y="105.587" z="-466.523" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthTowerBar5Inside" id="21" meshFile="NorthTowerBar5Inside.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthTowerBar6Inside">
+            <scale x="1" y="1" z="1" />
+            <position x="-0.0423242" y="145.863" z="-466.523" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthTowerBar6Inside" id="20" meshFile="NorthTowerBar6Inside.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthTowerBar3Inside">
+            <scale x="1" y="1" z="1" />
+            <position x="-0.0423242" y="29.0416" z="-466.523" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthTowerBar3Inside" id="18" meshFile="NorthTowerBar3Inside.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthTowerBar6">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20961" y="147.51" z="-468.216" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthTowerBar6" id="17" meshFile="NorthTowerBar6.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthTowerBar5">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20961" y="106.731" z="-468.216" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthTowerBar5" id="16" meshFile="NorthTowerBar5.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthTowerBar3">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20961" y="32.0648" z="-468.216" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthTowerBar3" id="14" meshFile="NorthTowerBar3.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthTowerBar2">
+            <scale x="1" y="1" z="1" />
+            <position x="1.32332" y="-36.0118" z="-467.552" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthTowerBar2" id="13" meshFile="NorthTowerBar2.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthRightTower">
+            <scale x="1" y="1" z="1" />
+            <position x="14.5168" y="-90.5743" z="-466.628" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthRightTower" id="6" meshFile="NorthRightTower.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthLeftTower">
+            <scale x="1" y="1" z="1" />
+            <position x="-12.1081" y="-90.5743" z="-466.628" />
+            <rotation qx="-8.74228e-008" qy="0" qz="0" qw="1" />
+            <entity name="NorthLeftTower" id="4" meshFile="NorthLeftTower.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthFoundation">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20435" y="-115.691" z="-466.688" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthFoundation" id="3" meshFile="NorthFoundation.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeFoundationMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthBase">
+            <scale x="1" y="1" z="1" />
+            <position x="1.20435" y="-122.031" z="-466.732" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthBase" id="2" meshFile="NorthBase.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeFoundationMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line60">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8246" y="-11.5355" z="100.069" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line60" id="362" meshFile="Line60.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line58">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8245" y="-0.237194" z="229.241" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line58" id="360" meshFile="Line58.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line57">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8246" y="-8.10019" z="163.304" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line57" id="359" meshFile="Line57.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line53">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8245" y="9.20818" z="294.517" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line53" id="355" meshFile="Line53.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line51">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8245" y="21.1886" z="357.964" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line51" id="353" meshFile="Line51.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line49">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8245" y="36.2154" z="422.855" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line49" id="351" meshFile="Line49.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line48">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8245" y="54.3407" z="485.568" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line48" id="350" meshFile="Line48.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line47">
+            <scale x="1" y="1" z="1" />
+            <position x="14.8246" y="-12.9111" z="32.9579" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line47" id="349" meshFile="Line47.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line88">
+            <scale x="1" y="1" z="1" />
+            <position x="22.8871" y="52.47" z="518.506" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line88" id="408" meshFile="Line88.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthRightMainCable">
+            <scale x="1" y="1" z="1" />
+            <position x="15.7932" y="610.738" z="909.801" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthRightMainCable" id="407" meshFile="SouthRightMainCable.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SouthLeftMainCable">
+            <scale x="1" y="1" z="1" />
+            <position x="-13.018" y="610.738" z="909.801" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="SouthLeftMainCable" id="405" meshFile="SouthLeftMainCable.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line87">
+            <scale x="1" y="1" z="1" />
+            <position x="-5.92408" y="52.47" z="518.506" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line87" id="404" meshFile="Line87.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line85">
+            <scale x="1" y="1" z="1" />
+            <position x="-5.9241" y="51.2481" z="-480.577" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line85" id="398" meshFile="Line85.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeRoadMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthLeftMainCable">
+            <scale x="1" y="1" z="1" />
+            <position x="-13.0179" y="609.517" z="-871.872" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthLeftMainCable" id="397" meshFile="NorthLeftMainCable.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Line86">
+            <scale x="1" y="1" z="1" />
+            <position x="22.8871" y="51.2481" z="-480.577" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Line86" id="401" meshFile="Line86.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMetal_Grey_Plain" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NorthRightMainCable">
+            <scale x="1" y="1" z="1" />
+            <position x="15.7933" y="609.517" z="-871.872" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NorthRightMainCable" id="400" meshFile="NorthRightMainCable.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeMaterial#27" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Water">
+            <scale x="1" y="1" z="1" />
+            <position x="2.76661" y="-120.741" z="18.4978" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Water" id="422" meshFile="Water.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeWaterMat" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Road">
+            <scale x="1" y="1" z="1" />
+            <position x="1.0542" y="-24.5548" z="987.466" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="Road" id="451" meshFile="Road.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="BridgeBridgeRoadMat" />
+                </subentities>
+            </entity>
+        </node>
+    </nodes>
+</scene>

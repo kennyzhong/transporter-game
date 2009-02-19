@@ -1,0 +1,21 @@
+
+material tyre
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			specular 0.72 0.72 0.72 1 42
+
+			texture_unit
+			{
+				texture_alias Map #0
+				texture Texture.tga
+			}
+		}
+
+	}
+
+}
+

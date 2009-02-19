@@ -1,0 +1,24 @@
+vertex_program depthShadowMapCasterVP hlsl
+{
+    source depthShadowMapCasterVS20.hlsl
+    entry_point depthShadowMapCasterVPMain
+    target vs_2_0
+
+    default_params
+    {
+        param_named_auto worldViewProj worldviewproj_matrix
+		param_named_auto texelOffsets texel_offsets
+    }
+}
+
+
+fragment_program depthShadowMapCasterFP hlsl
+{
+    source depthShadowMapCasterPS20.hlsl
+    entry_point depthShadowMapCasterFPMain
+    target ps_2_0
+
+    default_params
+    {
+    }
+}

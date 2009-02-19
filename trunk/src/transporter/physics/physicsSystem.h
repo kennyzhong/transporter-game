@@ -11,7 +11,7 @@ protected : void cleanUp();
 			bit isPhysicsRunning;
 			bit isPhysicsInited;
 			u32 lastTimeElapsedMs;
-			PhysicsScene* scene;
+			PhysicsScene* scene;						
 			Game* game;
 public    : PhysicsSystem();
 			~PhysicsSystem();

@@ -51,3 +51,30 @@ Game* GameEntity::getGame()
 {
 	return game;
 }
+
+//————————————————————————————————————————————————————————————————————————————————————————
+
+void GameEntity::update( u32 evId,u32 param )
+{
+	if(isEntityInited)
+	{
+		if(evId == EV_UPDATE_PHYSICS_FORCE)
+		{
+			updatePhysics(param);
+		}
+		else if(evId == EV_UPDATE_VISUAL_ENTITIES)
+		{
+			updateVisual();
+		}
+	}
+}
+
+void GameEntity::updatePhysics( u32 timeElapse )
+{
+
+}
+
+void GameEntity::updateVisual()
+{
+
+}
