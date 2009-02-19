@@ -1,0 +1,15 @@
+material depthShadowMapCasterMaterial
+{
+    technique
+    {
+        pass 
+        {
+            vertex_program_ref depthShadowMapCasterVP
+            {
+            }
+            fragment_program_ref depthShadowMapCasterFP
+            {
+            }
+        }
+    }
+}

@@ -24,12 +24,12 @@ protected : Surface* surface;
 			CarSteering steeringInput;
 			CarInstruments instruments;
 			CarDebugInfo debugInfo;
+			Ogre::Entity* physicsShape;
 			hkpVehicleTransmission::TransmissionOutput transmissionOutput;
-			void updatePhysics(u32 timeElapse);
-			void updateVisual();
+			virtual void updatePhysics(u32 timeElapse);
+			virtual void updateVisual();
 public    : CarEntity(Surface* surface);
 			~CarEntity();
 			virtual bit init(str name);
-			virtual void update(u32 evId,u32 param);
 };
 #endif

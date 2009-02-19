@@ -1,0 +1,29 @@
+vertex_program perPixelLighting_vs hlsl 
+{ 
+	source perPixelLightingVS20.hlsl
+	entry_point perPixelLightingVS
+	target vs_2_0 
+	
+	default_params
+	{
+		param_named_auto matViewProjection worldviewproj_matrix
+		param_named_auto fvLightPosition   light_position_object_space  0
+		param_named_auto fvEyePosition     camera_position_object_space 
+	}
+} 
+
+fragment_program perPixelLighting_ps hlsl 
+{ 
+	source perPixelLightingPS20.hlsl
+	entry_point perPixelLightingPS
+	target ps_2_0 
+
+	default_params
+	{
+		param_named ambientClr float4 1.0 0.9 0.8 1.0
+		param_named diffFactor float  1.5
+		param_named specFactor float  4.0
+		param_named specExp    float  3.0
+		param_named baseFactor float  0.95
+	}
+}

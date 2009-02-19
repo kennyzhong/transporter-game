@@ -1,0 +1,47 @@
+material barrier
+{
+	technique
+	{
+		pass lighting
+		{				
+			vertex_program_ref perPixelLighting_vs
+			{
+			}
+
+			fragment_program_ref perPixelLighting_ps
+			{
+				param_named ambientClr float4 0.9 0.75 0.5 1.0
+				param_named diffFactor float  0.65
+				param_named specFactor float  2.5
+				param_named specExp    float  5.0
+				param_named baseFactor float  0.35
+			}					
+
+			texture_unit
+			{
+				texture_alias baseMap
+				texture barrier-color.jpg
+				filtering anisotropic
+				max_anisotropy 32
+			}
+
+			texture_unit
+			{
+				texture_alias specMap
+				texture barrier-spec.png
+			}
+			
+			texture_unit
+			{
+				texture_alias diffMap
+				texture barrier-diffuse.png
+			}
+			
+			texture_unit
+			{
+				texture_alias bumpMap
+				texture barrier-normal.png
+			}		
+		}
+	}
+} 

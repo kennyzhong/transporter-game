@@ -1,0 +1,38 @@
+instrumentsOverlay
+{
+	container Panel(instrumentsOverlayPanel)
+	{
+		metrics_mode pixels
+		left 0
+		top 0
+		width 512
+		height 512
+		material instrumentPanelMaterial
+	}
+}
+
+tachometerOverlay
+{
+	container Panel(tachoMeterGaugePanel)
+	{
+		metrics_mode pixels
+		left 0
+		top 0
+		width 256
+		height 256
+		material tachoMeterGaugelMaterial
+	}
+}
+
+speedometerOverlay
+{
+	container Panel(speedoMeterGaugePanel)
+	{
+		metrics_mode pixels
+		left 0
+		top 0
+		width 256
+		height 256
+		material speedoMeterGaugelMaterial
+	}
+}

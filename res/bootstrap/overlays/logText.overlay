@@ -1,0 +1,30 @@
+logText
+{
+	container Panel(logTextPanel)
+	{
+		metrics_mode relative
+		left   0.0 
+		top    0.50
+		width  1.0
+		height 0.50
+		//material logTextMaterial
+		
+		element TextArea(logTextArea)
+		{
+			metrics_mode pixels
+			left  5
+			top   5
+
+			font_name boot/crispFont
+			char_height 14
+			caption debugText
+			colour_top    1.0 1.0 1.0
+			colour_bottom 1.0 1.0 1.0
+		}		
+	}
+}
+
+
+
+
+

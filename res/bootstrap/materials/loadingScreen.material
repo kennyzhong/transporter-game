@@ -1,0 +1,14 @@
+material loadingScreenMaterial
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture LoadingScreen.png
+				filtering none none none
+			}
+		}
+	}
+}

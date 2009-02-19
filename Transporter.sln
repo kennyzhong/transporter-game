@@ -2,10 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Transporter", "prj\Transporter\Transporter.vcproj", "{18715CD3-57A7-48A7-A961-A0D825425EF9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A0D63A5E-4993-4F88-B616-B9A48BFB04BC} = {A0D63A5E-4993-4F88-B616-B9A48BFB04BC}
-		{8F670F3E-530F-4F06-A565-7BC623256D83} = {8F670F3E-530F-4F06-A565-7BC623256D83}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogre", "prj\ogre\ogre.vcproj", "{A0D63A5E-4993-4F88-B616-B9A48BFB04BC}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -69,28 +65,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "engines", "engines", "{B1F2B8E2-6839-4F0B-AC42-D88ABBC3393A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogreGLRenderSystem", "prj\ogreGLRenderSystem\ogreGLRenderSystem.vcproj", "{5D902FE7-975B-4B27-BB19-54476A2B6708}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A0D63A5E-4993-4F88-B616-B9A48BFB04BC} = {A0D63A5E-4993-4F88-B616-B9A48BFB04BC}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogreCGProgram", "prj\ogreCGProgram\ogreCGProgram.vcproj", "{F635EF0C-CDE9-4A90-AC09-5150488E0A98}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A0D63A5E-4993-4F88-B616-B9A48BFB04BC} = {A0D63A5E-4993-4F88-B616-B9A48BFB04BC}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogreDXRenderSystem", "prj\ogreDXRenderSystem\ogreDXRenderSystem.vs8.vcproj", "{30925B57-BC60-4115-9FE5-A90BA2BDF131}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A0D63A5E-4993-4F88-B616-B9A48BFB04BC} = {A0D63A5E-4993-4F88-B616-B9A48BFB04BC}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mtInput", "prj\mtInput\mtInput.vs8.vcproj", "{8F670F3E-530F-4F06-A565-7BC623256D83}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugins", "plugins", "{8A2022F6-0512-4D1C-A3CB-2ACC054F1177}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogreOctreeSceneMgr", "prj\ogreOctreeSceneMgr\ogreOctreeSceneMgr.vcproj", "{F4F1B3F2-7982-458B-A113-98982D219B35}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A0D63A5E-4993-4F88-B616-B9A48BFB04BC} = {A0D63A5E-4993-4F88-B616-B9A48BFB04BC}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,24 +130,24 @@ Global
 		{F077042C-E07A-4323-88C6-69F81EB8924A}.Debug|Win32.Build.0 = Release|Win32
 		{F077042C-E07A-4323-88C6-69F81EB8924A}.Release|Win32.ActiveCfg = Release|Win32
 		{F077042C-E07A-4323-88C6-69F81EB8924A}.Release|Win32.Build.0 = Release|Win32
-		{5D902FE7-975B-4B27-BB19-54476A2B6708}.Debug|Win32.ActiveCfg = Release|Win32
-		{5D902FE7-975B-4B27-BB19-54476A2B6708}.Debug|Win32.Build.0 = Release|Win32
+		{5D902FE7-975B-4B27-BB19-54476A2B6708}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5D902FE7-975B-4B27-BB19-54476A2B6708}.Debug|Win32.Build.0 = Debug|Win32
 		{5D902FE7-975B-4B27-BB19-54476A2B6708}.Release|Win32.ActiveCfg = Release|Win32
 		{5D902FE7-975B-4B27-BB19-54476A2B6708}.Release|Win32.Build.0 = Release|Win32
-		{F635EF0C-CDE9-4A90-AC09-5150488E0A98}.Debug|Win32.ActiveCfg = Release|Win32
-		{F635EF0C-CDE9-4A90-AC09-5150488E0A98}.Debug|Win32.Build.0 = Release|Win32
+		{F635EF0C-CDE9-4A90-AC09-5150488E0A98}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F635EF0C-CDE9-4A90-AC09-5150488E0A98}.Debug|Win32.Build.0 = Debug|Win32
 		{F635EF0C-CDE9-4A90-AC09-5150488E0A98}.Release|Win32.ActiveCfg = Release|Win32
 		{F635EF0C-CDE9-4A90-AC09-5150488E0A98}.Release|Win32.Build.0 = Release|Win32
-		{30925B57-BC60-4115-9FE5-A90BA2BDF131}.Debug|Win32.ActiveCfg = Release|Win32
-		{30925B57-BC60-4115-9FE5-A90BA2BDF131}.Debug|Win32.Build.0 = Release|Win32
+		{30925B57-BC60-4115-9FE5-A90BA2BDF131}.Debug|Win32.ActiveCfg = Debug|Win32
+		{30925B57-BC60-4115-9FE5-A90BA2BDF131}.Debug|Win32.Build.0 = Debug|Win32
 		{30925B57-BC60-4115-9FE5-A90BA2BDF131}.Release|Win32.ActiveCfg = Release|Win32
 		{30925B57-BC60-4115-9FE5-A90BA2BDF131}.Release|Win32.Build.0 = Release|Win32
-		{8F670F3E-530F-4F06-A565-7BC623256D83}.Debug|Win32.ActiveCfg = Release|Win32
-		{8F670F3E-530F-4F06-A565-7BC623256D83}.Debug|Win32.Build.0 = Release|Win32
+		{8F670F3E-530F-4F06-A565-7BC623256D83}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8F670F3E-530F-4F06-A565-7BC623256D83}.Debug|Win32.Build.0 = Debug|Win32
 		{8F670F3E-530F-4F06-A565-7BC623256D83}.Release|Win32.ActiveCfg = Release|Win32
 		{8F670F3E-530F-4F06-A565-7BC623256D83}.Release|Win32.Build.0 = Release|Win32
-		{F4F1B3F2-7982-458B-A113-98982D219B35}.Debug|Win32.ActiveCfg = Release|Win32
-		{F4F1B3F2-7982-458B-A113-98982D219B35}.Debug|Win32.Build.0 = Release|Win32
+		{F4F1B3F2-7982-458B-A113-98982D219B35}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F4F1B3F2-7982-458B-A113-98982D219B35}.Debug|Win32.Build.0 = Debug|Win32
 		{F4F1B3F2-7982-458B-A113-98982D219B35}.Release|Win32.ActiveCfg = Release|Win32
 		{F4F1B3F2-7982-458B-A113-98982D219B35}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection

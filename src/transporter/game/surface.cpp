@@ -14,7 +14,8 @@ bit Surface::init(str name)
 		surfaceInfo.m_shape = (hkpShape*)physicsSurfaceShape->createMoppShape();
 		surfaceInfo.m_position.set(0.0f,0.0f,0.0f);
 		surfaceInfo.m_motionType = hkpMotion::MOTION_FIXED;
-		surfaceInfo.m_friction = 0.55f;
+		surfaceInfo.m_friction = 0.65f;
+		surfaceInfo.m_restitution = 0.005;
 
 		physicsEntity = new hkpRigidBody(surfaceInfo);
 		game->gameScene.physicsWorld.getWorld()->lock();
@@ -33,15 +34,15 @@ bit Surface::init(str name)
 		Ogre::MeshManager::getSingleton().createPlane(name+"Mesh",
 			Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 			surfacePlane,
-			1500, 1500, 200, 200, true, 1, 400, 400, Ogre::Vector3::UNIT_Z);		
+			4000, 4000, 150, 150, true, 1, 300, 300, Ogre::Vector3::UNIT_Z);		
 		Ogre::SceneNode* surfaceNode = game->visualSystem.getSceneMgr()->getRootSceneNode()->createChildSceneNode();
 		visualEntity  = game->visualSystem.getSceneMgr()->createEntity( name, name+"Mesh" );
-		visualEntity->setMaterialName("asphalt");	
+		visualEntity->setMaterialName("Ocean2_HLSL");	
 		visualEntity->setCastShadows(false);	
 		visualEntity->getMesh()->buildTangentVectors();
 		//visualEntity->setVisible(false);
 		surfaceNode->attachObject(visualEntity);
-		surfaceNode->setPosition(0.0f,0.0f,0.0f);		
+		surfaceNode->setPosition(0.0f,-120.741,0.0f);		
 	}
 	game->visualSystem.unlockThread();
 

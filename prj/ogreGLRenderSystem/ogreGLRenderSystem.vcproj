@@ -41,7 +41,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(SolutionDir)src&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\win32&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\atifs&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\glsl&quot;;&quot;$(SolutionDir)src\ogre\openGLRenderSystem\nvparse&quot;;&quot;$(SolutionDir)src\ogre&quot;;&quot;$(SolutionDir)inc&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;OGRE_GLPLUGIN_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;OGRE_THREAD_SUPPORT;OGRE_NO_DEVIL;OGRE_GLPLUGIN_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"

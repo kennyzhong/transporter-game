@@ -1,5 +1,6 @@
 #include "transporter.h"
 
+
 CarEntity::CarEntity( Surface* surface )
 	: GameEntity(surface->getGame()),
 	  steeringInput(&surface->getGame()->inputSystem)	  
@@ -19,7 +20,7 @@ bit CarEntity::init(str name)
 
 	game->visualSystem.lockThread();
 	{		
-		Ogre::SceneNode* surfaceNode = surface->getVisualEntity()->getParentSceneNode();
+		Ogre::SceneNode* surfaceNode = game->visualSystem.getSceneMgr()->getRootSceneNode();
 
 		Ogre::Quaternion orient;
 		Ogre::Vector3 pos;
@@ -41,7 +42,13 @@ bit CarEntity::init(str name)
 		//visualEntity->setMaterialName("body");
 		carNode->attachObject(visualEntity);		
 
-		Ogre::SceneNode* followCamNode = carNode->createChildSceneNode("followCamNode",Ogre::Vector3(0.0f,4.0f,6.0f));
+		physicsShape = game->visualSystem.getSceneMgr()->createEntity("physicsShape","GallardoShape.mesh");
+		physicsShape->setCastShadows(false);
+		physicsShape->setMaterialName("rawMaterial");
+		physicsShape->setVisible(false);
+		carNode->attachObject(physicsShape);
+
+		Ogre::SceneNode* followCamNode = carNode->createChildSceneNode("followCamNode",Ogre::Vector3(2.5f,1.5f,0.0f));
 		followCamNode->attachObject(game->visualSystem.getCamera());
 		game->visualSystem.getCamera()->setAutoTracking(true,carNode);	
 		game->visualSystem.getCamera()->setFixedYawAxis(true);
@@ -78,13 +85,14 @@ bit CarEntity::init(str name)
 		int chassisLayer = 1;
 
 		hkpRigidBodyCinfo chassisInfo;
-		chassisInfo.m_mass = 900.0f;	
+		chassisInfo.m_mass = 600.0f;	
+		chassisInfo.m_restitution = 0.1;
 		chassisInfo.m_shape = chassisShape;
-		chassisInfo.m_friction = 0.8f;
-		chassisInfo.m_motionType = hkpMotion::MOTION_BOX_INERTIA;
-		chassisInfo.m_position.set(0.0f, 5.0f, 0.0f);
-		chassisInfo.m_inertiaTensor.setDiagonal(1.0f, 1.0f, 1.0f);
-		chassisInfo.m_centerOfMass.set( -0.037f, 0.143f, 0.0f);
+		chassisInfo.m_friction = 0.55f;
+		chassisInfo.m_motionType = hkpMotion::MOTION_DYNAMIC;
+		chassisInfo.m_position.set(0.0f, 1.0f, 0.0f);
+		chassisInfo.m_inertiaTensor.setDiagonal(1.5f, 1.0f, 1.0f);
+		chassisInfo.m_centerOfMass.set( -0.037f, 0.15f, 0.0f);
 		chassisInfo.m_collisionFilterInfo = hkpGroupFilter::calcFilterInfo( chassisLayer, 0 );
 
 		physicsEntity = new hkpRigidBody(chassisInfo);	
@@ -134,6 +142,47 @@ CarEntity::~CarEntity()
 
 hkpConvexVerticesShape* CarEntity::createChassisShape()
 {
+	size_t vertex_count,index_count;
+	Vector3* vertices;
+	unsigned long* indices;
+
+	getMeshInformation(physicsShape->getMesh().getPointer(),vertex_count,vertices,index_count,indices,
+						Ogre::Vector3::ZERO,Ogre::Quaternion::IDENTITY,Ogre::Vector3::UNIT_SCALE);
+
+	hkVector4* phVertices = new hkVector4[index_count];
+	for(u32 i=0 ; i<index_count ; i++)
+	{
+		phVertices[i].set( vertices[indices[i]].x,
+						   vertices[indices[i]].y,
+						   vertices[indices[i]].z );
+	}
+
+	hkpConvexVerticesShape* chassisShape;
+	hkArray<hkVector4> planeEquations;
+	hkGeometry geom;
+	{
+		hkStridedVertices stridedVerts;
+		{
+			stridedVerts.m_numVertices = index_count;
+			stridedVerts.m_striding = sizeof(float) * 4;
+			stridedVerts.m_vertices = (float*)phVertices;
+		}
+
+		hkpGeometryUtility::createConvexGeometry( stridedVerts, geom, planeEquations );
+		{
+			stridedVerts.m_numVertices = geom.m_vertices.getSize();
+			stridedVerts.m_striding = sizeof(hkVector4);
+			stridedVerts.m_vertices = &(geom.m_vertices[0](0));
+		}
+
+		chassisShape = new hkpConvexVerticesShape(stridedVerts, planeEquations);
+	}	
+	//chassisShape->setRadius(0.1f);
+
+	delete[] vertices;
+	delete[] indices;
+	delete[] phVertices;
+/*
 	hkReal xSize = 1.75f;
 	hkReal ySize = 0.25f;
 	hkReal zSize = 1.1f;
@@ -208,25 +257,8 @@ hkpConvexVerticesShape* CarEntity::createChassisShape()
 		chassisShape = new hkpConvexVerticesShape(stridedVerts, planeEquations);
 	}
 	chassisShape->setRadius(0.1f);
-
+*/
 	return chassisShape;
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————
-
-void CarEntity::update( u32 evId,u32 param )
-{
-	if(isEntityInited)
-	{
-		if(evId == EV_UPDATE_PHYSICS_FORCE)
-		{
-			updatePhysics(param);
-		}
-		else if(evId == EV_UPDATE_VISUAL_ENTITIES)
-		{
-			updateVisual();
-		}
-	}
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————
@@ -243,7 +275,7 @@ void CarEntity::updatePhysics(u32 timeElapse)
 	{
 		Yaxis = -steeringInput.getBraking();
 	}
-	deviceStatus->m_positionX = -steeringInput.getSteering();
+	deviceStatus->m_positionX = steeringInput.getSteering();
 	deviceStatus->m_positionY = Yaxis;
 	deviceStatus->m_handbrakeButtonPressed = steeringInput.getHandBrake();	
 	physicsVehicleInstance->m_currentGear = steeringInput.getGearShift();
@@ -266,7 +298,15 @@ void CarEntity::updateVisual()
 {
 	hkVector4 vpos = physicsEntity->getPosition();
 	hkVector4 vvel = physicsEntity->getLinearVelocity();
+	hkVector4 avel = physicsEntity->getAngularVelocity();
 	hkQuaternion vOrient = physicsEntity->getRotation();
+
+	hkReal avl[3];
+	avel.load3(avl);
+	f32 speed = physicsVehicleInstance->calcKMPH();
+	Ogre::Camera* cam = game->visualSystem.getCamera();
+	cam->setPosition(3.0+(clampValue(speed-70,0,400)/35),0.0,
+		             steeringInput.getSteering()*(clampValue(speed-50,0,400)/25));
 
 	Ogre::SceneNode* node = visualEntity->getParentSceneNode();
 	node->setPosition(vpos(0),vpos(1),vpos(2));
@@ -308,8 +348,8 @@ void CarEntity::updateVisual()
 	static f32 lastWheelRotation;
 	lastWheelRotation += (hkReal)physicsEntity->getLinearVelocity().length3();
 
-	Ogre::Degree degAngleR(Ogre::Radian(physicsVehicleInstance->m_wheelsSteeringAngle[0]));
-	Ogre::Degree degAngleL(Ogre::Radian(physicsVehicleInstance->m_wheelsSteeringAngle[1]));
+	Ogre::Degree degAngleR(-Ogre::Radian(physicsVehicleInstance->m_wheelsSteeringAngle[2]));
+	Ogre::Degree degAngleL(-Ogre::Radian(physicsVehicleInstance->m_wheelsSteeringAngle[3]));
 
 	Ogre::Quaternion q1;
 	Ogre::Quaternion q2;
@@ -335,8 +375,7 @@ void CarEntity::updateVisual()
 	q2 = Ogre::Quaternion::IDENTITY;
 	q1.FromAngleAxis(Ogre::Degree(-lastWheelRotation),Ogre::Vector3::UNIT_Z);	
 	RLNode->setOrientation(q1);	
-
-	f32 speed = physicsVehicleInstance->calcKMPH();
+	
 	f32 rpm   = physicsVehicleInstance->calcRPM();
 
 	instruments.setSpeedometer(speed);

@@ -186,11 +186,23 @@ void CarSteering::updateSteeringKey( u32 timeElapse )
 {
 	f32 reverseFactor = 1.0f;
 	f32 normalizationFactor = 1.25f;
-	if(isSteeringKey==-1 && steering>=-1.0f)
+	if(isSteeringKey == 0)
+	{
+		f32 changes = steeringSaturation*normalizationFactor*(f32)timeElapse;
+		if(steering < 0.0f)
+		{
+			steering = clampValue(steering + changes,-1.0f,0.0f);
+		}
+		else
+		{
+			steering = clampValue(steering - changes,0.0f,1.0f);
+		}
+	}
+	else if(isSteeringKey==-1 && steering>=-1.0f)
 	{		
 		if(steering > 0.0f)
 		{
-			reverseFactor = 2.0f+steering;
+			reverseFactor = 4.0f;
 		}
 		steering = clampValue(steering - steeringSaturation*reverseFactor*(f32)timeElapse,-1.0f,1.0f);
 	}
@@ -198,21 +210,10 @@ void CarSteering::updateSteeringKey( u32 timeElapse )
 	{
 		if(steering < 0.0f)
 		{
-			reverseFactor = 2.0f-steering;
+			reverseFactor = 4.0f;
 		}
-		steering = clampValue(steering + steeringSaturation*(f32)timeElapse,-1.0f,1.0f);
-	}
-	else
-	{
-		if(steering < 0.0f)
-		{
-			steering = clampValue(steering + steeringSaturation*normalizationFactor*(f32)timeElapse,-1.0f,0.0f);
-		}
-		else
-		{
-			steering = clampValue(steering - steeringSaturation*normalizationFactor*(f32)timeElapse,0.0f,1.0f);
-		}
-	}
+		steering = clampValue(steering + steeringSaturation*reverseFactor*(f32)timeElapse,-1.0f,1.0f);
+	}	
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————

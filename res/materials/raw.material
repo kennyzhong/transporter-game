@@ -1,0 +1,14 @@
+material rawMaterial
+{
+	technique
+	{
+		pass
+		{	
+			ambient  0.25 0.25 0.25 0.35
+			diffuse  0.25 0.25 0.25 0.35
+			specular 0.75 0.75 0.75 0.5 20
+			emissive 0.10 0.10 0.10	0.35	
+			scene_blend alpha_blend
+		}
+	}
+} 

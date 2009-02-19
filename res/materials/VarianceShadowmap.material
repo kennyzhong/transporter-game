@@ -1,0 +1,43 @@
+material VarianceShadowMapping/ShadowCaster
+{
+    technique default
+    {
+        // Z-write only pass
+        pass Z-write
+        {
+            //Instead of using depth_bias, we'll be implementing it manually
+
+            vertex_program_ref VarianceShadowMapping/ShadowCasterVP
+            {
+            }
+            fragment_program_ref VarianceShadowMapping/ShadowCasterFP
+            {
+            }
+        }
+    }
+}
+
+
+material VarianceShadowMapping/ShadowReceiver
+{
+    technique default
+    {
+        pass lighting
+        {
+            vertex_program_ref VarianceShadowMapping/ShadowReceiverVP
+            {
+            }
+
+            fragment_program_ref VarianceShadowMapping/ShadowReceiverFP
+            {
+            }
+
+            // we won't rely on hardware specific filtering of z-tests
+            texture_unit ShadowMap
+            {
+                tex_address_mode clamp
+                filtering none
+            }
+        }
+    }
+}
